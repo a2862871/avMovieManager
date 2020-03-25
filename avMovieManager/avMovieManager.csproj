@@ -118,9 +118,20 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\buttonMinimize.Image.png" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\pngMainLog.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\buttonMaximize.Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\buttonExit.Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnHome.Image.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
