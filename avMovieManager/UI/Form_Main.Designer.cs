@@ -60,8 +60,9 @@
             this.panelMenu.Controls.Add(this.panelLogo);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
+            this.panelMenu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(200, 697);
+            this.panelMenu.Size = new System.Drawing.Size(200, 861);
             this.panelMenu.TabIndex = 0;
             // 
             // iconButtonSetting
@@ -76,7 +77,8 @@
             this.iconButtonSetting.IconColor = System.Drawing.Color.Gainsboro;
             this.iconButtonSetting.IconSize = 40;
             this.iconButtonSetting.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButtonSetting.Location = new System.Drawing.Point(0, 401);
+            this.iconButtonSetting.Location = new System.Drawing.Point(0, 360);
+            this.iconButtonSetting.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.iconButtonSetting.Name = "iconButtonSetting";
             this.iconButtonSetting.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
             this.iconButtonSetting.Rotation = 0D;
@@ -99,7 +101,8 @@
             this.iconButtonTidy.IconColor = System.Drawing.Color.Gainsboro;
             this.iconButtonTidy.IconSize = 40;
             this.iconButtonTidy.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButtonTidy.Location = new System.Drawing.Point(0, 341);
+            this.iconButtonTidy.Location = new System.Drawing.Point(0, 300);
+            this.iconButtonTidy.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.iconButtonTidy.Name = "iconButtonTidy";
             this.iconButtonTidy.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
             this.iconButtonTidy.Rotation = 0D;
@@ -122,7 +125,8 @@
             this.iconButtonSearch.IconColor = System.Drawing.Color.Gainsboro;
             this.iconButtonSearch.IconSize = 40;
             this.iconButtonSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButtonSearch.Location = new System.Drawing.Point(0, 281);
+            this.iconButtonSearch.Location = new System.Drawing.Point(0, 240);
+            this.iconButtonSearch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.iconButtonSearch.Name = "iconButtonSearch";
             this.iconButtonSearch.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
             this.iconButtonSearch.Rotation = 0D;
@@ -145,7 +149,8 @@
             this.iconButtonMovies.IconColor = System.Drawing.Color.Gainsboro;
             this.iconButtonMovies.IconSize = 40;
             this.iconButtonMovies.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButtonMovies.Location = new System.Drawing.Point(0, 221);
+            this.iconButtonMovies.Location = new System.Drawing.Point(0, 180);
+            this.iconButtonMovies.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.iconButtonMovies.Name = "iconButtonMovies";
             this.iconButtonMovies.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
             this.iconButtonMovies.Rotation = 0D;
@@ -161,15 +166,17 @@
             this.panelLogo.Controls.Add(this.btnHome);
             this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelLogo.Location = new System.Drawing.Point(0, 0);
+            this.panelLogo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelLogo.Name = "panelLogo";
-            this.panelLogo.Size = new System.Drawing.Size(200, 221);
+            this.panelLogo.Size = new System.Drawing.Size(200, 180);
             this.panelLogo.TabIndex = 0;
             // 
             // btnHome
             // 
             this.btnHome.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnHome.Image = ((System.Drawing.Image)(resources.GetObject("btnHome.Image")));
-            this.btnHome.Location = new System.Drawing.Point(10, 20);
+            this.btnHome.Location = new System.Drawing.Point(10, 10);
+            this.btnHome.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnHome.Name = "btnHome";
             this.btnHome.Size = new System.Drawing.Size(180, 160);
             this.btnHome.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -187,8 +194,9 @@
             this.panelTitleBar.Controls.Add(this.iconCurrentChildFrom);
             this.panelTitleBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTitleBar.Location = new System.Drawing.Point(200, 0);
+            this.panelTitleBar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelTitleBar.Name = "panelTitleBar";
-            this.panelTitleBar.Size = new System.Drawing.Size(1035, 75);
+            this.panelTitleBar.Size = new System.Drawing.Size(1384, 80);
             this.panelTitleBar.TabIndex = 1;
             this.panelTitleBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PanelTitleBar_MouseDown);
             // 
@@ -198,9 +206,10 @@
             this.buttonMinimize.FlatAppearance.BorderSize = 0;
             this.buttonMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonMinimize.Image = ((System.Drawing.Image)(resources.GetObject("buttonMinimize.Image")));
-            this.buttonMinimize.Location = new System.Drawing.Point(936, 3);
+            this.buttonMinimize.Location = new System.Drawing.Point(1263, 2);
+            this.buttonMinimize.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonMinimize.Name = "buttonMinimize";
-            this.buttonMinimize.Size = new System.Drawing.Size(28, 16);
+            this.buttonMinimize.Size = new System.Drawing.Size(32, 16);
             this.buttonMinimize.TabIndex = 2;
             this.buttonMinimize.UseVisualStyleBackColor = true;
             this.buttonMinimize.Click += new System.EventHandler(this.buttonMinimize_Click);
@@ -211,9 +220,10 @@
             this.buttonMaximize.FlatAppearance.BorderSize = 0;
             this.buttonMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonMaximize.Image = ((System.Drawing.Image)(resources.GetObject("buttonMaximize.Image")));
-            this.buttonMaximize.Location = new System.Drawing.Point(970, 3);
+            this.buttonMaximize.Location = new System.Drawing.Point(1308, 2);
+            this.buttonMaximize.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonMaximize.Name = "buttonMaximize";
-            this.buttonMaximize.Size = new System.Drawing.Size(28, 16);
+            this.buttonMaximize.Size = new System.Drawing.Size(32, 16);
             this.buttonMaximize.TabIndex = 2;
             this.buttonMaximize.UseVisualStyleBackColor = true;
             this.buttonMaximize.Click += new System.EventHandler(this.buttonMaximize_Click);
@@ -224,9 +234,10 @@
             this.buttonExit.FlatAppearance.BorderSize = 0;
             this.buttonExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonExit.Image = ((System.Drawing.Image)(resources.GetObject("buttonExit.Image")));
-            this.buttonExit.Location = new System.Drawing.Point(1004, 3);
+            this.buttonExit.Location = new System.Drawing.Point(1352, 2);
+            this.buttonExit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonExit.Name = "buttonExit";
-            this.buttonExit.Size = new System.Drawing.Size(28, 16);
+            this.buttonExit.Size = new System.Drawing.Size(32, 16);
             this.buttonExit.TabIndex = 2;
             this.buttonExit.UseVisualStyleBackColor = true;
             this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
@@ -234,11 +245,12 @@
             // labelCurrentChildFrom
             // 
             this.labelCurrentChildFrom.AutoSize = true;
-            this.labelCurrentChildFrom.Font = new System.Drawing.Font("微软雅黑", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelCurrentChildFrom.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.labelCurrentChildFrom.ForeColor = System.Drawing.Color.Gainsboro;
-            this.labelCurrentChildFrom.Location = new System.Drawing.Point(64, 26);
+            this.labelCurrentChildFrom.Location = new System.Drawing.Point(60, 30);
+            this.labelCurrentChildFrom.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelCurrentChildFrom.Name = "labelCurrentChildFrom";
-            this.labelCurrentChildFrom.Size = new System.Drawing.Size(50, 26);
+            this.labelCurrentChildFrom.Size = new System.Drawing.Size(42, 22);
             this.labelCurrentChildFrom.TabIndex = 1;
             this.labelCurrentChildFrom.Text = "主页";
             // 
@@ -251,7 +263,8 @@
             this.iconCurrentChildFrom.IconChar = FontAwesome.Sharp.IconChar.Home;
             this.iconCurrentChildFrom.IconColor = System.Drawing.Color.MediumPurple;
             this.iconCurrentChildFrom.IconSize = 40;
-            this.iconCurrentChildFrom.Location = new System.Drawing.Point(21, 20);
+            this.iconCurrentChildFrom.Location = new System.Drawing.Point(16, 21);
+            this.iconCurrentChildFrom.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.iconCurrentChildFrom.Name = "iconCurrentChildFrom";
             this.iconCurrentChildFrom.Rotation = 0D;
             this.iconCurrentChildFrom.Size = new System.Drawing.Size(40, 40);
@@ -263,30 +276,34 @@
             // 
             this.panelShashow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(24)))), ((int)(((byte)(58)))));
             this.panelShashow.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelShashow.Location = new System.Drawing.Point(200, 75);
+            this.panelShashow.Location = new System.Drawing.Point(200, 80);
+            this.panelShashow.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelShashow.Name = "panelShashow";
-            this.panelShashow.Size = new System.Drawing.Size(1035, 9);
+            this.panelShashow.Size = new System.Drawing.Size(1384, 9);
             this.panelShashow.TabIndex = 2;
             // 
             // panelDesktop
             // 
             this.panelDesktop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
             this.panelDesktop.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelDesktop.Location = new System.Drawing.Point(200, 84);
+            this.panelDesktop.Location = new System.Drawing.Point(200, 89);
+            this.panelDesktop.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelDesktop.Name = "panelDesktop";
-            this.panelDesktop.Size = new System.Drawing.Size(1035, 613);
+            this.panelDesktop.Size = new System.Drawing.Size(1384, 772);
             this.panelDesktop.TabIndex = 3;
             // 
             // Form_Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1235, 697);
+            this.ClientSize = new System.Drawing.Size(1584, 861);
             this.Controls.Add(this.panelDesktop);
             this.Controls.Add(this.panelShashow);
             this.Controls.Add(this.panelTitleBar);
             this.Controls.Add(this.panelMenu);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Form_Main";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Form1";
             this.panelMenu.ResumeLayout(false);
             this.panelLogo.ResumeLayout(false);

@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using FontAwesome.Sharp;
 using avMovieManager.UI;
+using avMovieManager.DAL;
 namespace avMovieManager.UI
 {
     public partial class Form_Main : Form
@@ -38,6 +39,7 @@ namespace avMovieManager.UI
             this.ControlBox = false;
             this.DoubleBuffered = true;
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
+            LocalPathParam.VideoPreviewPath = @"i:\私人空间";
         }
         private void OpenChildFrom(Form childFrom) 
         {

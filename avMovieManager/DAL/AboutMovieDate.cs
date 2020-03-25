@@ -6,16 +6,11 @@ using System.Threading.Tasks;
 
 namespace avMovieManager.DAL
 {
-    struct MovieDate
+    struct movieData
     {
-        string moviePath;
-        string moviesn;
-        string movieJpgPath;
-        bool movieischinese;
-    }
-    struct ActorDate 
-    {
-        string actorName;
-        string actorPath;
+        public string moviePath;
+        public string moviesn;
+        public string movieJpgPath;
+        public bool movieischinese;
     }
 }
