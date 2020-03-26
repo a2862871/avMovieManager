@@ -1,4 +1,5 @@
-﻿using System;
+﻿using avMovieManager.DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,6 +16,7 @@ namespace avMovieManager
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            //LocalPathParam.PicIsLoadALL = "1";
             Application.Run(new avMovieManager.UI.Form_Main());
         }
     }

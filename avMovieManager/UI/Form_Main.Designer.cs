@@ -111,7 +111,7 @@
             this.iconButtonTidy.Text = "整理归档";
             this.iconButtonTidy.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButtonTidy.UseVisualStyleBackColor = true;
-            this.iconButtonTidy.Click += new System.EventHandler(this.IconButtonTidy_Click);
+            this.iconButtonTidy.Click += new System.EventHandler(this.iconButtonTidy_Click);
             // 
             // iconButtonSearch
             // 
@@ -135,7 +135,7 @@
             this.iconButtonSearch.Text = "搜索";
             this.iconButtonSearch.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButtonSearch.UseVisualStyleBackColor = true;
-            this.iconButtonSearch.Click += new System.EventHandler(this.IconButtonSearch_Click);
+            this.iconButtonSearch.Click += new System.EventHandler(this.iconButtonSearch_Click);
             // 
             // iconButtonMovies
             // 

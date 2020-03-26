@@ -101,13 +101,12 @@ namespace avMovieManager.UI
             ActivateButton(sender, RGBColors.color1);
             OpenChildFrom(new Form_MoviePreview());
         }
-
-        private void IconButtonSearch_Click(object sender, EventArgs e)
+        private void iconButtonSearch_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color2);
         }
 
-        private void IconButtonTidy_Click(object sender, EventArgs e)
+        private void iconButtonTidy_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color3);
         }

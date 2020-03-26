@@ -65,6 +65,7 @@ namespace avMovieManager.UI
         {
             panelPicSubMenu.Controls.Clear();
             listPicBox.Clear();
+            GC.Collect();
             Console.WriteLine(DateTime.Now.ToString() + "  Millisecond:" + DateTime.Now.Millisecond.ToString());
             List<actorMovieData> movieDatas = movieData.GetActorMoviesAllPath(name);
             for (int i = 0; i < movieDatas.Count; i++) 
@@ -72,16 +73,26 @@ namespace avMovieManager.UI
                 ShowPreviewPic(movieDatas[i], i);
             }
             Console.WriteLine(DateTime.Now.ToString() + "  Millisecond:" + DateTime.Now.Millisecond.ToString());
-            //var result = Task.Run(() => LoadPicImage(movieDatas));
+            var result = Task.Run(() => LoadPicImage(movieDatas));
 
         }
         private void LoadPicImage(List<actorMovieData> movieDatas) 
         {
-            for (int i = 0; i < movieDatas.Count; i++)
+            if (LocalPathParam.PicIsLoadALL.Equals("1")) 
             {
-                //listPicBox[i].LoadAsync(movieDatas[i].movieJpgPath);
-                listPicBox[i].Image =movieDatas[i].movieimg;
+                for (int i = 0; i < movieDatas.Count; i++)
+                {
+                    listPicBox[i].Image = movieDatas[i].movieimg;
+                }
             }
+            else 
+            {
+                for (int i = 0; i < movieDatas.Count; i++)
+                {
+                    listPicBox[i].LoadAsync(movieDatas[i].movieJpgPath);
+                }
+            }
+
         }
 
         private void ShowPreviewPic(actorMovieData md,int i) 
@@ -93,7 +104,7 @@ namespace avMovieManager.UI
             pb.Location = new Point(x, y);
             pb.Size = new Size(600, 404);
             //pb.Image = Image.FromFile(md.movieJpgPath);
-            pb.Image = md.movieimg;
+            //pb.Image = md.movieimg;
             pb.Tag = md.moviePath;
             listPicBox.Add(pb);
 

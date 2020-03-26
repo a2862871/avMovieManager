@@ -33,5 +33,11 @@ namespace avMovieManager.DAL
             set { videopreviewpath = value; }
             get { return videopreviewpath; }
         }
+        private static string picIsLoadAll = "";
+        public static string PicIsLoadALL 
+        { 
+            set { picIsLoadAll = value; } 
+            get { return picIsLoadAll; } 
+        }
     }
 }

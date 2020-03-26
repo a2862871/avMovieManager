@@ -140,7 +140,10 @@ namespace avMovieManager.BLL
                             moviedata.movieischinese = true;
                         }
                         //空间换时间
-                        moviedata.movieimg = System.Drawing.Image.FromStream(GetImgStream(moviedata.movieJpgPath));
+                        if (LocalPathParam.PicIsLoadALL.Equals("1"))
+                        {
+                            moviedata.movieimg = System.Drawing.Image.FromStream(GetImgStream(moviedata.movieJpgPath));
+                        }    
                         listMovie.Add(moviedata);
                         if (snToMovieInfo.ContainsKey(name))
                             continue;
