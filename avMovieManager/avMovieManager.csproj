@@ -77,7 +77,7 @@
     <Compile Include="BLL\IniHelper.cs" />
     <Compile Include="BLL\MovieData.cs" />
     <Compile Include="DAL\AboutMovieDate.cs" />
-    <Compile Include="DAL\AboutPublicParam.cs" />
+    <Compile Include="DAL\LocalPathParam.cs" />
     <Compile Include="UI\Form_MoviePreview.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,6 +136,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\btnHome.Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\playermovie.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

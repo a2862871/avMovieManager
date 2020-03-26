@@ -11,19 +11,13 @@ using System.Windows.Forms;
 using FontAwesome.Sharp;
 using avMovieManager.UI;
 using avMovieManager.DAL;
+using avMovieManager.BLL;
+
 namespace avMovieManager.UI
 {
     public partial class Form_Main : Form
     {
-        private struct RGBColors
-        {
-            public static Color color1 = Color.FromArgb(172, 126, 241);
-            public static Color color2 = Color.FromArgb(249,118,176);
-            public static Color color3 = Color.FromArgb(253,138,114);
-            public static Color color4 = Color.FromArgb(95,77,221);
-            public static Color color5 = Color.FromArgb(249,88,155);
-            public static Color color6 = Color.FromArgb(24,161,251);
-        }
+
         private IconButton currentBtn;
         private Panel leftBorderBtn;
         private Form currentChildForm;
@@ -40,6 +34,12 @@ namespace avMovieManager.UI
             this.DoubleBuffered = true;
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
             LocalPathParam.VideoPreviewPath = @"i:\私人空间";
+            LocalPathParam.VideoPlayerPath = @"E:\Program Files\DAUM\PotPlayer\PotPlayerMini64.exe";
+            var result = Task.Run(() => InitDB());
+        }
+        private void InitDB() 
+        {
+            MovieData movieData = MovieData.Instance;
         }
         private void OpenChildFrom(Form childFrom) 
         {
