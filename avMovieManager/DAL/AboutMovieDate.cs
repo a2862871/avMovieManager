@@ -18,10 +18,11 @@ namespace avMovieManager.DAL
     }
     public struct actorMovieData
     {
-        public string moviePath;
-        public string moviesn;
-        public string movieJpgPath;
-        public bool movieischinese;
-        public System.Drawing.Image movieimg;
+        public string actorName;
+        public string path;
+        public string sn;
+        public string jpgPath;
+        public bool isChinese;
+        public System.Drawing.Image img;
     }
 }

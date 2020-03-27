@@ -6,10 +6,6 @@ using System.Threading.Tasks;
 
 namespace avMovieManager.DAL
 {
-    public static class AvUrlParam
-    {
-        
-    }
     public static class LocalPathParam 
     {
         //配置文件路径

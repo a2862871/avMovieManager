@@ -8,24 +8,31 @@ using avMovieManager.DAL;
 using NPinyin;
 namespace avMovieManager.BLL
 {
-    public sealed class MovieData
+    public sealed class FullMovieDatas
     {
-        private static readonly Lazy<MovieData> lazy =
-        new Lazy<MovieData>(() => new MovieData());
+        private static readonly Lazy<FullMovieDatas> lazy =
+        new Lazy<FullMovieDatas>(() => new FullMovieDatas());
 
-        public static MovieData Instance { get { return lazy.Value; } }
+        public static FullMovieDatas Instance { get { return lazy.Value; } }
+
+
         private List<string> listactorname; //演员名字 用于排序
-        private Dictionary<string, string> actorInfo;      //记录演员对应的目录
-        private Dictionary<string, List<actorMovieData>> actorToMovieInfo; //每个演员对应的目录
+        private Dictionary<string, List<string>> actorNameInitia;//演员对应的拼音表
+        private Dictionary<string, string> actorInfo;      //记录演员目录
+        private Dictionary<string, List<actorMovieData>> actorToMovieInfo; //每个演员对应的影片目录
         private Dictionary<string, actorMovieData> snToMovieInfo; //番号对应的目录
-        private MovieData()
+
+        public delegate void RateOfProgress (int index,int count,string name);
+        public static event RateOfProgress Progress;
+        private FullMovieDatas()
         {
             listactorname = new List<string>();
             actorInfo = new Dictionary<string, string>();
             actorToMovieInfo = new Dictionary<string, List<actorMovieData>>();
             snToMovieInfo = new Dictionary<string, actorMovieData>();
+            actorNameInitia = new Dictionary<string, List<string>>();
             InitActorInfo();
-            InitMoveInfo();
+            Task<int> t = InitMoveInfoAsync();
         }
 
         //获取各种信息
@@ -35,8 +42,12 @@ namespace avMovieManager.BLL
         {
             return listactorname;
         }
-        //获取改演员的所有信息
-        public List<actorMovieData> GetActorMoviesAllPath(string key) 
+        public Dictionary<string,List<string>> GetActorAllNameToInitialForm() 
+        {
+            return actorNameInitia;
+        }
+        //获取该演员的所有信息
+        public List<actorMovieData> GetActorNameToMoviesAllPath(string key) 
         { 
             if (actorToMovieInfo.ContainsKey(key))
                 return actorToMovieInfo[key];
@@ -55,7 +66,9 @@ namespace avMovieManager.BLL
             }
             return listName;
         }
-        //搜索番号
+        /// <summary>
+        ///  搜索番号
+        /// </summary>
         public List<actorMovieData> GetSnToMovieDatas(string key) 
         {
             List<actorMovieData> actorMovieDatas = new List<actorMovieData>();
@@ -68,7 +81,6 @@ namespace avMovieManager.BLL
             }
             return actorMovieDatas;
         }
-
         public Dictionary<string, string> GetAllActorPath() 
         {
             return actorInfo;
@@ -90,9 +102,30 @@ namespace avMovieManager.BLL
                         continue;
                     actorInfo.Add(fs.Name, fs.FullName);
                     listactorname.Add(fs.Name);
+                    InitiaSort(fs.Name);
                 }
             }
             listactorname = listactorname.OrderBy(x => GetSpellCode(x)).ToList();
+        }
+        private void InitiaSort(string key) 
+        {
+            string initia = GetSpellCode(key);
+            Char ch = initia.ToCharArray()[0];
+            if (!(ch >= 'A' && ch <= 'Z')) 
+            {
+                initia = "#";
+            }
+            if (actorNameInitia.ContainsKey(initia)) 
+            {
+                actorNameInitia[initia].Add(key);
+            }
+            else 
+            {
+                List<string> ls = new List<string>();
+                ls.Add(key);
+                actorNameInitia.Add(initia, ls);
+            }
+
         }
         private string GetSpellCode(string str)
         {
@@ -102,10 +135,11 @@ namespace avMovieManager.BLL
             string strB = Pinyin.GetInitials(strA, gb2312).Substring(0, 1);
             //拼音 
             //string strC = Pinyin.GetPinyin(str);
-            return strB;
+            return strB.ToUpper();
         }
         private MemoryStream GetImgStream(string strFileName)
         {
+            GC.Collect();
             System.Drawing.Image imgFullSize;
             MemoryStream stmimage;
             imgFullSize = System.Drawing.Image.FromFile(strFileName);
@@ -113,8 +147,14 @@ namespace avMovieManager.BLL
             imgFullSize.Save(stmimage, System.Drawing.Imaging.ImageFormat.Jpeg);
             return stmimage;
         }
-        private void InitMoveInfo() 
+        public async Task<int> InitMoveInfoAsync()
         {
+            int t = await Task.Run(() => InitMoveInfo());
+            return t;
+        }
+        private int InitMoveInfo() 
+        {
+            int j = 1;
             foreach (KeyValuePair<string,string> kvp in actorInfo)
             {
                 DirectoryInfo d = new DirectoryInfo(kvp.Value);
@@ -127,23 +167,24 @@ namespace avMovieManager.BLL
                     {
                         actorMovieData moviedata = new actorMovieData();
                         string name = fs.Name.Replace("-", string.Empty).ToUpper();
-                        moviedata.moviesn = name;
-                        moviedata.moviePath = fs.FullName;
+                        moviedata.sn = name;
+                        moviedata.path = fs.FullName;
                         DirectoryInfo dir = new DirectoryInfo(fs.FullName);
                         FileInfo[] fileInfo = dir.GetFiles("*.jpg");
                         for (int i = 0; i < fileInfo.Length; i++)
                         {
-                            moviedata.movieJpgPath = fileInfo[i].FullName;
+                            moviedata.jpgPath = fileInfo[i].FullName;
                         }
                         if (File.Exists(fs.FullName + @"\ch.uid"))
                         {
-                            moviedata.movieischinese = true;
+                            moviedata.isChinese = true;
                         }
                         //空间换时间
                         if (LocalPathParam.PicIsLoadALL.Equals("1"))
                         {
-                            moviedata.movieimg = System.Drawing.Image.FromStream(GetImgStream(moviedata.movieJpgPath));
-                        }    
+                            moviedata.img = System.Drawing.Image.FromStream(GetImgStream(moviedata.jpgPath));
+                        }
+                        moviedata.actorName = kvp.Key;
                         listMovie.Add(moviedata);
                         if (snToMovieInfo.ContainsKey(name))
                             continue;
@@ -153,7 +194,11 @@ namespace avMovieManager.BLL
                 if (actorToMovieInfo.ContainsKey(kvp.Key))
                     continue;
                 actorToMovieInfo.Add(kvp.Key, listMovie);
+                if (Progress != null)
+                    Progress(j,actorInfo.Count, kvp.Key);
+                j++;
             }
+            return 0;
         }
     }
 }

@@ -37,7 +37,7 @@
             this.panelChildBtnMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelChildBtnMenu.Location = new System.Drawing.Point(0, 0);
             this.panelChildBtnMenu.Name = "panelChildBtnMenu";
-            this.panelChildBtnMenu.Size = new System.Drawing.Size(140, 614);
+            this.panelChildBtnMenu.Size = new System.Drawing.Size(160, 614);
             this.panelChildBtnMenu.TabIndex = 0;
             // 
             // panelPicSubMenu
@@ -45,9 +45,9 @@
             this.panelPicSubMenu.AutoScroll = true;
             this.panelPicSubMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(41)))), ((int)(((byte)(82)))));
             this.panelPicSubMenu.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelPicSubMenu.Location = new System.Drawing.Point(140, 0);
+            this.panelPicSubMenu.Location = new System.Drawing.Point(160, 0);
             this.panelPicSubMenu.Name = "panelPicSubMenu";
-            this.panelPicSubMenu.Size = new System.Drawing.Size(921, 614);
+            this.panelPicSubMenu.Size = new System.Drawing.Size(901, 614);
             this.panelPicSubMenu.TabIndex = 1;
             // 
             // Form_MoviePreview

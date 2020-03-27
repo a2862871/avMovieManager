@@ -17,7 +17,6 @@ namespace avMovieManager.UI
 {
     public partial class Form_Main : Form
     {
-
         private IconButton currentBtn;
         private Panel leftBorderBtn;
         private Form currentChildForm;
@@ -33,13 +32,11 @@ namespace avMovieManager.UI
             this.ControlBox = false;
             this.DoubleBuffered = true;
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
-            LocalPathParam.VideoPreviewPath = @"i:\私人空间";
-            LocalPathParam.VideoPlayerPath = @"E:\Program Files\DAUM\PotPlayer\PotPlayerMini64.exe";
             var result = Task.Run(() => InitDB());
         }
         private void InitDB() 
         {
-            MovieData movieData = MovieData.Instance;
+            FullMovieDatas movieData = FullMovieDatas.Instance;
         }
         private void OpenChildFrom(Form childFrom) 
         {

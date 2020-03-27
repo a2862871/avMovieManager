@@ -75,9 +75,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BLL\IniHelper.cs" />
-    <Compile Include="BLL\MovieData.cs" />
+    <Compile Include="BLL\FullMovieDatas.cs" />
     <Compile Include="DAL\AboutMovieDate.cs" />
     <Compile Include="DAL\LocalPathParam.cs" />
+    <Compile Include="DAL\SearchUrlLink.cs" />
+    <Compile Include="Model\ButtonPanelControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Model\ButtonPanelControl.Designer.cs">
+      <DependentUpon>ButtonPanelControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PreviewPicControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Model\PreviewPicControl.Designer.cs">
+      <DependentUpon>PreviewPicControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Form_MoviePreview.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,6 +105,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\Form_SplashScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Form_SplashScreen.Designer.cs">
+      <DependentUpon>Form_SplashScreen.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Model\ButtonPanelControl.resx">
+      <DependentUpon>ButtonPanelControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Model\PreviewPicControl.resx">
+      <DependentUpon>PreviewPicControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -107,6 +132,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Form_MoviePreview.resx">
       <DependentUpon>Form_MoviePreview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Form_SplashScreen.resx">
+      <DependentUpon>Form_SplashScreen.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -140,5 +168,9 @@
   <ItemGroup>
     <None Include="Resources\playermovie.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\SplashScreenBackground.jpg" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
