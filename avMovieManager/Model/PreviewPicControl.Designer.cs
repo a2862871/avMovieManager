@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.buttonPlayer = new System.Windows.Forms.Button();
-            this.pictureBoxCover = new System.Windows.Forms.PictureBox();
             this.labelVideoSn = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.OpenFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -39,9 +37,87 @@
             this.avMooSearchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.avSoxSearchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.javBusSearchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCover)).BeginInit();
+            this.playAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.buttonPlayer = new System.Windows.Forms.Button();
+            this.pictureBoxCover = new System.Windows.Forms.PictureBox();
+            this.addChineseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCover)).BeginInit();
             this.SuspendLayout();
+            // 
+            // labelVideoSn
+            // 
+            this.labelVideoSn.AutoSize = true;
+            this.labelVideoSn.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelVideoSn.ForeColor = System.Drawing.Color.Gainsboro;
+            this.labelVideoSn.Location = new System.Drawing.Point(208, 430);
+            this.labelVideoSn.Name = "labelVideoSn";
+            this.labelVideoSn.Size = new System.Drawing.Size(55, 21);
+            this.labelVideoSn.TabIndex = 2;
+            this.labelVideoSn.Text = "label1";
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.OpenFolderToolStripMenuItem,
+            this.javDbSearchToolStripMenuItem,
+            this.javLibrarySearchToolStripMenuItem,
+            this.avMooSearchToolStripMenuItem,
+            this.avSoxSearchToolStripMenuItem,
+            this.javBusSearchToolStripMenuItem,
+            this.playAllToolStripMenuItem,
+            this.addChineseToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(185, 202);
+            // 
+            // OpenFolderToolStripMenuItem
+            // 
+            this.OpenFolderToolStripMenuItem.Name = "OpenFolderToolStripMenuItem";
+            this.OpenFolderToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.OpenFolderToolStripMenuItem.Text = "打开文件夹";
+            this.OpenFolderToolStripMenuItem.Click += new System.EventHandler(this.OpenFolderToolStripMenuItem_Click);
+            // 
+            // javDbSearchToolStripMenuItem
+            // 
+            this.javDbSearchToolStripMenuItem.Name = "javDbSearchToolStripMenuItem";
+            this.javDbSearchToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.javDbSearchToolStripMenuItem.Text = "JavDb搜索(推荐)";
+            this.javDbSearchToolStripMenuItem.Click += new System.EventHandler(this.javDbSearchToolStripMenuItem_Click);
+            // 
+            // javLibrarySearchToolStripMenuItem
+            // 
+            this.javLibrarySearchToolStripMenuItem.Name = "javLibrarySearchToolStripMenuItem";
+            this.javLibrarySearchToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.javLibrarySearchToolStripMenuItem.Text = "JavLibrary搜索";
+            this.javLibrarySearchToolStripMenuItem.Click += new System.EventHandler(this.javLibrarySearchToolStripMenuItem_Click);
+            // 
+            // avMooSearchToolStripMenuItem
+            // 
+            this.avMooSearchToolStripMenuItem.Name = "avMooSearchToolStripMenuItem";
+            this.avMooSearchToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.avMooSearchToolStripMenuItem.Text = "AvMoo搜索";
+            this.avMooSearchToolStripMenuItem.Click += new System.EventHandler(this.avMooSearchToolStripMenuItem_Click);
+            // 
+            // avSoxSearchToolStripMenuItem
+            // 
+            this.avSoxSearchToolStripMenuItem.Name = "avSoxSearchToolStripMenuItem";
+            this.avSoxSearchToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.avSoxSearchToolStripMenuItem.Text = "AvSox搜索(无码)";
+            this.avSoxSearchToolStripMenuItem.Click += new System.EventHandler(this.avSoxSearchToolStripMenuItem_Click);
+            // 
+            // javBusSearchToolStripMenuItem
+            // 
+            this.javBusSearchToolStripMenuItem.Name = "javBusSearchToolStripMenuItem";
+            this.javBusSearchToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.javBusSearchToolStripMenuItem.Text = "JavBus搜索";
+            this.javBusSearchToolStripMenuItem.Click += new System.EventHandler(this.javBusSearchToolStripMenuItem_Click);
+            // 
+            // playAllToolStripMenuItem
+            // 
+            this.playAllToolStripMenuItem.Name = "playAllToolStripMenuItem";
+            this.playAllToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.playAllToolStripMenuItem.Text = "播放该演员全部作品";
+            this.playAllToolStripMenuItem.Click += new System.EventHandler(this.playAllToolStripMenuItem_Click);
             // 
             // buttonPlayer
             // 
@@ -65,71 +141,12 @@
             this.pictureBoxCover.TabIndex = 0;
             this.pictureBoxCover.TabStop = false;
             // 
-            // labelVideoSn
+            // addChineseToolStripMenuItem
             // 
-            this.labelVideoSn.AutoSize = true;
-            this.labelVideoSn.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelVideoSn.ForeColor = System.Drawing.Color.Gainsboro;
-            this.labelVideoSn.Location = new System.Drawing.Point(208, 430);
-            this.labelVideoSn.Name = "labelVideoSn";
-            this.labelVideoSn.Size = new System.Drawing.Size(55, 21);
-            this.labelVideoSn.TabIndex = 2;
-            this.labelVideoSn.Text = "label1";
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.OpenFolderToolStripMenuItem,
-            this.javDbSearchToolStripMenuItem,
-            this.javLibrarySearchToolStripMenuItem,
-            this.avMooSearchToolStripMenuItem,
-            this.avSoxSearchToolStripMenuItem,
-            this.javBusSearchToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 158);
-                       
-            // 
-            // OpenFolderToolStripMenuItem
-            // 
-            this.OpenFolderToolStripMenuItem.Name = "OpenFolderToolStripMenuItem";
-            this.OpenFolderToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.OpenFolderToolStripMenuItem.Text = "打开文件夹";
-            this.OpenFolderToolStripMenuItem.Click += new System.EventHandler(this.OpenFolderToolStripMenuItem_Click);
-            // 
-            // javDbSearchToolStripMenuItem
-            // 
-            this.javDbSearchToolStripMenuItem.Name = "javDbSearchToolStripMenuItem";
-            this.javDbSearchToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.javDbSearchToolStripMenuItem.Text = "JavDb搜索(推荐)";
-            this.javDbSearchToolStripMenuItem.Click += new System.EventHandler(this.javDbSearchToolStripMenuItem_Click);
-            // 
-            // javLibrarySearchToolStripMenuItem
-            // 
-            this.javLibrarySearchToolStripMenuItem.Name = "javLibrarySearchToolStripMenuItem";
-            this.javLibrarySearchToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.javLibrarySearchToolStripMenuItem.Text = "JavLibrary搜索";
-            this.javLibrarySearchToolStripMenuItem.Click += new System.EventHandler(this.javLibrarySearchToolStripMenuItem_Click);
-            // 
-            // avMooSearchToolStripMenuItem
-            // 
-            this.avMooSearchToolStripMenuItem.Name = "avMooSearchToolStripMenuItem";
-            this.avMooSearchToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.avMooSearchToolStripMenuItem.Text = "AvMoo搜索";
-            this.avMooSearchToolStripMenuItem.Click += new System.EventHandler(this.avMooSearchToolStripMenuItem_Click);
-            // 
-            // avSoxSearchToolStripMenuItem
-            // 
-            this.avSoxSearchToolStripMenuItem.Name = "avSoxSearchToolStripMenuItem";
-            this.avSoxSearchToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.avSoxSearchToolStripMenuItem.Text = "AvSox搜索(无码)";
-            this.avSoxSearchToolStripMenuItem.Click += new System.EventHandler(this.avSoxSearchToolStripMenuItem_Click);
-            // 
-            // javBusSearchToolStripMenuItem
-            // 
-            this.javBusSearchToolStripMenuItem.Name = "javBusSearchToolStripMenuItem";
-            this.javBusSearchToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.javBusSearchToolStripMenuItem.Text = "JavBus搜索";
-            this.javBusSearchToolStripMenuItem.Click += new System.EventHandler(this.javBusSearchToolStripMenuItem_Click);
+            this.addChineseToolStripMenuItem.Name = "addChineseToolStripMenuItem";
+            this.addChineseToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.addChineseToolStripMenuItem.Text = "添加中文标识";
+            this.addChineseToolStripMenuItem.Click += new System.EventHandler(this.addChineseToolStripMenuItem_Click);
             // 
             // PreviewPicControl
             // 
@@ -141,8 +158,8 @@
             this.Controls.Add(this.pictureBoxCover);
             this.Name = "PreviewPicControl";
             this.Size = new System.Drawing.Size(600, 500);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCover)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCover)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -160,5 +177,7 @@
         private System.Windows.Forms.ToolStripMenuItem avMooSearchToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem avSoxSearchToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem javBusSearchToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem playAllToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addChineseToolStripMenuItem;
     }
 }

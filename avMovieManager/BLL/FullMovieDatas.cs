@@ -16,45 +16,70 @@ namespace avMovieManager.BLL
         public static FullMovieDatas Instance { get { return lazy.Value; } }
 
 
-        private List<string> listactorname; //演员名字 用于排序
-        private Dictionary<string, List<string>> actorNameInitia;//演员对应的拼音表
-        private Dictionary<string, string> actorInfo;      //记录演员目录
-        private Dictionary<string, List<actorMovieData>> actorToMovieInfo; //每个演员对应的影片目录
-        private Dictionary<string, actorMovieData> snToMovieInfo; //番号对应的目录
+        private List<string> listactorname; //演员名字 用于搜索演员的时候
+        private List<ActorMovieData> listactorMovieDatas; //一个list搞定，发现效率和之前字典差不多。
+        private Dictionary<string, List<string>> actorNameInitia;//演员名称按照字母排序
+        private Dictionary<string, string> actorInfo;      //记录演员目录 主要用作加载时进度条演示
 
         public delegate void RateOfProgress (int index,int count,string name);
         public static event RateOfProgress Progress;
         private FullMovieDatas()
         {
+            listactorMovieDatas = new List<ActorMovieData>();
             listactorname = new List<string>();
             actorInfo = new Dictionary<string, string>();
-            actorToMovieInfo = new Dictionary<string, List<actorMovieData>>();
-            snToMovieInfo = new Dictionary<string, actorMovieData>();
-            actorNameInitia = new Dictionary<string, List<string>>();
+            actorNameInitia = new Dictionary<string, List<string>>(); 
             InitActorInfo();
+            //InitMoveInfo();
             Task<int> t = InitMoveInfoAsync();
         }
 
         //获取各种信息
 
-        //获取所有演员名称
+        /// <summary>
+        ///  获取所有演员名字
+        /// </summary>
         public List<string> GetActorAllName() 
         {
             return listactorname;
         }
+        /// <summary>
+        ///  获取按照拼音排序的演员名字
+        /// </summary>
         public Dictionary<string,List<string>> GetActorAllNameToInitialForm() 
         {
             return actorNameInitia;
         }
-        //获取该演员的所有信息
-        public List<actorMovieData> GetActorNameToMoviesAllPath(string key) 
-        { 
-            if (actorToMovieInfo.ContainsKey(key))
-                return actorToMovieInfo[key];
-            return null;
+        /// <summary>
+        ///  获取该演员的所有影片
+        /// </summary>
+        public List<ActorMovieData> GetActorNameToMoviesAllPath(string key) 
+        {
+            List<ActorMovieData> lsa = new List<ActorMovieData>();
+            foreach (ActorMovieData kvp in listactorMovieDatas)
+            {
+                if (kvp.actorName.Equals(key))
+                    lsa.Add(kvp);
+            }
+            return lsa;
         }
-        //搜索演员
-        public List<string> GetNameToActorList(string key) 
+        public void AddActorMovieData(ActorMovieData data)
+        {
+            if (LocalPathParam.PicIsLoadALL.Equals("1"))
+            {
+                data.img = System.Drawing.Image.FromStream(GetImgStream(data.jpgPath));
+            }
+            listactorMovieDatas.Add(data);
+            if(!listactorname.Contains(data.actorName))
+            {
+                listactorname.Add(data.actorName);
+                InitiaSort(data.actorName);
+            }
+        }
+        /// <summary>
+        ///  搜索演员
+        /// </summary>
+        public List<string> SearchNameToActorList(string key) 
         {
             List<string> listName = new List<string>();
             foreach (string keys in listactorname)
@@ -69,22 +94,17 @@ namespace avMovieManager.BLL
         /// <summary>
         ///  搜索番号
         /// </summary>
-        public List<actorMovieData> GetSnToMovieDatas(string key) 
+        public List<ActorMovieData> SearchSnToMovieDatas(string key) 
         {
-            List<actorMovieData> actorMovieDatas = new List<actorMovieData>();
-            foreach (string keys in snToMovieInfo.Keys)
+            List<ActorMovieData> lsa = new List<ActorMovieData>();
+            foreach (ActorMovieData kvp in listactorMovieDatas)
             {
-                if (keys.IndexOf(key) != -1)
-                {
-                    actorMovieDatas.Add(snToMovieInfo[keys]);
-                }
+                if (kvp.sn.Equals(key))
+                    lsa.Add(kvp);
             }
-            return actorMovieDatas;
+            return lsa;
         }
-        public Dictionary<string, string> GetAllActorPath() 
-        {
-            return actorInfo;
-        }
+
         private void InitActorInfo()
         {
             if (Directory.Exists(LocalPathParam.VideoPreviewPath) == false)
@@ -125,7 +145,6 @@ namespace avMovieManager.BLL
                 ls.Add(key);
                 actorNameInitia.Add(initia, ls);
             }
-
         }
         private string GetSpellCode(string str)
         {
@@ -159,21 +178,21 @@ namespace avMovieManager.BLL
             {
                 DirectoryInfo d = new DirectoryInfo(kvp.Value);
                 FileSystemInfo[] f = d.GetFileSystemInfos();
-                List<actorMovieData> listMovie = new List<actorMovieData>();
                 foreach (FileSystemInfo fs in f)
                 {
                     
                     if (fs is DirectoryInfo)
                     {
-                        actorMovieData moviedata = new actorMovieData();
+                        ActorMovieData moviedata = new ActorMovieData();
+                        moviedata.actorName = kvp.Key;
+                        moviedata.snFolderName = fs.Name;
                         string name = fs.Name.Replace("-", string.Empty).ToUpper();
                         moviedata.sn = name;
-                        moviedata.path = fs.FullName;
                         DirectoryInfo dir = new DirectoryInfo(fs.FullName);
                         FileInfo[] fileInfo = dir.GetFiles("*.jpg");
                         for (int i = 0; i < fileInfo.Length; i++)
                         {
-                            moviedata.jpgPath = fileInfo[i].FullName;
+                            moviedata.jpgPath = fileInfo[i].Name;
                         }
                         if (File.Exists(fs.FullName + @"\ch.uid"))
                         {
@@ -184,18 +203,10 @@ namespace avMovieManager.BLL
                         {
                             moviedata.img = System.Drawing.Image.FromStream(GetImgStream(moviedata.jpgPath));
                         }
-                        moviedata.actorName = kvp.Key;
-                        listMovie.Add(moviedata);
-                        if (snToMovieInfo.ContainsKey(name))
-                            continue;
-                        snToMovieInfo.Add(name, moviedata);
+                        listactorMovieDatas.Add(moviedata);
                     }
                 }
-                if (actorToMovieInfo.ContainsKey(kvp.Key))
-                    continue;
-                actorToMovieInfo.Add(kvp.Key, listMovie);
-                if (Progress != null)
-                    Progress(j,actorInfo.Count, kvp.Key);
+                Progress?.Invoke(j,actorInfo.Count, kvp.Key);
                 j++;
             }
             return 0;

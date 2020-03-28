@@ -29,6 +29,13 @@ namespace avMovieManager.DAL
             set { videopreviewpath = value; }
             get { return videopreviewpath; }
         }
+
+        private static string clearingvideopath = "";
+        public static string ClearingVideoPath
+        {
+            set { clearingvideopath = value; }
+            get { return clearingvideopath; }
+        }
         private static string picIsLoadAll = "";
         public static string PicIsLoadALL 
         { 

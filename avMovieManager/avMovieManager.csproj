@@ -58,6 +58,9 @@
     <Reference Include="FontAwesome.Sharp, Version=5.12.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\FontAwesome.Sharp.5.12.1\lib\net472\FontAwesome.Sharp.dll</HintPath>
     </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.11.23.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.11.23\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    </Reference>
     <Reference Include="NPinyin.Core, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\NPinyin.Core.3.0.0\lib\net45\NPinyin.Core.dll</HintPath>
     </Reference>
@@ -74,9 +77,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\HttpSearhMovieInfo.cs" />
     <Compile Include="BLL\IniHelper.cs" />
     <Compile Include="BLL\FullMovieDatas.cs" />
     <Compile Include="DAL\AboutMovieDate.cs" />
+    <Compile Include="DAL\ActorNameHashForm.cs" />
     <Compile Include="DAL\LocalPathParam.cs" />
     <Compile Include="DAL\SearchUrlLink.cs" />
     <Compile Include="Model\ButtonPanelControl.cs">
@@ -90,6 +95,12 @@
     </Compile>
     <Compile Include="Model\PreviewPicControl.Designer.cs">
       <DependentUpon>PreviewPicControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Form_CollatingSort.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Form_CollatingSort.Designer.cs">
+      <DependentUpon>Form_CollatingSort.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Form_MoviePreview.cs">
       <SubType>Form</SubType>
@@ -127,6 +138,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UI\Form_CollatingSort.resx">
+      <DependentUpon>Form_CollatingSort.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Form_Main.resx">
       <DependentUpon>Form_Main.cs</DependentUpon>
     </EmbeddedResource>

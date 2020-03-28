@@ -14,13 +14,14 @@ namespace avMovieManager.Model
 {
     public partial class PreviewPicControl : UserControl
     {
-        private actorMovieData movieDate;
-        public PreviewPicControl(actorMovieData md)
+        private ActorMovieData movieDate;
+        public PreviewPicControl(ActorMovieData md)
         {
             InitializeComponent();
+            SetStyle(ControlStyles.AllPaintingInWmPaint, true); // 禁止擦除背景.
+            SetStyle(ControlStyles.DoubleBuffer, true); // 双缓冲
             this.movieDate = md;
             this.ContextMenuStrip = contextMenuStrip1;
-            buttonPlayer.Tag = movieDate.path;
             buttonPlayer.MouseClick += ButtonPlayer_MouseClick;
             if (movieDate.isChinese)
             {
@@ -36,11 +37,9 @@ namespace avMovieManager.Model
         {
             if (File.Exists(LocalPathParam.VideoPlayerPath))
             {
-                Button p = (Button)sender;
-                string filename = p.Tag.ToString();
                 System.Diagnostics.Process process = new System.Diagnostics.Process();
                 process.StartInfo.FileName = LocalPathParam.VideoPlayerPath;
-                process.StartInfo.Arguments = filename;
+                process.StartInfo.Arguments = movieDate.path;
                 process.Start();
                 process.Close();
             }
@@ -95,6 +94,27 @@ namespace avMovieManager.Model
             string url = SearchUrlLink.JavBusUrl + "search/" + movieDate.sn;
             System.Diagnostics.ProcessStartInfo Info = new System.Diagnostics.ProcessStartInfo(url);
             System.Diagnostics.Process.Start(Info);
+        }
+
+        private void playAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (File.Exists(LocalPathParam.VideoPlayerPath))
+            {
+                System.Diagnostics.Process process = new System.Diagnostics.Process();
+                process.StartInfo.FileName = LocalPathParam.VideoPlayerPath;
+                process.StartInfo.Arguments = movieDate.actorPath;
+                process.Start();
+                process.Close();
+            }
+        }
+
+        private void addChineseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string file = movieDate.path + "\\" + "ch.uid";
+            if (!File.Exists(file)) 
+            {
+                File.Create(file);
+            }
         }
     }
 }

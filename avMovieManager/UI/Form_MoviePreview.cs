@@ -42,7 +42,8 @@ namespace avMovieManager.UI
             listPicBox.Clear();
             GC.Collect();
             System.Diagnostics.Debug.WriteLine(DateTime.Now.ToString() + "  Millisecond:" + DateTime.Now.Millisecond.ToString());
-            List<actorMovieData> movieDatas = allMovieDatas.GetActorNameToMoviesAllPath(name);
+            List<ActorMovieData> movieDatas = allMovieDatas.GetActorNameToMoviesAllPath(name);
+            System.Diagnostics.Debug.WriteLine(DateTime.Now.ToString() + "  Millisecond:" + DateTime.Now.Millisecond.ToString());
             for (int i = 0; i < movieDatas.Count; i++)
             {
                 ShowPreviewPic(movieDatas[i], i);
@@ -58,7 +59,7 @@ namespace avMovieManager.UI
             }
         }
 
-        private void ShowPreviewPic(actorMovieData md, int i)
+        private void ShowPreviewPic(ActorMovieData md, int i)
         {
             PreviewPicControl p = new PreviewPicControl(md);
             int x = 50 + i % 2 * 40 + (((i + 2) % 2) * 600);

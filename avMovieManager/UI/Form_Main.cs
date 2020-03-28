@@ -106,6 +106,7 @@ namespace avMovieManager.UI
         private void iconButtonTidy_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color3);
+            OpenChildFrom(new Form_CollatingSort());
         }
 
         private void iconButton1_Click(object sender, EventArgs e)
