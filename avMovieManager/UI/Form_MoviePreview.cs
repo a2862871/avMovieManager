@@ -42,6 +42,7 @@ namespace avMovieManager.UI
             listPicBox.Clear();
             GC.Collect();
             System.Diagnostics.Debug.WriteLine(DateTime.Now.ToString() + "  Millisecond:" + DateTime.Now.Millisecond.ToString());
+            //List<MovieData> movieDatas = MongoHelper.SelectTableData<MovieData>("name", name);
             List<ActorMovieData> movieDatas = allMovieDatas.GetActorNameToMoviesAllPath(name);
             System.Diagnostics.Debug.WriteLine(DateTime.Now.ToString() + "  Millisecond:" + DateTime.Now.Millisecond.ToString());
             for (int i = 0; i < movieDatas.Count; i++)
@@ -56,9 +57,19 @@ namespace avMovieManager.UI
             for (int i = 0; i < listPicBox.Count; i++)
             {
                 listPicBox[i].ShowImage();
+                //listPicBox[i].ShowImageFromDB();
             }
         }
-
+        private void ShowPreviewPic(MovieData md, int i)
+        {
+            PreviewPicControl p = new PreviewPicControl(md);
+            int x = 50 + i % 2 * 40 + (((i + 2) % 2) * 600);
+            int y = i / 2 * (100 + 404);
+            p.Tag = i;
+            p.Location = new Point(x, y);
+            listPicBox.Add(p);
+            panelPicSubMenu.Controls.Add(p);
+        }
         private void ShowPreviewPic(ActorMovieData md, int i)
         {
             PreviewPicControl p = new PreviewPicControl(md);

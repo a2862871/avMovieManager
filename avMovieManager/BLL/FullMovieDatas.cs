@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using avMovieManager.DAL;
+using MongoDB.Bson;
 using NPinyin;
 namespace avMovieManager.BLL
 {
@@ -184,26 +185,43 @@ namespace avMovieManager.BLL
                     if (fs is DirectoryInfo)
                     {
                         ActorMovieData moviedata = new ActorMovieData();
+                        //MovieData MongodbLog = new MovieData();
+                        //MongodbLog.Id = ObjectId.GenerateNewId();
                         moviedata.actorName = kvp.Key;
+                        //MongodbLog.name = kvp.Key;
                         moviedata.snFolderName = fs.Name;
+                        //MongodbLog.namePath = fs.Name;
                         string name = fs.Name.Replace("-", string.Empty).ToUpper();
                         moviedata.sn = name;
+                        //MongodbLog.sn = name;
                         DirectoryInfo dir = new DirectoryInfo(fs.FullName);
                         FileInfo[] fileInfo = dir.GetFiles("*.jpg");
                         for (int i = 0; i < fileInfo.Length; i++)
                         {
                             moviedata.jpgPath = fileInfo[i].Name;
+                            //MongodbLog.previewPicPath = moviedata.jpgPath;
                         }
                         if (File.Exists(fs.FullName + @"\ch.uid"))
                         {
                             moviedata.isChinese = true;
+                            //MongodbLog.isChinese = 1;
                         }
+                        else 
+                        {
+                            //MongodbLog.isChinese = 0;
+                        }
+                        //MongodbLog.moviePath = moviedata.path;
                         //空间换时间
                         if (LocalPathParam.PicIsLoadALL.Equals("1"))
                         {
                             moviedata.img = System.Drawing.Image.FromStream(GetImgStream(moviedata.jpgPath));
                         }
+                        //MongodbLog.byteImg = File.ReadAllBytes(moviedata.jpgPath);
                         listactorMovieDatas.Add(moviedata);
+
+                        //MongodbLog.createDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                        //MongodbLog.lastEditDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                        //MongoHelper.AddTableData<MovieData>("", MongodbLog);
                     }
                 }
                 Progress?.Invoke(j,actorInfo.Count, kvp.Key);

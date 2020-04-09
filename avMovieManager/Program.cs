@@ -21,7 +21,7 @@ namespace avMovieManager
             SearchUrlLink.JavLibraryUrl = IniHelper.Read("URL", "javlibrary", "http://www.n43a.com/cn/");
             SearchUrlLink.AvMooUrl = IniHelper.Read("URL", "avmoo", "https://avmask.com/cn/");
             SearchUrlLink.AvSoxUrl = IniHelper.Read("URL", "avsox", "https://avsox.host/cn/");
-            LocalPathParam.PicIsLoadALL = "1";
+            LocalPathParam.PicIsLoadALL = "0";
             LocalPathParam.VideoPreviewPath = @"i:\私人空间";
             LocalPathParam.VideoPlayerPath = @"E:\Program Files\DAUM\PotPlayer\PotPlayerMini64.exe";
             var result = Task.Run(() => InitDB());

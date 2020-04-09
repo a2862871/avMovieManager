@@ -15,6 +15,7 @@ namespace avMovieManager.Model
     public partial class PreviewPicControl : UserControl
     {
         private ActorMovieData movieDate;
+        private MovieData moviveData;
         public PreviewPicControl(ActorMovieData md)
         {
             InitializeComponent();
@@ -32,7 +33,23 @@ namespace avMovieManager.Model
                 labelVideoSn.Text = movieDate.sn;
             }
         }
-
+        public PreviewPicControl(MovieData md)
+        {
+            InitializeComponent();
+            SetStyle(ControlStyles.AllPaintingInWmPaint, true); // 禁止擦除背景.
+            SetStyle(ControlStyles.DoubleBuffer, true); // 双缓冲
+            this.moviveData = md;
+            this.ContextMenuStrip = contextMenuStrip1;
+            buttonPlayer.MouseClick += ButtonPlayer_MouseClick;
+            if (moviveData.isChinese == 1)
+            {
+                labelVideoSn.Text = moviveData.sn + "    中文字幕";
+            }
+            else
+            {
+                labelVideoSn.Text = moviveData.sn;
+            }
+        }
         private void ButtonPlayer_MouseClick(object sender, MouseEventArgs e)
         {
             if (File.Exists(LocalPathParam.VideoPlayerPath))
@@ -44,7 +61,16 @@ namespace avMovieManager.Model
                 process.Close();
             }
         }
-
+        public void ShowImageFromDB()
+        {
+            pictureBoxCover.Image = ReturnPhoto(moviveData.byteImg);
+        }
+        private Image ReturnPhoto(byte[] streamByte)
+        {
+            MemoryStream ms = new MemoryStream(streamByte);
+            Image img = Image.FromStream(ms);
+            return img;
+        }
         public void ShowImage() 
         {
             if (LocalPathParam.PicIsLoadALL.Equals("1"))

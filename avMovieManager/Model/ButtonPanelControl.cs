@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using avMovieManager.DAL;
+using avMovieManager.BLL;
 
 namespace avMovieManager.Model
 {
@@ -20,6 +21,7 @@ namespace avMovieManager.Model
         {
             InitializeComponent();
             InitButton(filedict);
+           
         }
         private void InitButton(Dictionary<string, List<string>> filedict)
         {
@@ -32,6 +34,8 @@ namespace avMovieManager.Model
                 }
                 if (!filedict.ContainsKey(ch.ToString())) 
                 {
+                    if (ch == '#')
+                        ch = '[';
                     continue;
                 }
                 List<string> filelist = filedict[ch.ToString()];
@@ -47,6 +51,8 @@ namespace avMovieManager.Model
                 p.Controls.Add(lb);
                 for (int i = 0; i < filelist.Count; i++) 
                 {
+                    //System.Diagnostics.Debug.WriteLine(DateTime.Now.ToString() + "  Millisecond:" + DateTime.Now.Millisecond.ToString());
+                    //System.Diagnostics.Debug.WriteLine(DateTime.Now.ToString() + "  Millisecond:" + DateTime.Now.Millisecond.ToString());
                     Button b = new Button();
                     //b.Dock = System.Windows.Forms.DockStyle.Top;
                     b.Font = font;                
