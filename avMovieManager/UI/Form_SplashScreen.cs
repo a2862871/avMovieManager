@@ -17,8 +17,8 @@ namespace avMovieManager.UI
         public Form_SplashScreen()
         {
             InitializeComponent();
-            FullMovieDatas.Progress += MovieData_Progress;
-            FullMovieDatas movieData = FullMovieDatas.Instance;
+            MovieDataBLL.Progress += MovieData_Progress;
+            MovieDataBLL movieData = MovieDataBLL.Instance;
         }
 
         private void MovieData_Progress(int index, int count, string name)

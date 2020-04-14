@@ -195,13 +195,13 @@ namespace avMovieManager.BLL
             web = null;
             if(MoveMovieFile(moviePath, movieData.path + "\\" + movieData.snFolderName + "." + eext) == 0) 
             {
-                FullMovieDatas fmd = FullMovieDatas.Instance;
-                fmd.AddActorMovieData(movieData);
-                if (movieData.isChinese) 
-                {
-                    string file = movieData.path + "\\" + "ch.uid";
-                    File.Create(file);
-                }
+                //FullMovieDatas fmd = FullMovieDatas.Instance;
+                //fmd.AddActorMovieData(movieData);
+                //if (movieData.isChinese) 
+                //{
+                //    string file = movieData.path + "\\" + "ch.uid";
+                //    File.Create(file);
+                //}
                 return 0;
             }
             return -1;

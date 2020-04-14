@@ -21,7 +21,7 @@ namespace avMovieManager.Model
         {
             InitializeComponent();
             InitButton(filedict);
-           
+
         }
         private void InitButton(Dictionary<string, List<string>> filedict)
         {

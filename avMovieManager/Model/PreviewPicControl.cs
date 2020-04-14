@@ -14,9 +14,8 @@ namespace avMovieManager.Model
 {
     public partial class PreviewPicControl : UserControl
     {
-        private ActorMovieData movieDate;
-        private MovieData moviveData;
-        public PreviewPicControl(ActorMovieData md)
+        private MovieInfo movieDate;
+        public PreviewPicControl(MovieInfo md)
         {
             InitializeComponent();
             SetStyle(ControlStyles.AllPaintingInWmPaint, true); // 禁止擦除背景.
@@ -24,47 +23,21 @@ namespace avMovieManager.Model
             this.movieDate = md;
             this.ContextMenuStrip = contextMenuStrip1;
             buttonPlayer.MouseClick += ButtonPlayer_MouseClick;
-            if (movieDate.isChinese)
-            {
-                labelVideoSn.Text = movieDate.sn + "    中文字幕";
-            }
-            else
-            {
-                labelVideoSn.Text = movieDate.sn;
-            }
+            labelVideoSn.Text = movieDate.MovieSn;
         }
-        public PreviewPicControl(MovieData md)
-        {
-            InitializeComponent();
-            SetStyle(ControlStyles.AllPaintingInWmPaint, true); // 禁止擦除背景.
-            SetStyle(ControlStyles.DoubleBuffer, true); // 双缓冲
-            this.moviveData = md;
-            this.ContextMenuStrip = contextMenuStrip1;
-            buttonPlayer.MouseClick += ButtonPlayer_MouseClick;
-            if (moviveData.isChinese == 1)
-            {
-                labelVideoSn.Text = moviveData.sn + "    中文字幕";
-            }
-            else
-            {
-                labelVideoSn.Text = moviveData.sn;
-            }
-        }
+
         private void ButtonPlayer_MouseClick(object sender, MouseEventArgs e)
         {
             if (File.Exists(LocalPathParam.VideoPlayerPath))
             {
                 System.Diagnostics.Process process = new System.Diagnostics.Process();
                 process.StartInfo.FileName = LocalPathParam.VideoPlayerPath;
-                process.StartInfo.Arguments = movieDate.path;
+                process.StartInfo.Arguments = movieDate.Path;
                 process.Start();
                 process.Close();
             }
         }
-        public void ShowImageFromDB()
-        {
-            pictureBoxCover.Image = ReturnPhoto(moviveData.byteImg);
-        }
+
         private Image ReturnPhoto(byte[] streamByte)
         {
             MemoryStream ms = new MemoryStream(streamByte);
@@ -75,49 +48,49 @@ namespace avMovieManager.Model
         {
             if (LocalPathParam.PicIsLoadALL.Equals("1"))
             {
-                pictureBoxCover.Image = movieDate.img;
+                //pictureBoxCover.Image = movieDate.img;
             }
             else
             {
-                pictureBoxCover.LoadAsync(movieDate.jpgPath);
+                pictureBoxCover.LoadAsync(movieDate.ThumbPicPath);
             }
         }
 
         private void OpenFolderToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("explorer.exe", movieDate.path);
+            System.Diagnostics.Process.Start("explorer.exe", movieDate.Path);
         }
 
         private void javDbSearchToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string url = SearchUrlLink.JavDbUrl + "/search?q=" + movieDate.sn + "&f=all";
+            string url = SearchUrlLink.JavDbUrl + "/search?q=" + movieDate.MovieSn + "&f=all";
             System.Diagnostics.ProcessStartInfo Info = new System.Diagnostics.ProcessStartInfo(url);
             System.Diagnostics.Process.Start(Info);
         }
         private void javLibrarySearchToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string url = SearchUrlLink.JavLibraryUrl + "vl_searchbyid.php?keyword=" + movieDate.sn;
+            string url = SearchUrlLink.JavLibraryUrl + "vl_searchbyid.php?keyword=" + movieDate.MovieSn;
             System.Diagnostics.ProcessStartInfo Info = new System.Diagnostics.ProcessStartInfo(url);
             System.Diagnostics.Process.Start(Info);
         }
 
         private void avMooSearchToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string url = SearchUrlLink.AvMooUrl + "search/" + movieDate.sn;
+            string url = SearchUrlLink.AvMooUrl + "search/" + movieDate.MovieSn;
             System.Diagnostics.ProcessStartInfo Info = new System.Diagnostics.ProcessStartInfo(url);
             System.Diagnostics.Process.Start(Info);
         }
 
         private void avSoxSearchToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string url = SearchUrlLink.AvSoxUrl + "search/" + movieDate.sn;
+            string url = SearchUrlLink.AvSoxUrl + "search/" + movieDate.MovieSn;
             System.Diagnostics.ProcessStartInfo Info = new System.Diagnostics.ProcessStartInfo(url);
             System.Diagnostics.Process.Start(Info);
         }
 
         private void javBusSearchToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string url = SearchUrlLink.JavBusUrl + "search/" + movieDate.sn;
+            string url = SearchUrlLink.JavBusUrl + "search/" + movieDate.MovieSn;
             System.Diagnostics.ProcessStartInfo Info = new System.Diagnostics.ProcessStartInfo(url);
             System.Diagnostics.Process.Start(Info);
         }
@@ -128,7 +101,7 @@ namespace avMovieManager.Model
             {
                 System.Diagnostics.Process process = new System.Diagnostics.Process();
                 process.StartInfo.FileName = LocalPathParam.VideoPlayerPath;
-                process.StartInfo.Arguments = movieDate.actorPath;
+                process.StartInfo.Arguments = movieDate.Path;
                 process.Start();
                 process.Close();
             }
@@ -136,7 +109,7 @@ namespace avMovieManager.Model
 
         private void addChineseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string file = movieDate.path + "\\" + "ch.uid";
+            string file = movieDate.Path + "\\" + "ch.uid";
             if (!File.Exists(file)) 
             {
                 File.Create(file);

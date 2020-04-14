@@ -36,7 +36,7 @@ namespace avMovieManager.UI
         }
         private void InitDB() 
         {
-            FullMovieDatas movieData = FullMovieDatas.Instance;
+            
         }
         private void OpenChildFrom(Form childFrom) 
         {

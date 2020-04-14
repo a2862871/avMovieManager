@@ -113,12 +113,16 @@
   <ItemGroup>
     <Compile Include="BLL\HttpSearhMovieInfo.cs" />
     <Compile Include="BLL\IniHelper.cs" />
-    <Compile Include="BLL\FullMovieDatas.cs" />
-    <Compile Include="BLL\MongoDBHelper.cs" />
+    <Compile Include="BLL\MovieDataBLL.cs" />
+    <Compile Include="BLL\PinyinHelper.cs" />
+    <Compile Include="BLL\XmlHelper.cs" />
     <Compile Include="DAL\AboutMovieDate.cs" />
+    <Compile Include="DAL\MovieDataDAL.cs" />
+    <Compile Include="Model\ActorInfo.cs" />
     <Compile Include="DAL\ActorNameHashForm.cs" />
     <Compile Include="DAL\LocalPathParam.cs" />
-    <Compile Include="DAL\MovieData.cs" />
+    <Compile Include="Model\MovieInfo.cs" />
+    <Compile Include="Model\MovieTagInfo.cs" />
     <Compile Include="DAL\SearchUrlLink.cs" />
     <Compile Include="Model\ButtonPanelControl.cs">
       <SubType>UserControl</SubType>
