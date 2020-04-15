@@ -32,11 +32,6 @@ namespace avMovieManager.UI
             this.ControlBox = false;
             this.DoubleBuffered = true;
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
-            var result = Task.Run(() => InitDB());
-        }
-        private void InitDB() 
-        {
-            
         }
         private void OpenChildFrom(Form childFrom) 
         {
@@ -101,6 +96,7 @@ namespace avMovieManager.UI
         private void iconButtonSearch_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color2);
+            OpenChildFrom(new Form_SearchMovie());
         }
 
         private void iconButtonTidy_Click(object sender, EventArgs e)

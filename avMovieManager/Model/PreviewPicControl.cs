@@ -46,14 +46,7 @@ namespace avMovieManager.Model
         }
         public void ShowImage() 
         {
-            if (LocalPathParam.PicIsLoadALL.Equals("1"))
-            {
-                //pictureBoxCover.Image = movieDate.img;
-            }
-            else
-            {
-                pictureBoxCover.LoadAsync(movieDate.ThumbPicPath);
-            }
+            pictureBoxCover.LoadAsync(movieDate.ThumbPicPath);
         }
 
         private void OpenFolderToolStripMenuItem_Click(object sender, EventArgs e)

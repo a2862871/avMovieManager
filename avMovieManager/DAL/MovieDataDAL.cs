@@ -9,22 +9,19 @@ namespace avMovieManager.DAL
 {
     public sealed class MovieDataDAL
     {
-        private static readonly Lazy<MovieDataDAL> lazy =
-        new Lazy<MovieDataDAL>(() => new MovieDataDAL());
-        public static MovieDataDAL Instance { get { return lazy.Value; } }
-
 
         private List<ActorInfo> actorInfos;
         private List<MovieInfo> movieInfos;
         private Dictionary<string, List<int>> movieTagHasMap;
         private Dictionary<string, int> actorHasMap;
-
+        private Dictionary<int, MovieInfo> movieIDHasMap;
         private Dictionary<string, List<string>> actorNameInitia;//演员名称按照字母排序
 
-        private MovieDataDAL() 
+        public MovieDataDAL() 
         {
             actorInfos = new List<ActorInfo>();
             movieInfos = new List<MovieInfo>();
+            movieIDHasMap = new Dictionary<int, MovieInfo>();
             movieTagHasMap = new Dictionary<string, List<int>>();
             actorNameInitia = new Dictionary<string, List<string>>();
             actorHasMap = new Dictionary<string, int>();
@@ -70,6 +67,7 @@ namespace avMovieManager.DAL
                     m.AddRelatedActorId(actorHasMap[name]);
             }
             movieInfos.Add(m);
+            movieIDHasMap.Add(m.Id, m);
             AddMovieTag(tags, m.Id);
         }
 
@@ -89,7 +87,7 @@ namespace avMovieManager.DAL
                 }
             }
         }
-        public List<MovieInfo> GetActorNameToMoviesAllPath(string name) 
+        public List<MovieInfo> FindActorNameToMovies(string name) 
         {
             if (!actorHasMap.ContainsKey(name)) 
             {
@@ -106,6 +104,32 @@ namespace avMovieManager.DAL
             }
             return lm;
         }
+
+        public List<MovieInfo> FindTagsToMovies(List<string> tags) 
+        {
+            List<MovieInfo> lm = new List<MovieInfo>();
+            if (tags.Count == 0) 
+            {
+                return lm;
+            }
+            List<int> vs = movieTagHasMap[tags[0]];
+            for (int i = 1; i < tags.Count; i++) 
+            {
+                vs = vs.Intersect(movieTagHasMap[tags[i]]).ToList();
+            }
+            foreach (int mid in vs)
+            {
+                if (movieIDHasMap.ContainsKey(mid))
+                {
+                    lm.Add(movieIDHasMap[mid]);
+                }
+            }
+            return lm;
+        }
+        public List<string> GetAllTags() 
+        {
+            return movieTagHasMap.Keys.ToList<string>();
+        }
         public Dictionary<string, List<string>> GetActorAllNameToInitial() 
         {
             return actorNameInitia;        
@@ -114,6 +138,5 @@ namespace avMovieManager.DAL
         {
             return actorInfos;
         }
-
     }
 }

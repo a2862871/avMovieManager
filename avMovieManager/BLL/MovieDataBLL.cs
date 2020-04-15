@@ -20,7 +20,7 @@ namespace avMovieManager.BLL
         public static event RateOfProgress Progress;
         private MovieDataBLL() 
         {
-            mdates = MovieDataDAL.Instance;
+            mdates = new MovieDataDAL();
             Task<int> t = InitMovieDataAsync();
             //InitMovieData();
         }
@@ -51,7 +51,7 @@ namespace avMovieManager.BLL
                 mdates.AddActorInfo(actorNames);
                 mdates.AddMovieInfo(moviesn, actorNames, info.DirectoryName, thumbPicPath, posterPicPath, movieTags);
                 Progress?.Invoke(i, fileInfos.Count, moviesn);
-                Thread.Sleep(1000);
+                Thread.Sleep(100);
                 i++;
             }
             return 0;
@@ -82,9 +82,19 @@ namespace avMovieManager.BLL
             return mdates.GetActorAllNameToInitial();
         }
 
-        public List<MovieInfo> GetActorNameToMoviesAllPath(string name) 
+        public List<string> GetMovieAllTags() 
         {
-            return mdates.GetActorNameToMoviesAllPath(name);
+            return mdates.GetAllTags();
+        }
+
+        public List<MovieInfo> FindActorNameToMovies(string name)
+        {
+            return mdates.FindActorNameToMovies(name);
+        }
+
+        public List<MovieInfo> FindTagsToMovies(List<string> tags) 
+        {
+            return mdates.FindTagsToMovies(tags);
         }
     }
 }

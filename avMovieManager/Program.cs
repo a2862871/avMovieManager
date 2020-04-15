@@ -25,7 +25,7 @@ namespace avMovieManager
             LocalPathParam.VideoPreviewPath = @"E:\movie\整理内容";
             LocalPathParam.VideoPlayerPath = @"C:\Program Files\DAUM\PotPlayer\PotPlayerMini64.exe";
             var result = Task.Run(() => InitDB());
-            if ("1".Equals(LocalPathParam.PicIsLoadALL)) 
+            if ("0".Equals(LocalPathParam.PicIsLoadALL)) 
             { 
                 UI.Form_SplashScreen fsc = new UI.Form_SplashScreen();
                 fsc.ShowDialog();

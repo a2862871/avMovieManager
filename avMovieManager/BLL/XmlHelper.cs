@@ -22,6 +22,11 @@ namespace avMovieManager.BLL
             XmlNodeList nodelist = xml.SelectNodes(nodeinfo);
             for(int i = 0; i < nodelist.Count; i++) 
             {
+                if (nodelist[i].InnerText.IndexOf("系列:") >=0|| nodelist[i].InnerText.IndexOf("製作:") >= 0 
+                    || nodelist[i].InnerText.IndexOf("發行:") >= 0) 
+                {
+                    continue;
+                }
                 nodeinfos.Add(nodelist[i].InnerText);
             }
             return nodeinfos;
@@ -29,7 +34,11 @@ namespace avMovieManager.BLL
         public static string GetXmlNodeInfo(string nodeinfo) 
         {
             XmlNodeList nodelist = xml.SelectNodes(nodeinfo);
-            return nodelist[0].InnerText;
+            if (nodelist.Count > 0) 
+            { 
+                return nodelist[0].InnerText; 
+            }
+            return null;
         }
     }
 }

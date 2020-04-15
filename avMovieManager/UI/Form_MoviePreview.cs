@@ -43,18 +43,30 @@ namespace avMovieManager.UI
             GC.Collect();
             System.Diagnostics.Debug.WriteLine(DateTime.Now.ToString() + "  Millisecond:" + DateTime.Now.Millisecond.ToString());
             //List<MovieData> movieDatas = MongoHelper.SelectTableData<MovieData>("name", name);
-            List<MovieInfo> movieDatas = dAL.GetActorNameToMoviesAllPath(name);
+            List<MovieInfo> movieDatas = dAL.FindActorNameToMovies(name);
             System.Diagnostics.Debug.WriteLine(DateTime.Now.ToString() + "  Millisecond:" + DateTime.Now.Millisecond.ToString());
             for (int i = 0; i < movieDatas.Count; i++)
             {
                 ShowPreviewPic(movieDatas[i], i);
             }
             System.Diagnostics.Debug.WriteLine(DateTime.Now.ToString() + "  Millisecond:" + DateTime.Now.Millisecond.ToString());
-            var result = Task.Run(() => LoadPicImage());
+            if (listPicBox.Count < 4) 
+            {
+                LoadPicImage(0);
+            }
+            else 
+            {
+                for (int i= 0; i < 4; i++)
+                {
+                    listPicBox[i].ShowImage();
+                }
+                var result = Task.Run(() => LoadPicImage(4));
+            }
+            
         }
-        private void LoadPicImage()
+        private void LoadPicImage(int i)
         {
-            for (int i = 0; i < listPicBox.Count; i++)
+            for (; i < listPicBox.Count; i++)
             {
                 listPicBox[i].ShowImage();
             }
