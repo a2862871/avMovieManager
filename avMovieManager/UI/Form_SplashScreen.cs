@@ -17,25 +17,22 @@ namespace avMovieManager.UI
         public Form_SplashScreen()
         {
             InitializeComponent();
-            MovieDataBLL.Progress += MovieData_Progress;
+            MovieDataBLL.progressEventHandler += MovieDataBLL_progressEventHandler;
             MovieDataBLL movieData = MovieDataBLL.Instance;
         }
 
-        private void MovieData_Progress(int index, int count, string name)
+        private void MovieDataBLL_progressEventHandler(int index, int count, string name)
         {
-            if (currindex == index)
-                return;
             currindex = index;
             labelProgress.BeginInvoke(new Action(() =>
             {
                 labelProgress.Text = string.Format("加载ing,当前进度{0}/{1},正在加载" + name + "的图片", index, count);
-                panelProgressbar.Width += (700 / count)+1;
+                panelProgressbar.Width += (700 / count) + 1;
                 if (index == count)
                 {
                     this.DialogResult = DialogResult.OK;
                 }
             }));
-
         }
     }
 }

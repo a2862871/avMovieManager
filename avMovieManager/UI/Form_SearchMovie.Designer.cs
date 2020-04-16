@@ -41,7 +41,7 @@
             this.panel1.Controls.Add(this.buttonSearchTags);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(150, 682);
             this.panel1.TabIndex = 0;
@@ -55,18 +55,18 @@
             this.buttonSearchTags.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
             this.buttonSearchTags.Font = new System.Drawing.Font("微软雅黑", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.buttonSearchTags.ForeColor = System.Drawing.Color.Gainsboro;
-            this.buttonSearchTags.IconChar = FontAwesome.Sharp.IconChar.GlassMartini;
+            this.buttonSearchTags.IconChar = FontAwesome.Sharp.IconChar.Search;
             this.buttonSearchTags.IconColor = System.Drawing.Color.Gainsboro;
             this.buttonSearchTags.IconSize = 30;
             this.buttonSearchTags.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonSearchTags.Location = new System.Drawing.Point(0, 0);
-            this.buttonSearchTags.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonSearchTags.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSearchTags.Name = "buttonSearchTags";
             this.buttonSearchTags.Padding = new System.Windows.Forms.Padding(22, 0, 0, 0);
             this.buttonSearchTags.Rotation = 0D;
             this.buttonSearchTags.Size = new System.Drawing.Size(150, 47);
             this.buttonSearchTags.TabIndex = 1;
-            this.buttonSearchTags.Text = "Tag浏览";
+            this.buttonSearchTags.Text = "标签搜索";
             this.buttonSearchTags.UseVisualStyleBackColor = false;
             this.buttonSearchTags.Click += new System.EventHandler(this.buttonSearchTags_Click);
             // 
@@ -74,18 +74,18 @@
             // 
             this.panelShowTag.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelShowTag.Location = new System.Drawing.Point(150, 0);
-            this.panelShowTag.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelShowTag.Margin = new System.Windows.Forms.Padding(2);
             this.panelShowTag.Name = "panelShowTag";
-            this.panelShowTag.Size = new System.Drawing.Size(1036, 280);
+            this.panelShowTag.Size = new System.Drawing.Size(1036, 200);
             this.panelShowTag.TabIndex = 1;
             // 
             // panelPicSubMenu
             // 
             this.panelPicSubMenu.AutoScroll = true;
             this.panelPicSubMenu.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelPicSubMenu.Location = new System.Drawing.Point(150, 280);
+            this.panelPicSubMenu.Location = new System.Drawing.Point(150, 200);
             this.panelPicSubMenu.Name = "panelPicSubMenu";
-            this.panelPicSubMenu.Size = new System.Drawing.Size(1036, 402);
+            this.panelPicSubMenu.Size = new System.Drawing.Size(1036, 482);
             this.panelPicSubMenu.TabIndex = 2;
             // 
             // Form_SearchMovie
@@ -97,7 +97,7 @@
             this.Controls.Add(this.panelPicSubMenu);
             this.Controls.Add(this.panelShowTag);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form_SearchMovie";
             this.Text = "Form_SearchMovie";
             this.panel1.ResumeLayout(false);

@@ -44,13 +44,13 @@ namespace AVDataCapture.DAL
         {
             return "";
         }
-        public string GetTag() // 获取标签
+        public List<string> GetTag() // 获取标签
         {
-            return "";
+            return null;
         }
-        public string GetActor()//获取演员
+        public List<string> GetActor()//获取演员
         {
-            return "";
+            return null;
         }
         public string GetNumber()//获取番号
         {

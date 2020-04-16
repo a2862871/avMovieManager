@@ -22,8 +22,8 @@ namespace avMovieManager
             SearchUrlLink.AvMooUrl = IniHelper.Read("URL", "avmoo", "https://avmask.com/cn/");
             SearchUrlLink.AvSoxUrl = IniHelper.Read("URL", "avsox", "https://avsox.host/cn/");
             LocalPathParam.PicIsLoadALL = "0";
-            LocalPathParam.VideoPreviewPath = @"E:\movie\整理内容";
-            LocalPathParam.VideoPlayerPath = @"C:\Program Files\DAUM\PotPlayer\PotPlayerMini64.exe";
+            LocalPathParam.VideoPreviewPath = IniHelper.Read("MoviePath", "Path", @"I:\私人空间"); ;
+            LocalPathParam.VideoPlayerPath = IniHelper.Read("PlayerPath", "Path", @"E:\Program Files\DAUM\PotPlayer\PotPlayerMini64.exe"); 
             var result = Task.Run(() => InitDB());
             if ("0".Equals(LocalPathParam.PicIsLoadALL)) 
             { 

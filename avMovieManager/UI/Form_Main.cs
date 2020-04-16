@@ -35,9 +35,10 @@ namespace avMovieManager.UI
         }
         private void OpenChildFrom(Form childFrom) 
         {
-            if (currentChildForm != null) 
+            if (currentChildForm != null)
             {
                 currentChildForm.Close();
+                panelDesktop.Controls.Clear();
             }
             currentChildForm = childFrom;
             childFrom.TopLevel = false;

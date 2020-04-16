@@ -10,7 +10,7 @@ namespace TestDemo
         static void Main(string[] args)
         {
             DataCapture dt = new DataCapture();
-            dt.SearchSn("PPPD702");
+            dt.SearchSn("PPPD741");
         }
     }
 }

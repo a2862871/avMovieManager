@@ -20,7 +20,7 @@ namespace avMovieManager.UI
         private PreviewControl previewControl = new PreviewControl();
         public Form_SearchMovie()
         {
-            InitializeComponent();
+            InitializeComponent();            
             TagPanel.Dock = DockStyle.Top;
             TagPanel.Button_SearchTagsEvent += TagPanel_Button_SearchTagsEvent;
             panelShowTag.Controls.Add(TagPanel);
@@ -38,6 +38,12 @@ namespace avMovieManager.UI
 
         private void buttonSearchTags_Click(object sender, EventArgs e)
         {
+
+            if (!TagPanel.IsLoadComplate()) 
+            {
+                MessageBox.Show("标签加载中,请稍后");
+                return;
+            }
             panelShowTag.Visible = true;
             //TagPanel.LoadTags();
         }

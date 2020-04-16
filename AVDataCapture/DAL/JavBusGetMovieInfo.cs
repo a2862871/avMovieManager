@@ -36,7 +36,7 @@ namespace AVDataCapture.DAL
                 }
                 return 0;
             } 
-            catch (Exception ex) 
+            catch
             {
                 return -1;
             }  
@@ -45,7 +45,7 @@ namespace AVDataCapture.DAL
         {
             try 
             {
-                var result = htmlNode.SelectNodes("//html/body/div[@class=\"container\"]/h3/text()")[0].InnerText;
+                var result = htmlNode.SelectNodes("//html/body/div[@class=\"container\"]/h3/text()")[0].InnerText.Trim();
                 return result;
             } 
             catch
@@ -57,7 +57,7 @@ namespace AVDataCapture.DAL
         {
             try
             {
-                var result = htmlNode.SelectNodes("//span[contains(text(),\"製作商\")]/following-sibling::a/text()")[0].InnerText;
+                var result = htmlNode.SelectNodes("//span[contains(text(),\"製作商\")]/following-sibling::a/text()")[0].InnerText.Trim();
                 return result;
             }
             catch
@@ -69,7 +69,7 @@ namespace AVDataCapture.DAL
         {
             try
             {
-                var result = htmlNode.SelectNodes("//span[contains(text(),\"發行商\")]/following-sibling::a/text()")[0].InnerText;
+                var result = htmlNode.SelectNodes("//span[contains(text(),\"發行商\")]/following-sibling::a/text()")[0].InnerText.Trim();
                 return result;
             }
             catch
@@ -77,41 +77,115 @@ namespace AVDataCapture.DAL
                 return "";
             }
         }
-        public string GetYear()// 获取年份
-        {
-            return "";
-        }
         public string GetCover()// 获取封面链接
         {
-            return "";
+            try
+            {
+                var result = htmlNode.SelectNodes("//a[@class=\"bigImage\"]")[0].Attributes["href"].Value;
+                return result;
+            }
+            catch
+            {
+                return "";
+            }
         }
         public string GetRelease()// 获取出版日期
         {
-            return "";
+            try
+            {
+                var result = htmlNode.SelectNodes("//span[contains(text(),\"發行日期\")]/../text()")[0].InnerText.Trim();
+                return result;
+            }
+            catch
+            {
+                return "";
+            }
         }
-        public string GetRuntime()// 获取分钟
+        public string GetRuntime()// 获取分钟 //span[contains(text(),"長度")]/../text()
         {
-            return "";
+            try
+            {
+                var result = htmlNode.SelectNodes("//span[contains(text(),\"長度\")]/../text()")[0].InnerText.Trim();
+                return result;
+            }
+            catch
+            {
+                return "";
+            }
         }
         public string GetDirector()// 获取导演
         {
-            return "";
+            try
+            {
+                var result = htmlNode.SelectNodes("//span[contains(text(),\"導演\")]/following-sibling::a/text()")[0].InnerText.Trim();
+                return result;
+            }
+            catch
+            {
+                return "";
+            }
         }
         public string GetSeries()//获取系列
         {
-            return "";
+            try
+            {
+                var result = htmlNode.SelectNodes("//span[contains(text(),\"系列\")]/following-sibling::a/text()")[0].InnerText.Trim();
+                return result;
+            }
+            catch
+            {
+                return "";
+            }
         }
-        public string GetTag() // 获取标签
+        public List<string> GetTag() // 获取标签
         {
-            return "";
+            List<string> listtags = new List<string>();
+            try
+            {
+                var result = htmlNode.SelectNodes("//span[@class=\"genre\"]");
+                foreach (var item in result)
+                {
+                    if (item.OuterHtml.Contains("onmouseout")) 
+                    {
+                        continue;
+                    }
+                    listtags.Add(item.InnerText.Trim());
+                }
+                return listtags;
+            }
+            catch
+            {
+                return listtags;
+            }
         }
-        public string GetActor()//获取演员
+        public List<string> GetActor()//获取演员
         {
-            return "";
+            List<string> listname = new List<string>();
+            try
+            {
+                var result = htmlNode.SelectNodes("//div[@class=\"star-name\"]/a/text()");
+                foreach(var item in result) 
+                {
+                    listname.Add(item.InnerText.Trim());
+                }
+                return listname;
+            }
+            catch
+            {
+                return listname;
+            }
         }
-        public string GetNumber()//获取番号
+        public string GetNumber()//获取番号  //span[contains(text(),"識別碼")]/following-sibling::span/text()
         {
-            return "";
+            try
+            {
+                var result = htmlNode.SelectNodes("//span[contains(text(),\"識別碼\")]/following-sibling::span/text()")[0].InnerText.Trim();
+                return result;
+            }
+            catch
+            {
+                return "";
+            }
         } 
     }
 }

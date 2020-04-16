@@ -10,8 +10,15 @@ namespace AVDataCapture
         {
             JavBusGetMovieInfo jbu = new JavBusGetMovieInfo();
             jbu.GetMovieInfo(sn);
-            jbu.GetTitle();
-            jbu.GetStudio();
+            //jbu.GetTitle();
+            //jbu.GetStudio();
+            //jbu.GetActor();
+            //jbu.GetTag();
+            //jbu.GetNumber();
+            //jbu.GetRuntime();
+            //jbu.GetCover();
+            //jbu.GetRelease();
+            jbu.GetSeries();
             return 0;
         }
     }

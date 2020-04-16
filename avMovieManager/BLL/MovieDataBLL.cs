@@ -16,8 +16,8 @@ namespace avMovieManager.BLL
 
         private static MovieDataDAL mdates;
 
-        public delegate void RateOfProgress(int index, int count, string name);
-        public static event RateOfProgress Progress;
+        public delegate void ProgressEventHandler(int index, int count, string name);
+        public static event ProgressEventHandler progressEventHandler;
         private MovieDataBLL() 
         {
             mdates = new MovieDataDAL();
@@ -50,8 +50,8 @@ namespace avMovieManager.BLL
                 string posterPicPath = info.DirectoryName + "\\" + XmlHelper.GetXmlNodeInfo("/movie/poster");
                 mdates.AddActorInfo(actorNames);
                 mdates.AddMovieInfo(moviesn, actorNames, info.DirectoryName, thumbPicPath, posterPicPath, movieTags);
-                Progress?.Invoke(i, fileInfos.Count, moviesn);
-                Thread.Sleep(100);
+                progressEventHandler?.Invoke(i, fileInfos.Count, moviesn);
+                //Thread.Sleep(100);
                 i++;
             }
             return 0;
