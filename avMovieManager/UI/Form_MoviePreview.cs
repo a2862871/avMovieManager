@@ -15,21 +15,22 @@ namespace avMovieManager.UI
 {
     public partial class Form_MoviePreview : Form
     {
-        private MovieDataBLL dAL = MovieDataBLL.Instance;
         private List<PreviewPicControl> listPicBox = new List<PreviewPicControl>();
         private ButtonPanelControl buttonPanelControl;
+        private PreviewControl previewControl = new PreviewControl();
         public Form_MoviePreview()
         {
             InitializeComponent();
-            buttonPanelControl= new ButtonPanelControl(dAL.GetActorAllNameToInitial());
+            buttonPanelControl= new ButtonPanelControl(MovieDataBLL.GetActorAllNameToInitial());
             InitButton();
+            previewControl.Dock = DockStyle.Fill;
+            panelPicSubMenu.Controls.Add(previewControl);
         }
         private void InitButton()
         {
             buttonPanelControl.Dock = DockStyle.Left;
             buttonPanelControl.Button_MouseDownEvent += ButtonPanelControl_Button_MouseDownEvent;
             panelChildBtnMenu.Controls.Add(buttonPanelControl);
-            return;
         }
 
         private void ButtonPanelControl_Button_MouseDownEvent(string name)
@@ -38,48 +39,7 @@ namespace avMovieManager.UI
         }
         private void ShowActorCover(string name)
         {
-            panelPicSubMenu.Controls.Clear();
-            listPicBox.Clear();
-            GC.Collect();
-            System.Diagnostics.Debug.WriteLine(DateTime.Now.ToString() + "  Millisecond:" + DateTime.Now.Millisecond.ToString());
-            //List<MovieData> movieDatas = MongoHelper.SelectTableData<MovieData>("name", name);
-            List<MovieInfo> movieDatas = dAL.FindActorNameToMovies(name);
-            System.Diagnostics.Debug.WriteLine(DateTime.Now.ToString() + "  Millisecond:" + DateTime.Now.Millisecond.ToString());
-            for (int i = 0; i < movieDatas.Count; i++)
-            {
-                ShowPreviewPic(movieDatas[i], i);
-            }
-            System.Diagnostics.Debug.WriteLine(DateTime.Now.ToString() + "  Millisecond:" + DateTime.Now.Millisecond.ToString());
-            if (listPicBox.Count < 4) 
-            {
-                LoadPicImage(0);
-            }
-            else 
-            {
-                for (int i= 0; i < 4; i++)
-                {
-                    listPicBox[i].ShowImage();
-                }
-                var result = Task.Run(() => LoadPicImage(4));
-            }
-            
-        }
-        private void LoadPicImage(int i)
-        {
-            for (; i < listPicBox.Count; i++)
-            {
-                listPicBox[i].ShowImage();
-            }
-        }
-        private void ShowPreviewPic(MovieInfo md, int i)
-        {
-            PreviewPicControl p = new PreviewPicControl(md);
-            int x = 50 + i % 2 * 40 + (((i + 2) % 2) * 600);
-            int y = i / 2 * (100 + 404);
-            p.Tag = i;
-            p.Location = new Point(x, y);
-            listPicBox.Add(p);
-            panelPicSubMenu.Controls.Add(p);
+            previewControl.Show(MovieDataBLL.FindActorNameToMovies(name));
         }
     }
 }

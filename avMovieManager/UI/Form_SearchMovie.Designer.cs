@@ -31,6 +31,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.buttonSearchTags = new FontAwesome.Sharp.IconButton();
             this.panelShowTag = new System.Windows.Forms.Panel();
+            this.panelPicSubMenu = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -40,8 +41,9 @@
             this.panel1.Controls.Add(this.buttonSearchTags);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 853);
+            this.panel1.Size = new System.Drawing.Size(150, 682);
             this.panel1.TabIndex = 0;
             // 
             // buttonSearchTags
@@ -58,10 +60,11 @@
             this.buttonSearchTags.IconSize = 30;
             this.buttonSearchTags.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonSearchTags.Location = new System.Drawing.Point(0, 0);
+            this.buttonSearchTags.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonSearchTags.Name = "buttonSearchTags";
-            this.buttonSearchTags.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
+            this.buttonSearchTags.Padding = new System.Windows.Forms.Padding(22, 0, 0, 0);
             this.buttonSearchTags.Rotation = 0D;
-            this.buttonSearchTags.Size = new System.Drawing.Size(200, 59);
+            this.buttonSearchTags.Size = new System.Drawing.Size(150, 47);
             this.buttonSearchTags.TabIndex = 1;
             this.buttonSearchTags.Text = "Tag浏览";
             this.buttonSearchTags.UseVisualStyleBackColor = false;
@@ -69,21 +72,32 @@
             // 
             // panelShowTag
             // 
-            this.panelShowTag.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelShowTag.Location = new System.Drawing.Point(200, 0);
+            this.panelShowTag.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelShowTag.Location = new System.Drawing.Point(150, 0);
+            this.panelShowTag.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelShowTag.Name = "panelShowTag";
-            this.panelShowTag.Size = new System.Drawing.Size(1382, 350);
+            this.panelShowTag.Size = new System.Drawing.Size(1036, 280);
             this.panelShowTag.TabIndex = 1;
+            // 
+            // panelPicSubMenu
+            // 
+            this.panelPicSubMenu.AutoScroll = true;
+            this.panelPicSubMenu.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelPicSubMenu.Location = new System.Drawing.Point(150, 280);
+            this.panelPicSubMenu.Name = "panelPicSubMenu";
+            this.panelPicSubMenu.Size = new System.Drawing.Size(1036, 402);
+            this.panelPicSubMenu.TabIndex = 2;
             // 
             // Form_SearchMovie
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(41)))), ((int)(((byte)(82)))));
-            this.ClientSize = new System.Drawing.Size(1582, 853);
+            this.ClientSize = new System.Drawing.Size(1186, 682);
+            this.Controls.Add(this.panelPicSubMenu);
             this.Controls.Add(this.panelShowTag);
             this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Form_SearchMovie";
             this.Text = "Form_SearchMovie";
             this.panel1.ResumeLayout(false);
@@ -96,5 +110,6 @@
         private System.Windows.Forms.Panel panel1;
         private FontAwesome.Sharp.IconButton buttonSearchTags;
         private System.Windows.Forms.Panel panelShowTag;
+        private System.Windows.Forms.Panel panelPicSubMenu;
     }
 }

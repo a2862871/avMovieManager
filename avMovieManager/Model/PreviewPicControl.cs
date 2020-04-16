@@ -18,8 +18,8 @@ namespace avMovieManager.Model
         public PreviewPicControl(MovieInfo md)
         {
             InitializeComponent();
-            SetStyle(ControlStyles.AllPaintingInWmPaint, true); // 禁止擦除背景.
-            SetStyle(ControlStyles.DoubleBuffer, true); // 双缓冲
+            //SetStyle(ControlStyles.AllPaintingInWmPaint, true); // 禁止擦除背景.
+            //SetStyle(ControlStyles.DoubleBuffer, true); // 双缓冲
             this.movieDate = md;
             this.ContextMenuStrip = contextMenuStrip1;
             buttonPlayer.MouseClick += ButtonPlayer_MouseClick;

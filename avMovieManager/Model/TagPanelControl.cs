@@ -15,20 +15,29 @@ namespace avMovieManager.Model
     {
         private int labelPointX = 40;
         private int labelPointY = 30;
+        private bool isLoadTags = false;
         private List<string> optTags = new List<string>();
+        public delegate void ButtonMouseDown(List<string> tags);
+        public event ButtonMouseDown Button_SearchTagsEvent;
         public TagPanelControl()
         {
             InitializeComponent();
+            //var result = Task.Run(() => LoadTags());
             //LoadTags();
+        }
+        public void LoadTagsSync() 
+        {
+            var result = Task.Run(() => LoadTags());
         }
         public void LoadTags() 
         {
-            MovieDataBLL mda = MovieDataBLL.Instance;
-            List<string> listTags = mda.GetMovieAllTags();
+            if (isLoadTags) return;
+            List<string> listTags = MovieDataBLL.GetMovieAllTags();
+            System.Diagnostics.Debug.WriteLine(DateTime.Now.ToString() + "  Millisecond:" + DateTime.Now.Millisecond.ToString());
             int i = 0;
-            foreach(string tag in listTags) 
+            foreach (string tag in listTags) 
             {
-                if (labelPointX + 100 > this.Width) 
+                if (labelPointX + 70 > this.Width) 
                 {
                     labelPointX = 40;
                     labelPointY += 40;
@@ -38,6 +47,7 @@ namespace avMovieManager.Model
                 labelTag.BackColor = System.Drawing.Color.Transparent;
                 //labelTag.BackColor = System.Drawing.Color.FromArgb(40, 41, 82);
                 labelTag.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+                labelTag.ForeColor = System.Drawing.Color.Gainsboro;
                 labelTag.Location = new System.Drawing.Point(labelPointX, labelPointY);
                 labelTag.Name = "labelTag";
                 //labelTag.Size = new System.Drawing.Size(102, 27);
@@ -50,6 +60,8 @@ namespace avMovieManager.Model
                 panelTag.Controls.Add(labelTag);
                 labelPointX = labelPointX + 20 + labelTag.Width;
             }
+            isLoadTags = true;
+            System.Diagnostics.Debug.WriteLine(DateTime.Now.ToString() + "  Millisecond:" + DateTime.Now.Millisecond.ToString());
         }
 
         private void labelTag_Click(object sender, EventArgs e)
@@ -57,14 +69,29 @@ namespace avMovieManager.Model
             Label tempLabel = (Label)sender;
             if ((int)tempLabel.Tag == 0) 
             {
+                if (optTags.Count > 7)
+                {
+                    MessageBox.Show("Tag选择数量超过上限，最高8个");
+                    return;
+                }
+                else
+                {
+                    optTags.Add(tempLabel.Text);
+                }
                 tempLabel.Tag = 1;
                 tempLabel.BackColor = System.Drawing.Color.FromArgb(50, 152, 220);
             }
             else 
             {
                 tempLabel.Tag = 0;
-                tempLabel.BackColor = System.Drawing.Color.FromArgb(40, 41, 82);
+                tempLabel.BackColor = System.Drawing.Color.Transparent;
+                optTags.Remove(tempLabel.Text);
             }
+        }
+
+        private void buttonSearchTags_Click(object sender, EventArgs e)
+        {
+            Button_SearchTagsEvent(optTags);
         }
     }
 }

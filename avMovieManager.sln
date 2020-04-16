@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29905.134
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "avMovieManager", "avMovieManager\avMovieManager.csproj", "{DDE105EB-1044-4343-9F55-606B932609D0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AVMovieManager", "avMovieManager\AVMovieManager.csproj", "{DDE105EB-1044-4343-9F55-606B932609D0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mongDbDemo", "mongDbDemo\mongDbDemo.csproj", "{4E59800D-8EAD-42B1-92E0-7C99BBC72E26}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestDemo", "mongDbDemo\TestDemo.csproj", "{4E59800D-8EAD-42B1-92E0-7C99BBC72E26}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AVDataCapture", "AVDataCapture\AVDataCapture.csproj", "{9DD6D1C5-619E-4C92-BD48-11A8CE6ABF69}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +33,14 @@ Global
 		{4E59800D-8EAD-42B1-92E0-7C99BBC72E26}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4E59800D-8EAD-42B1-92E0-7C99BBC72E26}.Release|x64.ActiveCfg = Release|Any CPU
 		{4E59800D-8EAD-42B1-92E0-7C99BBC72E26}.Release|x64.Build.0 = Release|Any CPU
+		{9DD6D1C5-619E-4C92-BD48-11A8CE6ABF69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DD6D1C5-619E-4C92-BD48-11A8CE6ABF69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DD6D1C5-619E-4C92-BD48-11A8CE6ABF69}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{9DD6D1C5-619E-4C92-BD48-11A8CE6ABF69}.Debug|x64.Build.0 = Debug|Any CPU
+		{9DD6D1C5-619E-4C92-BD48-11A8CE6ABF69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DD6D1C5-619E-4C92-BD48-11A8CE6ABF69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DD6D1C5-619E-4C92-BD48-11A8CE6ABF69}.Release|x64.ActiveCfg = Release|Any CPU
+		{9DD6D1C5-619E-4C92-BD48-11A8CE6ABF69}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

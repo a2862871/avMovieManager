@@ -84,7 +84,7 @@ namespace avMovieManager.BLL
             Dictionary<string, string> hashMap = new Dictionary<string, string>();
             List<string> listsn = new List<string>();
             List<string> listurl = new List<string>();
-            string html = doc.DocumentNode.SelectSingleNode("//div[@class='videos video-container']").OuterHtml;
+            string html = doc.DocumentNode.SelectSingleNode("//*[@id=\"videos\"]/div/div/a/@href").OuterHtml;
             HtmlNode row = HtmlNode.CreateNode(html);
             HtmlNodeCollection titleNodes = row.SelectNodes("//div[@class='uid']");
             if (titleNodes != null)
@@ -176,34 +176,34 @@ namespace avMovieManager.BLL
                 name = name.Substring(0, name.IndexOf('('));
             }
             OutLogEvent?.Invoke("获取影片信息成功");
-            ActorMovieData movieData = new ActorMovieData();
-            movieData.actorName = ActorNameHashForm.getActorName(name.Split(',')[0]);
-            movieData.snFolderName = sn;
-            movieData.sn = sn.Replace("-", string.Empty);
-            movieData.jpgPath = sn + ".jpg";
-            movieData.isChinese = isCH;
-            if (System.IO.Directory.Exists(movieData.path) == false)
-            {
-                //创建pic文件夹
-                System.IO.Directory.CreateDirectory(movieData.path);
-                OutLogEvent?.Invoke("未找到文件夹，创建文件夹：" + movieData.path);
-            }
-            if(Downloadimg(jpgurl, movieData.jpgPath) < 0) 
-            {
-                return -1;
-            }
-            web = null;
-            if(MoveMovieFile(moviePath, movieData.path + "\\" + movieData.snFolderName + "." + eext) == 0) 
-            {
-                //FullMovieDatas fmd = FullMovieDatas.Instance;
-                //fmd.AddActorMovieData(movieData);
-                //if (movieData.isChinese) 
-                //{
-                //    string file = movieData.path + "\\" + "ch.uid";
-                //    File.Create(file);
-                //}
-                return 0;
-            }
+            //ActorMovieData movieData = new ActorMovieData();
+            //movieData.actorName = ActorNameHashForm.getActorName(name.Split(',')[0]);
+            //movieData.snFolderName = sn;
+            //movieData.sn = sn.Replace("-", string.Empty);
+            //movieData.jpgPath = sn + ".jpg";
+            //movieData.isChinese = isCH;
+            //if (System.IO.Directory.Exists(movieData.path) == false)
+            //{
+            //    //创建pic文件夹
+            //    System.IO.Directory.CreateDirectory(movieData.path);
+            //    OutLogEvent?.Invoke("未找到文件夹，创建文件夹：" + movieData.path);
+            //}
+            //if(Downloadimg(jpgurl, movieData.jpgPath) < 0) 
+            //{
+            //    return -1;
+            //}
+            //web = null;
+            //if(MoveMovieFile(moviePath, movieData.path + "\\" + movieData.snFolderName + "." + eext) == 0) 
+            //{
+            //    //FullMovieDatas fmd = FullMovieDatas.Instance;
+            //    //fmd.AddActorMovieData(movieData);
+            //    //if (movieData.isChinese) 
+            //    //{
+            //    //    string file = movieData.path + "\\" + "ch.uid";
+            //    //    File.Create(file);
+            //    //}
+            //    return 0;
+            //}
             return -1;
         }
         private int MoveMovieFile(string sourceFileName, string destFileName) 

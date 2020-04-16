@@ -14,7 +14,7 @@ namespace avMovieManager.BLL
         new Lazy<MovieDataBLL>(() => new MovieDataBLL());
         public static MovieDataBLL Instance { get { return lazy.Value; } }
 
-        MovieDataDAL mdates;
+        private static MovieDataDAL mdates;
 
         public delegate void RateOfProgress(int index, int count, string name);
         public static event RateOfProgress Progress;
@@ -57,7 +57,7 @@ namespace avMovieManager.BLL
             return 0;
         }
 
-        private static List<FileInfo> GetAll(DirectoryInfo dir, List<FileInfo> FileList)//搜索文件夹中的文件 
+        private List<FileInfo> GetAll(DirectoryInfo dir, List<FileInfo> FileList)//搜索文件夹中的文件 
         {
             FileInfo[] allFile = dir.GetFiles("*.nfo");
             foreach (FileInfo fi in allFile)
@@ -72,27 +72,27 @@ namespace avMovieManager.BLL
             return FileList;
         }
 
-        public List<ActorInfo> GetActorInfos() 
+        public static List<ActorInfo> GetActorInfos() 
         {
             return mdates.GetActorInfos();
         }
 
-        public Dictionary<string, List<string>> GetActorAllNameToInitial()
+        public static Dictionary<string, List<string>> GetActorAllNameToInitial()
         {
             return mdates.GetActorAllNameToInitial();
         }
 
-        public List<string> GetMovieAllTags() 
+        public static List<string> GetMovieAllTags() 
         {
             return mdates.GetAllTags();
         }
 
-        public List<MovieInfo> FindActorNameToMovies(string name)
+        public static List<MovieInfo> FindActorNameToMovies(string name)
         {
             return mdates.FindActorNameToMovies(name);
         }
 
-        public List<MovieInfo> FindTagsToMovies(List<string> tags) 
+        public static List<MovieInfo> FindTagsToMovies(List<string> tags) 
         {
             return mdates.FindTagsToMovies(tags);
         }
