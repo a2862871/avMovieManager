@@ -51,7 +51,11 @@ namespace avMovieManager.BLL
                 mdates.AddActorInfo(actorNames);
                 mdates.AddMovieInfo(moviesn, actorNames, info.DirectoryName, thumbPicPath, posterPicPath, movieTags);
                 progressEventHandler?.Invoke(i, fileInfos.Count, moviesn);
-                //Thread.Sleep(100);
+                if (fileInfos.Count < 50) 
+                {
+                    Thread.Sleep(100);
+                }
+                //
                 i++;
             }
             return 0;

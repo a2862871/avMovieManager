@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using HtmlAgilityPack;
 namespace AVDataCapture.DAL
 {
-    class JavDbGetMovieInfo:GetHtmlInterface
+    class JavDbGetMovieDAL:GetHtmlInterface
     {
         public string GetTitle()
         {

@@ -42,17 +42,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\GetMovieInfo.cs" />
     <Compile Include="DAL\GetHtmlInterface.cs" />
-    <Compile Include="DAL\JavBusGetMovieInfo.cs" />
-    <Compile Include="DAL\JavDbGetMovieInfo.cs" />
+    <Compile Include="DAL\JavBusGetMovieDAL.cs" />
+    <Compile Include="DAL\JavDbGetMovieDAL.cs" />
     <Compile Include="DataCapture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="BLL\" />
+    <ProjectReference Include="..\avMovieManager\AVMovieManager.csproj">
+      <Project>{dde105eb-1044-4343-9f55-606b932609d0}</Project>
+      <Name>AVMovieManager</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

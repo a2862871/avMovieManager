@@ -99,7 +99,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AVDBDAL\GetHtmlInterface.cs" />
+    <Compile Include="AVDBDAL\JavBusGetMovieDAL.cs" />
+    <Compile Include="AVDBDAL\JavDbGetMovieDAL.cs" />
     <Compile Include="BLL\HttpSearhMovieInfo.cs" />
+    <Compile Include="BLL\ImageHelper.cs" />
     <Compile Include="BLL\IniHelper.cs" />
     <Compile Include="BLL\MovieDataBLL.cs" />
     <Compile Include="BLL\PinyinHelper.cs" />

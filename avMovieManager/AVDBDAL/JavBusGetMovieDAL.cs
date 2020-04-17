@@ -4,15 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HtmlAgilityPack;
-namespace AVDataCapture.DAL
+namespace avMovieManager.AVDBDAL
 {
-    class JavBusGetMovieInfo:GetHtmlInterface
+    class JavBusGetMovieDAL:GetHtmlInterface
     {
         private string javBusUrl = "https://www.buscdn.cloud/";
         private HtmlWeb web = new HtmlWeb();
         private HtmlNode htmlNode;
         private string url;
-        public JavBusGetMovieInfo() 
+        private string website;
+        public JavBusGetMovieDAL() 
         {
 
         }
@@ -31,6 +32,7 @@ namespace AVDataCapture.DAL
                     {
                         url = htmlNode.SelectNodes("//div[@id='waterfall']/div[@id='waterfall']/div[" + i.ToString() + "]/a[@class='movie-box']/@href")[0].Attributes["href"].Value;
                         htmlNode = HtmlNode.CreateNode(web.Load(url).Text);
+                        website = url;
                         return 0;
                     }
                 }
@@ -40,6 +42,10 @@ namespace AVDataCapture.DAL
             {
                 return -1;
             }  
+        }
+        public string Getwebsite() 
+        {
+            return website;
         }
         public string GetTitle() 
         {
