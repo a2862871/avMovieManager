@@ -73,7 +73,7 @@ namespace AVDataCapture.BLL
         public string series;  //获取系列
         public List<string> tag;  // 获取标签
         public List<string> actor; //获取演员
-        public Dictionary<string, string> actorPic; //获取演员
+        public Dictionary<string, string> actorPic; //获取演员照片
         public string number; //获取番号
         public string website; //获取番号
 

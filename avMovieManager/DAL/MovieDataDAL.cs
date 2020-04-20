@@ -126,6 +126,8 @@ namespace avMovieManager.DAL
             }
             return lm;
         }
+
+
         public List<string> GetAllTags() 
         {
             return movieTagHasMap.Keys.ToList<string>();

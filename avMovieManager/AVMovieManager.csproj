@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DDE105EB-1044-4343-9F55-606B932609D0}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>avMovieManager</RootNamespace>
+    <AssemblyName>avMovieManager</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Crc32C.NET, Version=1.0.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Crc32C.NET.1.0.5.0\lib\net20\Crc32C.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="DnsClient, Version=1.2.0.0, Culture=neutral, PublicKeyToken=4574bb5573c51424, processorArchitecture=MSIL">
+      <HintPath>..\packages\DnsClient.1.2.0\lib\net471\DnsClient.dll</HintPath>
+    </Reference>
+    <Reference Include="FontAwesome.Sharp, Version=5.12.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FontAwesome.Sharp.5.12.1\lib\net472\FontAwesome.Sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.11.23.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.11.23\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="NPinyin.Core, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPinyin.Core.3.0.0\lib\net45\NPinyin.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpCompress, Version=0.23.0.0, Culture=neutral, PublicKeyToken=afb0a02973931d96, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpCompress.0.23.0\lib\net45\SharpCompress.dll</HintPath>
+    </Reference>
+    <Reference Include="Snappy.NET, Version=1.1.1.8, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Snappy.NET.1.1.1.8\lib\net45\Snappy.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.4.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BLL\ImageHelper.cs" />
+    <Compile Include="BLL\IniHelper.cs" />
+    <Compile Include="BLL\MovieDataBLL.cs" />
+    <Compile Include="BLL\PinyinHelper.cs" />
+    <Compile Include="BLL\XmlHelper.cs" />
+    <Compile Include="DAL\AboutMovieDate.cs" />
+    <Compile Include="DAL\MovieDataDAL.cs" />
+    <Compile Include="Model\ActorInfo.cs" />
+    <Compile Include="DAL\ActorNameHashForm.cs" />
+    <Compile Include="DAL\LocalPathParam.cs" />
+    <Compile Include="Model\MovieInfo.cs" />
+    <Compile Include="Model\MovieTagInfo.cs" />
+    <Compile Include="DAL\SearchUrlLink.cs" />
+    <Compile Include="Model\ButtonPanelControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Model\ButtonPanelControl.Designer.cs">
+      <DependentUpon>ButtonPanelControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PreviewControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Model\PreviewPicControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Model\PreviewPicControl.Designer.cs">
+      <DependentUpon>PreviewPicControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TagPanelControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Model\TagPanelControl.Designer.cs">
+      <DependentUpon>TagPanelControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Form_CollatingSort.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Form_CollatingSort.Designer.cs">
+      <DependentUpon>Form_CollatingSort.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Form_MoviePreview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Form_MoviePreview.Designer.cs">
+      <DependentUpon>Form_MoviePreview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Form_Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Form_Main.Designer.cs">
+      <DependentUpon>Form_Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\Form_SearchMovie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Form_SearchMovie.Designer.cs">
+      <DependentUpon>Form_SearchMovie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Form_SplashScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Form_SplashScreen.Designer.cs">
+      <DependentUpon>Form_SplashScreen.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Model\ButtonPanelControl.resx">
+      <DependentUpon>ButtonPanelControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Model\PreviewControl.resx">
+      <DependentUpon>PreviewControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Model\PreviewPicControl.resx">
+      <DependentUpon>PreviewPicControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Model\TagPanelControl.resx">
+      <DependentUpon>TagPanelControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="UI\Form_CollatingSort.resx">
+      <DependentUpon>Form_CollatingSort.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Form_Main.resx">
+      <DependentUpon>Form_Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Form_MoviePreview.resx">
+      <DependentUpon>Form_MoviePreview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Form_SearchMovie.resx">
+      <DependentUpon>Form_SearchMovie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Form_SplashScreen.resx">
+      <DependentUpon>Form_SplashScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\buttonMinimize.Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pngMainLog.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\buttonMaximize.Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\buttonExit.Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnHome.Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\playermovie.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\SplashScreenBackground.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="AVDBDAL\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
