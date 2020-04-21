@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
 using AVDBDAL;
+using avMovieManager.DAL;
+
 namespace avMovieManager.BLL
 {
 
@@ -88,8 +91,11 @@ namespace avMovieManager.BLL
         private string FilePath = "";
         private string ext = "";
         private bool isChinese = false;
-        private string destFilePath = "";
+        private string destFilePath = LocalPathParam.SortFinalOutPath;
         DBMovieInfo movieInfo = new DBMovieInfo();
+
+        public delegate void OutLogEventHandler(string log);
+        public static event OutLogEventHandler OutLog;
         public int StartGetInfo(string fullName,string name) 
         {
             FilePath = fullName;
@@ -106,11 +112,36 @@ namespace avMovieManager.BLL
                 movieInfo.director = javbus.GetDirector();
                 movieInfo.series = javbus.GetSeries();
                 movieInfo.tag = javbus.GetTag();
+                if (isChinese) 
+                {
+                    movieInfo.tag.Add("中文字幕");
+                }
                 movieInfo.actor = javbus.GetActor();
                 movieInfo.number = javbus.GetNumber();
                 movieInfo.actorPic = javbus.GetActorPhoto();
                 movieInfo.website = javbus.Getwebsite();
                 WriteXmlInfo();
+                string tempPath = destFilePath + "\\thumb.jpg";
+                if (Downloadimg(movieInfo.coverUrl, tempPath) == 0) 
+                {
+                    string imgPath = destFilePath + "\\" + movieInfo.actor[0] + "\\" + movieInfo.number + "\\" + movieInfo.number + "-thumb.jpg";
+                    string poster = destFilePath + "\\" + movieInfo.actor[0] + "\\" + movieInfo.number + "\\" + movieInfo.number + "-poster.jpg";
+                    string fanart = destFilePath + "\\" + movieInfo.actor[0] + "\\" + movieInfo.number + "\\" + movieInfo.number + "-fanart.jpg";
+                    File.Copy(tempPath, fanart);
+                    if (isChinese) 
+                    {
+                        ImageHelper.AddImageSignPic(tempPath, imgPath, System.Environment.CurrentDirectory + @"\img\sub.png", 1, 100, 10);
+                        ImageHelper.CropPosterImg(tempPath, poster);
+                        ImageHelper.AddImageSignPic(poster, poster, System.Environment.CurrentDirectory + @"\img\sub.png", 1, 100, 10);
+                    }
+                    else 
+                    {
+                        File.Copy(tempPath, imgPath);
+                        ImageHelper.CropPosterImg(tempPath, poster);
+                    }
+                    File.Delete(tempPath);
+                }
+                File.Move(FilePath, destFilePath + "\\" + movieInfo.actor[0] + "\\" + movieInfo.number + "\\" + movieInfo.number+"."+ext);
             }
             return ret;
         }
@@ -135,7 +166,7 @@ namespace avMovieManager.BLL
                 key = key.Replace(pContent, string.Empty);
             }
             key = key.Trim();
-            key = key.Replace("_", string.Empty);
+            //key = key.Replace("_", string.Empty);
             key = key.Replace(".HD", string.Empty);
             key = key.Replace(".1080p", string.Empty);
             key = key.Replace("-C", string.Empty);
@@ -145,6 +176,30 @@ namespace avMovieManager.BLL
             key = key.Replace("HHB", string.Empty);
             ext = key.Split('.')[1];
             VideoNumber = key.Split('.')[0];
+        }
+
+        private int Downloadimg(string url, string path)
+        {
+            try
+            {
+                WebRequest request = WebRequest.Create(url);
+                WebResponse response = request.GetResponse();
+                Stream reader = response.GetResponseStream();
+                FileStream writer = new FileStream(path, FileMode.OpenOrCreate, FileAccess.Write);
+                byte[] buff = new byte[512];
+                int c = 0; //实际读取的字节数
+                while ((c = reader.Read(buff, 0, buff.Length)) > 0)
+                {
+                    writer.Write(buff, 0, c);
+                }
+                writer.Close();
+                return 0;
+            }
+            catch (Exception ex)
+            {
+                return -1;
+            }
+
         }
         private void WriteXmlInfo() 
         {
@@ -189,8 +244,15 @@ namespace avMovieManager.BLL
 
             XmlSerializer serializer = new XmlSerializer(typeof(MovieCollection));
 
+            string xmlpath = destFilePath + "\\" +movieInfo.actor[0]+"\\"+ movieInfo.number + "\\";
+            if (System.IO.Directory.Exists(xmlpath) == false)
+            {
+                //创建pic文件夹
+                System.IO.Directory.CreateDirectory(xmlpath);
+                //outputlog("未找到文件夹，创建文件夹：" + subpath);
+            }
             //将对象序列化输出到控制台
-            FileStream stream = new FileStream(destFilePath + movieInfo.number+".nfo", FileMode.OpenOrCreate);
+            FileStream stream = new FileStream(xmlpath + movieInfo.number + ".nfo", FileMode.OpenOrCreate);
             serializer.Serialize(stream, movieCollection);
         }
     }

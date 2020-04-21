@@ -41,7 +41,7 @@ namespace avMovieManager.DAL
 
         //分类视频输出目录
         private static string sortFinalPutPath = "";
-        public static string SortFinalPutPath
+        public static string SortFinalOutPath
         {
             set { sortFinalPutPath = value; }
             get { return sortFinalPutPath; }

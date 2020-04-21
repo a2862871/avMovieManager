@@ -15,25 +15,6 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\x64\Debug\</OutputPath>
@@ -102,7 +83,7 @@
     <Compile Include="AVDBDAL\GetHtmlInterface.cs" />
     <Compile Include="AVDBDAL\JavBusGetMovieDAL.cs" />
     <Compile Include="AVDBDAL\JavDbGetMovieDAL.cs" />
-    <Compile Include="BLL\HttpSearhMovieInfo.cs" />
+    <Compile Include="BLL\GetMovieInfo.cs" />
     <Compile Include="BLL\ImageHelper.cs" />
     <Compile Include="BLL\IniHelper.cs" />
     <Compile Include="BLL\MovieDataBLL.cs" />
@@ -115,7 +96,7 @@
     <Compile Include="DAL\LocalPathParam.cs" />
     <Compile Include="Model\MovieInfo.cs" />
     <Compile Include="Model\MovieTagInfo.cs" />
-    <Compile Include="DAL\SearchUrlLink.cs" />
+    <Compile Include="DAL\AvUrlLink.cs" />
     <Compile Include="Model\ButtonPanelControl.cs">
       <SubType>UserControl</SubType>
     </Compile>

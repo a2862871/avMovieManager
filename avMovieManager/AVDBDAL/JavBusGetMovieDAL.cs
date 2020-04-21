@@ -23,7 +23,12 @@ namespace AVDBDAL
             try 
             {
                 url = javBusUrl + "search/" + sn + "&type=1";
-                htmlNode = HtmlNode.CreateNode(web.Load(url).Text);
+                var htmltext = web.Load(url);
+                if (htmltext.Text.IndexOf("沒有您要的結果！") != -1) 
+                {
+                    return -1;
+                }
+                htmlNode = HtmlNode.CreateNode(htmltext.Text);
                 var urls = htmlNode.SelectNodes("//div[@id='waterfall']/div[@id='waterfall']/div");
                 for (int i = 1; i < urls.Count + 1; i++)
                 {
@@ -37,7 +42,7 @@ namespace AVDBDAL
                         return 0;
                     }
                 }
-                return 0;
+                return -1;
             } 
             catch
             {

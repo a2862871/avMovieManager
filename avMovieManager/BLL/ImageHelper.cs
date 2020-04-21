@@ -140,7 +140,7 @@ namespace avMovieManager.BLL
         }
 
 
-        public void CropPosterImg(string fromImagePath, string toImagePath)
+        public static void CropPosterImg(string fromImagePath, string toImagePath)
         {
             //原图片文件
             Image fromImage = Image.FromFile(fromImagePath);
@@ -152,15 +152,16 @@ namespace avMovieManager.BLL
             //创建作图区域
             Graphics graphic = Graphics.FromImage(bitmap);
             //截取原图相应区域写入作图区
-            graphic.DrawImage(fromImage, 0, 0, new Rectangle(0, width, width, height), GraphicsUnit.Pixel);
+            graphic.DrawImage(fromImage, new Rectangle(0, 0, width, height), new Rectangle(width, 0, fromImage.Width/2, fromImage.Height), GraphicsUnit.Pixel);
             //从作图区生成新图
             Image saveImage = Image.FromHbitmap(bitmap.GetHbitmap());
             //保存图片
-            saveImage.Save(toImagePath, ImageFormat.Png);
+            saveImage.Save(toImagePath, ImageFormat.Jpeg);
             //释放资源   
             saveImage.Dispose();
             graphic.Dispose();
             bitmap.Dispose();
+            fromImage.Dispose();
         }
     }
 }

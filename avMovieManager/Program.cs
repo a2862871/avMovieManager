@@ -17,12 +17,14 @@ namespace avMovieManager
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
             AvUrlLink.JavDbUrl = IniHelper.Read("URL", "javdb", "https://javdb4.com/");
             AvUrlLink.JavLibraryUrl = IniHelper.Read("URL", "javlibrary", "http://www.n43a.com/cn/");
             AvUrlLink.AvMooUrl = IniHelper.Read("URL", "avmoo", "https://avmask.com/cn/");
             AvUrlLink.AvSoxUrl = IniHelper.Read("URL", "avsox", "https://avsox.host/cn/");
             LocalPathParam.VideoPreviewPath = IniHelper.Read("MoviePath", "Path", @"E:\movie\整理内容");
-            LocalPathParam.VideoPlayerPath = IniHelper.Read("PlayerPath", "Path", @"E:\Program Files\DAUM\PotPlayer\PotPlayerMini64.exe"); 
+            LocalPathParam.VideoPlayerPath = IniHelper.Read("PlayerPath", "Path", @"E:\Program Files\DAUM\PotPlayer\PotPlayerMini64.exe");
+            LocalPathParam.SortFinalOutPath = IniHelper.Read("SortOutPath", "OutPath", @"I:\out");
             var result = Task.Run(() => InitDB());
             LocalPathParam.PicIsLoadALL = "0";
             if ("0".Equals(LocalPathParam.PicIsLoadALL)) 

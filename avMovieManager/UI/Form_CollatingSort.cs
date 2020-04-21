@@ -21,6 +21,7 @@ namespace avMovieManager.UI
             InitializeComponent();
             textBox_log.AutoSize = false;
             textSaveVideoPath.Text = LocalPathParam.WatiMovieSortPath;
+            textSaveVideoPath.Text = @"I:\待分类";
             //panel_rename.Visible = false;
             if (textSaveVideoPath.Text.Length > 0)
             {
@@ -85,7 +86,8 @@ namespace avMovieManager.UI
             {
                 GC.Collect();
                 outputlog("----------------------------开始-------------------------------");
-
+                GetMovieInfo get11 = new GetMovieInfo();
+                get11.StartGetInfo(dataGridViewVideo.Rows[i].Cells[1].Value.ToString(), dataGridViewVideo.Rows[i].Cells[0].Value.ToString());
                 outputlog("-----------------------等待5秒-------------------------");
                 Thread.Sleep(5000);
             }
