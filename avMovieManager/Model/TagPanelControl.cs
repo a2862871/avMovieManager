@@ -49,15 +49,12 @@ namespace avMovieManager.Model
                 Label labelTag = new Label();
                 labelTag.AutoSize = true;
                 labelTag.BackColor = System.Drawing.Color.Transparent;
-                //labelTag.BackColor = System.Drawing.Color.FromArgb(40, 41, 82);
                 labelTag.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
                 labelTag.ForeColor = System.Drawing.Color.Gainsboro;
                 labelTag.Location = new System.Drawing.Point(labelPointX, labelPointY);
                 labelTag.Name = "labelTag";
-                //labelTag.Size = new System.Drawing.Size(102, 27);
                 labelTag.TabIndex = i;
                 labelTag.Text = tag;
-                //labelTag.Text = "这是一个tag";
                 labelTag.Tag = 0;
                 labelTag.Click += new System.EventHandler(this.labelTag_Click);
                 i++;
@@ -65,7 +62,6 @@ namespace avMovieManager.Model
                 labelPointX = labelPointX + 20 + labelTag.Width;
             }
             isLoadTags = true;
-            //System.Diagnostics.Debug.WriteLine(DateTime.Now.ToString() + "  Millisecond:" + DateTime.Now.Millisecond.ToString());
         }
 
         private void labelTag_Click(object sender, EventArgs e)

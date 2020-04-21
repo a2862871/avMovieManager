@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace avMovieManager.DAL
 {
-    public class SearchUrlLink
+    public class AvUrlLink
     {
         public static string JavDbUrl { get; set; } = "https://javdb4.com/";
         public static string JavLibraryUrl { get; set; } = "http://www.n43a.com/cn/";

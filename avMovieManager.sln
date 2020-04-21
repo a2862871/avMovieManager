@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AVMovieManager", "avMovieMa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestDemo", "mongDbDemo\TestDemo.csproj", "{4E59800D-8EAD-42B1-92E0-7C99BBC72E26}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AVDataCapture", "AVDataCapture\AVDataCapture.csproj", "{9DD6D1C5-619E-4C92-BD48-11A8CE6ABF69}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -23,10 +21,6 @@ Global
 		{4E59800D-8EAD-42B1-92E0-7C99BBC72E26}.Debug|x64.Build.0 = Debug|Any CPU
 		{4E59800D-8EAD-42B1-92E0-7C99BBC72E26}.Release|x64.ActiveCfg = Release|Any CPU
 		{4E59800D-8EAD-42B1-92E0-7C99BBC72E26}.Release|x64.Build.0 = Release|Any CPU
-		{9DD6D1C5-619E-4C92-BD48-11A8CE6ABF69}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{9DD6D1C5-619E-4C92-BD48-11A8CE6ABF69}.Debug|x64.Build.0 = Debug|Any CPU
-		{9DD6D1C5-619E-4C92-BD48-11A8CE6ABF69}.Release|x64.ActiveCfg = Release|Any CPU
-		{9DD6D1C5-619E-4C92-BD48-11A8CE6ABF69}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

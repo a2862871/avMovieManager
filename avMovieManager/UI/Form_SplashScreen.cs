@@ -17,7 +17,7 @@ namespace avMovieManager.UI
         public Form_SplashScreen()
         {
             InitializeComponent();
-            MovieDataBLL.progressEventHandler += MovieDataBLL_progressEventHandler;
+            MovieDataBLL.progress += MovieDataBLL_progressEventHandler;
             MovieDataBLL movieData = MovieDataBLL.Instance;
         }
 

@@ -138,5 +138,29 @@ namespace avMovieManager.BLL
             watermark.Dispose();
             imageAttributes.Dispose();
         }
+
+
+        public void CropPosterImg(string fromImagePath, string toImagePath)
+        {
+            //原图片文件
+            Image fromImage = Image.FromFile(fromImagePath);
+
+            int width = fromImage.Width/2;
+            int height = fromImage.Height;
+            //创建新图位图
+            Bitmap bitmap = new Bitmap(width, height);
+            //创建作图区域
+            Graphics graphic = Graphics.FromImage(bitmap);
+            //截取原图相应区域写入作图区
+            graphic.DrawImage(fromImage, 0, 0, new Rectangle(0, width, width, height), GraphicsUnit.Pixel);
+            //从作图区生成新图
+            Image saveImage = Image.FromHbitmap(bitmap.GetHbitmap());
+            //保存图片
+            saveImage.Save(toImagePath, ImageFormat.Png);
+            //释放资源   
+            saveImage.Dispose();
+            graphic.Dispose();
+            bitmap.Dispose();
+        }
     }
 }

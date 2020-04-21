@@ -40,5 +40,17 @@ namespace avMovieManager.BLL
             }
             return null;
         }
+
+        public static bool AddXmlChildNode(string filepath,string node,string value) 
+        {
+            XmlDocument tempxml = new XmlDocument();
+            tempxml.Load(filepath);
+            XmlNode memberlist = tempxml.SelectSingleNode("movie");
+            XmlElement childNode = tempxml.CreateElement(node);
+            childNode.InnerText = value;
+            memberlist.AppendChild(childNode);
+            tempxml.Save(filepath);
+            return true;
+        }
     }
 }

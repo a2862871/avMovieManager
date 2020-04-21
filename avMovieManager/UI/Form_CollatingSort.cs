@@ -15,14 +15,12 @@ namespace avMovieManager.UI
 {
     public partial class Form_CollatingSort : Form
     {
-        private HttpSearhMovieInfo httpSearhMovieInfo;
+        
         public Form_CollatingSort()
         {
             InitializeComponent();
             textBox_log.AutoSize = false;
-            textSaveVideoPath.Text = LocalPathParam.ClearingVideoPath;
-            httpSearhMovieInfo = new HttpSearhMovieInfo();
-            httpSearhMovieInfo.OutLogEvent += HttpSearhMovieInfo_OutLogEvent;
+            textSaveVideoPath.Text = LocalPathParam.WatiMovieSortPath;
             //panel_rename.Visible = false;
             if (textSaveVideoPath.Text.Length > 0)
             {
@@ -69,7 +67,7 @@ namespace avMovieManager.UI
                     return;
                 }
                 textSaveVideoPath.Text = dialog.SelectedPath;
-                LocalPathParam.ClearingVideoPath = textSaveVideoPath.Text;
+                LocalPathParam.WatiMovieSortPath = textSaveVideoPath.Text;
                 dataGridViewVideo.Rows.Clear();
                 GetAllVideoFile(textSaveVideoPath.Text);
             }
@@ -87,8 +85,7 @@ namespace avMovieManager.UI
             {
                 GC.Collect();
                 outputlog("----------------------------开始-------------------------------");
-                httpSearhMovieInfo.SearchLocalMovieDatas(this.dataGridViewVideo.Rows[i].Cells[0].Value.ToString(), this.dataGridViewVideo.Rows[i].Cells[1].Value.ToString());
-                httpSearhMovieInfo.Clear();
+
                 outputlog("-----------------------等待5秒-------------------------");
                 Thread.Sleep(5000);
             }

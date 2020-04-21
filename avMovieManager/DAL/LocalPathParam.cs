@@ -30,12 +30,23 @@ namespace avMovieManager.DAL
             get { return videopreviewpath; }
         }
 
-        private static string clearingvideopath = "";
-        public static string ClearingVideoPath
+
+        //待分类视频路径
+        private static string watiMovieSortPath = "";
+        public static string WatiMovieSortPath
         {
-            set { clearingvideopath = value; }
-            get { return clearingvideopath; }
+            set { watiMovieSortPath = value; }
+            get { return watiMovieSortPath; }
         }
+
+        //分类视频输出目录
+        private static string sortFinalPutPath = "";
+        public static string SortFinalPutPath
+        {
+            set { sortFinalPutPath = value; }
+            get { return sortFinalPutPath; }
+        }
+
         private static string picIsLoadAll = "";
         public static string PicIsLoadALL 
         { 

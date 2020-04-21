@@ -17,16 +17,14 @@ namespace avMovieManager
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            SearchUrlLink.JavDbUrl = IniHelper.Read("URL", "javdb", "https://javdb4.com/");
-            SearchUrlLink.JavLibraryUrl = IniHelper.Read("URL", "javlibrary", "http://www.n43a.com/cn/");
-            SearchUrlLink.AvMooUrl = IniHelper.Read("URL", "avmoo", "https://avmask.com/cn/");
-            SearchUrlLink.AvSoxUrl = IniHelper.Read("URL", "avsox", "https://avsox.host/cn/");
-            LocalPathParam.PicIsLoadALL = "0";
-            ImageHelper.AddImageSignPic(@"E:\imgtest\1.jpg", @"E:\imgtest\2.jpg", @"E:\imgtest\watermark\SUB.png", 1, 100, 10);
-            LocalPathParam.VideoPreviewPath = IniHelper.Read("MoviePath", "Path", @"I:\私人空间");
-            LocalPathParam.VideoPreviewPath = @"E:\imgtest\xmltest";
+            AvUrlLink.JavDbUrl = IniHelper.Read("URL", "javdb", "https://javdb4.com/");
+            AvUrlLink.JavLibraryUrl = IniHelper.Read("URL", "javlibrary", "http://www.n43a.com/cn/");
+            AvUrlLink.AvMooUrl = IniHelper.Read("URL", "avmoo", "https://avmask.com/cn/");
+            AvUrlLink.AvSoxUrl = IniHelper.Read("URL", "avsox", "https://avsox.host/cn/");
+            LocalPathParam.VideoPreviewPath = IniHelper.Read("MoviePath", "Path", @"E:\movie\整理内容");
             LocalPathParam.VideoPlayerPath = IniHelper.Read("PlayerPath", "Path", @"E:\Program Files\DAUM\PotPlayer\PotPlayerMini64.exe"); 
             var result = Task.Run(() => InitDB());
+            LocalPathParam.PicIsLoadALL = "0";
             if ("0".Equals(LocalPathParam.PicIsLoadALL)) 
             { 
                 UI.Form_SplashScreen fsc = new UI.Form_SplashScreen();
@@ -36,7 +34,6 @@ namespace avMovieManager
         }
         private static void InitDB()
         {
-            //FullMovieDatas movieData = FullMovieDatas.Instance;
             MovieDataBLL m = MovieDataBLL.Instance;
         }
     }

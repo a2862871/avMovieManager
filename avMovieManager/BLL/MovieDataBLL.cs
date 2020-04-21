@@ -14,13 +14,13 @@ namespace avMovieManager.BLL
         new Lazy<MovieDataBLL>(() => new MovieDataBLL());
         public static MovieDataBLL Instance { get { return lazy.Value; } }
 
-        private static MovieDataDAL mdates;
+        private static MovieDataDAL movieDatas;
 
         public delegate void ProgressEventHandler(int index, int count, string name);
-        public static event ProgressEventHandler progressEventHandler;
+        public static event ProgressEventHandler progress;
         private MovieDataBLL() 
         {
-            mdates = new MovieDataDAL();
+            movieDatas = new MovieDataDAL();
             Task<int> t = InitMovieDataAsync();
             //InitMovieData();
         }
@@ -48,9 +48,9 @@ namespace avMovieManager.BLL
                 string moviesn = XmlHelper.GetXmlNodeInfo("/movie/num");
                 string thumbPicPath = info.DirectoryName+"\\"+XmlHelper.GetXmlNodeInfo("/movie/thumb");
                 string posterPicPath = info.DirectoryName + "\\" + XmlHelper.GetXmlNodeInfo("/movie/poster");
-                mdates.AddActorInfo(actorNames);
-                mdates.AddMovieInfo(moviesn, actorNames, info.DirectoryName, thumbPicPath, posterPicPath, movieTags);
-                progressEventHandler?.Invoke(i, fileInfos.Count, moviesn);
+                movieDatas.AddActorInfo(actorNames);
+                movieDatas.AddMovieInfo(moviesn, actorNames, info.DirectoryName, thumbPicPath, posterPicPath, movieTags);
+                progress?.Invoke(i, fileInfos.Count, moviesn);
                 if (fileInfos.Count < 50) 
                 {
                     Thread.Sleep(100);
@@ -78,27 +78,27 @@ namespace avMovieManager.BLL
 
         public static List<ActorInfo> GetActorInfos() 
         {
-            return mdates.GetActorInfos();
+            return movieDatas.GetActorInfos();
         }
 
         public static Dictionary<string, List<string>> GetActorAllNameToInitial()
         {
-            return mdates.GetActorAllNameToInitial();
+            return movieDatas.GetActorAllNameToInitial();
         }
 
         public static List<string> GetMovieAllTags() 
         {
-            return mdates.GetAllTags();
+            return movieDatas.GetAllTags();
         }
 
         public static List<MovieInfo> FindActorNameToMovies(string name)
         {
-            return mdates.FindActorNameToMovies(name);
+            return movieDatas.FindActorNameToMovies(name);
         }
 
         public static List<MovieInfo> FindTagsToMovies(List<string> tags) 
         {
-            return mdates.FindTagsToMovies(tags);
+            return movieDatas.FindTagsToMovies(tags);
         }
     }
 }

@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
-using AVDataCapture.DAL;
-namespace AVDataCapture.BLL
+using AVDBDAL;
+namespace avMovieManager.BLL
 {
 
     [XmlRoot("movie")]
@@ -61,7 +62,7 @@ namespace AVDataCapture.BLL
         [XmlElement("thumb")]
         public string thumb { get; set; }
     }
-    public struct MovieInfo
+    public struct DBMovieInfo
     {
         public string title; // 获取标题
         public string studio;  // 获取厂商
@@ -84,12 +85,16 @@ namespace AVDataCapture.BLL
         private JavBusGetMovieDAL javbus = new JavBusGetMovieDAL();
         private JavDbGetMovieDAL javDb = new JavDbGetMovieDAL();
         private string VideoNumber = "";
-        private string sourceFilePath = "";
+        private string FilePath = "";
+        private string ext = "";
+        private bool isChinese = false;
         private string destFilePath = "";
-        MovieInfo movieInfo = new MovieInfo();
-        public int StartGetInfo(string filepath) 
+        DBMovieInfo movieInfo = new DBMovieInfo();
+        public int StartGetInfo(string fullName,string name) 
         {
-            int ret = javbus.GetMovieInfo(filepath);
+            FilePath = fullName;
+            CollationFilePath(name);
+            int ret = javbus.GetMovieInfo(VideoNumber);
             if (ret == 0)
             {
                 movieInfo.title = javbus.GetTitle();
@@ -108,6 +113,38 @@ namespace AVDataCapture.BLL
                 WriteXmlInfo();
             }
             return ret;
+        }
+
+        private void CollationFilePath(string key) 
+        {
+            key = key.ToUpper();
+            if (key.IndexOf("-C")!=-1) 
+            {
+                isChinese = true;
+            }
+            Regex regex = new Regex("\\[.*?\\]");
+            string pContent = regex.Match(key).Value;
+            if (pContent.Length > 0)
+            {
+                key = key.Replace(pContent, string.Empty);
+            }
+            regex = new Regex("^[0-9]{3,4}");
+            pContent = regex.Match(key).Value;
+            if (pContent.Length > 0)
+            {
+                key = key.Replace(pContent, string.Empty);
+            }
+            key = key.Trim();
+            key = key.Replace("_", string.Empty);
+            key = key.Replace(".HD", string.Empty);
+            key = key.Replace(".1080p", string.Empty);
+            key = key.Replace("-C", string.Empty);
+            key = key.Replace("h264", string.Empty);
+            key = key.Replace("-", string.Empty);
+            key = key.Replace("FHD", string.Empty);
+            key = key.Replace("HHB", string.Empty);
+            ext = key.Split('.')[1];
+            VideoNumber = key.Split('.')[0];
         }
         private void WriteXmlInfo() 
         {
@@ -153,7 +190,7 @@ namespace AVDataCapture.BLL
             XmlSerializer serializer = new XmlSerializer(typeof(MovieCollection));
 
             //将对象序列化输出到控制台
-            FileStream stream = new FileStream(@"E:\imgtest\xmltest\"+ movieInfo.number+".nfo", FileMode.OpenOrCreate);
+            FileStream stream = new FileStream(destFilePath + movieInfo.number+".nfo", FileMode.OpenOrCreate);
             serializer.Serialize(stream, movieCollection);
         }
     }

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using avMovieManager.DAL;
 using System.IO;
+using avMovieManager.BLL;
 
 namespace avMovieManager.Model
 {
@@ -56,34 +57,34 @@ namespace avMovieManager.Model
 
         private void javDbSearchToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string url = SearchUrlLink.JavDbUrl + "/search?q=" + movieDate.MovieSn + "&f=all";
+            string url = AvUrlLink.JavDbUrl + "/search?q=" + movieDate.MovieSn + "&f=all";
             System.Diagnostics.ProcessStartInfo Info = new System.Diagnostics.ProcessStartInfo(url);
             System.Diagnostics.Process.Start(Info);
         }
         private void javLibrarySearchToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string url = SearchUrlLink.JavLibraryUrl + "vl_searchbyid.php?keyword=" + movieDate.MovieSn;
+            string url = AvUrlLink.JavLibraryUrl + "vl_searchbyid.php?keyword=" + movieDate.MovieSn;
             System.Diagnostics.ProcessStartInfo Info = new System.Diagnostics.ProcessStartInfo(url);
             System.Diagnostics.Process.Start(Info);
         }
 
         private void avMooSearchToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string url = SearchUrlLink.AvMooUrl + "search/" + movieDate.MovieSn;
+            string url = AvUrlLink.AvMooUrl + "search/" + movieDate.MovieSn;
             System.Diagnostics.ProcessStartInfo Info = new System.Diagnostics.ProcessStartInfo(url);
             System.Diagnostics.Process.Start(Info);
         }
 
         private void avSoxSearchToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string url = SearchUrlLink.AvSoxUrl + "search/" + movieDate.MovieSn;
+            string url = AvUrlLink.AvSoxUrl + "search/" + movieDate.MovieSn;
             System.Diagnostics.ProcessStartInfo Info = new System.Diagnostics.ProcessStartInfo(url);
             System.Diagnostics.Process.Start(Info);
         }
 
         private void javBusSearchToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string url = SearchUrlLink.JavBusUrl + "search/" + movieDate.MovieSn;
+            string url = AvUrlLink.JavBusUrl + "search/" + movieDate.MovieSn;
             System.Diagnostics.ProcessStartInfo Info = new System.Diagnostics.ProcessStartInfo(url);
             System.Diagnostics.Process.Start(Info);
         }
@@ -102,10 +103,14 @@ namespace avMovieManager.Model
 
         private void addChineseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string file = movieDate.Path + "\\" + "ch.uid";
-            if (!File.Exists(file)) 
+            ImageHelper.AddImageSignPic(movieDate.ThumbPicPath, movieDate.ThumbPicPath, System.Environment.CurrentDirectory+@"\img\sub.png",1,100,10);
+            ImageHelper.AddImageSignPic(movieDate.PosterPicPath, movieDate.PosterPicPath, System.Environment.CurrentDirectory + @"\img\sub.png", 1, 100, 10);
+            pictureBoxCover.LoadAsync(movieDate.ThumbPicPath);
+            DirectoryInfo dir = new DirectoryInfo(movieDate.Path);
+            FileInfo[] fileInfo = dir.GetFiles("*.nfo");
+            foreach (FileInfo item in fileInfo)
             {
-                File.Create(file);
+                XmlHelper.AddXmlChildNode(item.FullName,"tag", "中文字幕");
             }
         }
     }
