@@ -14,6 +14,9 @@ namespace AVDBDAL
         private HtmlNode htmlNode;
         private string url;
         private string website;
+
+        public delegate void OutLogEventHandler(string log);
+        public event OutLogEventHandler OutLog;
         public JavBusGetMovieDAL() 
         {
 
@@ -26,6 +29,7 @@ namespace AVDBDAL
                 var htmltext = web.Load(url);
                 if (htmltext.Text.IndexOf("沒有您要的結果！") != -1) 
                 {
+                    OutLog?.Invoke("未找到影片。");
                     return -1;
                 }
                 htmlNode = HtmlNode.CreateNode(htmltext.Text);
@@ -39,13 +43,16 @@ namespace AVDBDAL
                         url = htmlNode.SelectNodes("//div[@id='waterfall']/div[@id='waterfall']/div[" + i.ToString() + "]/a[@class='movie-box']/@href")[0].Attributes["href"].Value;
                         htmlNode = HtmlNode.CreateNode(web.Load(url).Text);
                         website = url;
+                        OutLog?.Invoke("获取影片页面成功，开始进行下一步。");
                         return 0;
                     }
                 }
+                OutLog?.Invoke("未找到影片。");
                 return -1;
             } 
-            catch
+            catch(Exception ex)
             {
+                OutLog?.Invoke("获取影片页面异常，异常原因:"+ex.ToString());
                 return -1;
             }  
         }

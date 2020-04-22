@@ -95,7 +95,18 @@ namespace avMovieManager.BLL
         DBMovieInfo movieInfo = new DBMovieInfo();
 
         public delegate void OutLogEventHandler(string log);
-        public static event OutLogEventHandler OutLog;
+        public event OutLogEventHandler OutLog;
+
+        public GetMovieInfo() 
+        {
+            javbus.OutLog += Javbus_OutLog;
+        }
+
+        private void Javbus_OutLog(string log)
+        {
+            OutLog?.Invoke(log);
+        }
+
         public int StartGetInfo(string fullName,string name) 
         {
             FilePath = fullName;
@@ -114,16 +125,20 @@ namespace avMovieManager.BLL
                 movieInfo.tag = javbus.GetTag();
                 if (isChinese) 
                 {
+                    OutLog?.Invoke("添加中文字幕tag");
                     movieInfo.tag.Add("中文字幕");
                 }
                 movieInfo.actor = javbus.GetActor();
                 movieInfo.number = javbus.GetNumber();
                 movieInfo.actorPic = javbus.GetActorPhoto();
                 movieInfo.website = javbus.Getwebsite();
+                OutLog?.Invoke("写入xml文件");
                 WriteXmlInfo();
                 string tempPath = destFilePath + "\\thumb.jpg";
+                OutLog?.Invoke("开始下载图片");
                 if (Downloadimg(movieInfo.coverUrl, tempPath) == 0) 
                 {
+                    OutLog?.Invoke("图片下载成功");
                     string imgPath = destFilePath + "\\" + movieInfo.actor[0] + "\\" + movieInfo.number + "\\" + movieInfo.number + "-thumb.jpg";
                     string poster = destFilePath + "\\" + movieInfo.actor[0] + "\\" + movieInfo.number + "\\" + movieInfo.number + "-poster.jpg";
                     string fanart = destFilePath + "\\" + movieInfo.actor[0] + "\\" + movieInfo.number + "\\" + movieInfo.number + "-fanart.jpg";
@@ -141,7 +156,9 @@ namespace avMovieManager.BLL
                     }
                     File.Delete(tempPath);
                 }
+                OutLog?.Invoke("移动文件:"+FilePath+"\nTO:"+ destFilePath + "\\" + movieInfo.actor[0] + "\\" + movieInfo.number + "\\" + movieInfo.number + "." + ext);
                 File.Move(FilePath, destFilePath + "\\" + movieInfo.actor[0] + "\\" + movieInfo.number + "\\" + movieInfo.number+"."+ext);
+                OutLog?.Invoke("移动文件结束,"+ movieInfo.number+"刮削结束");
             }
             return ret;
         }
@@ -176,6 +193,7 @@ namespace avMovieManager.BLL
             key = key.Replace("HHB", string.Empty);
             ext = key.Split('.')[1];
             VideoNumber = key.Split('.')[0];
+            OutLog?.Invoke("规范文件名，key="+ key+", videoNumber ="+ VideoNumber+", ext="+ext);
         }
 
         private int Downloadimg(string url, string path)
