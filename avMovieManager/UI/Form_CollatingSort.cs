@@ -85,12 +85,14 @@ namespace avMovieManager.UI
             int index = dataGridViewVideo.Rows.Count - 1;
             for (int i = 0; i < index; i++)
             {
-                GC.Collect();
-                outputlog("----------------------------开始-------------------------------");
-               
+                if (i != 0) 
+                {
+                    outputlog("-----------------------等待5秒-------------------------");
+                    Thread.Sleep(5000);
+                }
+                outputlog("----------------------------开始-------------------------------");              
                 getMovieInfo.StartGetInfo(dataGridViewVideo.Rows[i].Cells[1].Value.ToString(), dataGridViewVideo.Rows[i].Cells[0].Value.ToString());
-                outputlog("-----------------------等待5秒-------------------------");
-                Thread.Sleep(5000);
+                GC.Collect();
             }
             outputlog("本次整理完成");
             RefreshDataGridView();
