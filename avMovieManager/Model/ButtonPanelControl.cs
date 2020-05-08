@@ -21,7 +21,38 @@ namespace avMovieManager.Model
         {
             InitializeComponent();
             InitButton(filedict);
-
+        }
+        public ButtonPanelControl(List<string> filedict)
+        {
+            InitializeComponent();
+            InitButton(filedict);
+        }
+        private void InitButton(List<string> filedict)
+        {
+            Font font = new System.Drawing.Font("微软雅黑", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            for (int i = 0; i < filedict.Count; i++)
+            {
+                //System.Diagnostics.Debug.WriteLine(DateTime.Now.ToString() + "  Millisecond:" + DateTime.Now.Millisecond.ToString());
+                //System.Diagnostics.Debug.WriteLine(DateTime.Now.ToString() + "  Millisecond:" + DateTime.Now.Millisecond.ToString());
+                Button b = new Button();
+                //b.Dock = System.Windows.Forms.DockStyle.Top;
+                b.Font = font;
+                b.FlatAppearance.BorderSize = 0;
+                b.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+                b.ForeColor = System.Drawing.Color.Gainsboro;
+                b.Dock = DockStyle.Top;
+                //b.Location = new System.Drawing.Point(0, i * 50);
+                b.Name = "btn_" + i.ToString();
+                b.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+                b.Size = new System.Drawing.Size(this.Size.Width - 20, 50);
+                b.TabIndex = i;
+                b.Text = filedict[i];
+                b.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+                b.UseVisualStyleBackColor = true;
+                b.MouseClick += Button_MouseClick;
+                b.BringToFront();
+                this.Controls.Add(b);
+            }
         }
         private void InitButton(Dictionary<string, List<string>> filedict)
         {

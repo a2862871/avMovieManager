@@ -87,6 +87,32 @@ namespace avMovieManager.DAL
                 }
             }
         }
+        public List<MovieInfo> FindFuzzyMovies(string name) 
+        {
+            List<MovieInfo> lm = new List<MovieInfo>();
+            foreach (MovieInfo m in movieInfos)
+            {
+                if (m.MovieSn.Contains(name))
+                {
+                    lm.Add(m);
+                }
+            }
+            return lm;
+        }
+        public List<string> FindFuzzyActorNames(string name)
+        {
+           
+            List<string> lm = new List<string>();
+            foreach (string key in actorHasMap.Keys)
+            {
+                if (key.Contains(name))
+                {
+                    lm.Add(key);
+                }
+            }
+
+            return lm;
+        }
         public List<MovieInfo> FindActorNameToMovies(string name) 
         {
             if (!actorHasMap.ContainsKey(name)) 

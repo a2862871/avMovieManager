@@ -27,7 +27,7 @@ namespace AVDBDAL
             {
                 url = javBusUrl + "search/" + sn + "&type=1";
                 var htmltext = web.Load(url);
-                if (htmltext.Text.IndexOf("沒有您要的結果！") != -1) 
+                if (htmltext.Text.Contains("沒有您要的結果！")) 
                 {
                     OutLog?.Invoke("未找到影片。");
                     return -1;

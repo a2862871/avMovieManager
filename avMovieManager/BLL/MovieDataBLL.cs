@@ -100,5 +100,13 @@ namespace avMovieManager.BLL
         {
             return movieDatas.FindTagsToMovies(tags);
         }
+        public static List<string> FindFuzzyActorNames(string name) 
+        {
+            return movieDatas.FindFuzzyActorNames(name);
+        }
+        public static List<MovieInfo> FindFuzzyMovies(string name) 
+        {
+            return movieDatas.FindFuzzyMovies(name);
+        }
     }
 }
