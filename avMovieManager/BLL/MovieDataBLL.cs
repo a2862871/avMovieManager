@@ -49,7 +49,7 @@ namespace avMovieManager.BLL
                 string thumbPicPath = info.DirectoryName+"\\"+XmlHelper.GetXmlNodeInfo("/movie/thumb");
                 string posterPicPath = info.DirectoryName + "\\" + XmlHelper.GetXmlNodeInfo("/movie/poster");
                 movieDatas.AddActorInfo(actorNames);
-                movieDatas.AddMovieInfo(moviesn, actorNames, info.DirectoryName, thumbPicPath, posterPicPath, movieTags);
+                movieDatas.AddMovieInfo(moviesn, actorNames, info.DirectoryName, thumbPicPath, posterPicPath, info.CreationTime, movieTags);
                 progress?.Invoke(i, fileInfos.Count, moviesn);
                 if (fileInfos.Count < 50) 
                 {
@@ -77,14 +77,14 @@ namespace avMovieManager.BLL
         }
         public static void AddActorInfo(string path,string sn) 
         {
-            XmlHelper.LoadXmlFile(path+"\\"+sn+".nfo");
-            List<string> actorNames = XmlHelper.GetXmlNodeInfos("/movie/actor/name");
-            List<string> movieTags = XmlHelper.GetXmlNodeInfos("/movie/tag");
-            string moviesn = XmlHelper.GetXmlNodeInfo("/movie/num");
-            string thumbPicPath = path + "\\" + XmlHelper.GetXmlNodeInfo("/movie/thumb");
-            string posterPicPath = path + "\\" + XmlHelper.GetXmlNodeInfo("/movie/poster");
-            movieDatas.AddActorInfo(actorNames);
-            movieDatas.AddMovieInfo(moviesn, actorNames, path, thumbPicPath, posterPicPath, movieTags);
+            //XmlHelper.LoadXmlFile(path+"\\"+sn+".nfo");
+            //List<string> actorNames = XmlHelper.GetXmlNodeInfos("/movie/actor/name");
+            //List<string> movieTags = XmlHelper.GetXmlNodeInfos("/movie/tag");
+            //string moviesn = XmlHelper.GetXmlNodeInfo("/movie/num");
+            //string thumbPicPath = path + "\\" + XmlHelper.GetXmlNodeInfo("/movie/thumb");
+            //string posterPicPath = path + "\\" + XmlHelper.GetXmlNodeInfo("/movie/poster");
+            //movieDatas.AddActorInfo(actorNames);
+            //movieDatas.AddMovieInfo(moviesn, actorNames, path, thumbPicPath, posterPicPath, movieTags);
         }
 
         public static List<ActorInfo> GetActorInfos() 
@@ -118,6 +118,12 @@ namespace avMovieManager.BLL
         public static List<MovieInfo> FindFuzzyMovies(string name) 
         {
             return movieDatas.FindFuzzyMovies(name);
+        }
+
+        public static List<MovieInfo> GetLastMovieInfos() 
+        {
+            movieDatas.MovieInfosSort();
+            return movieDatas.GetLastMovieInfos();
         }
     }
 }

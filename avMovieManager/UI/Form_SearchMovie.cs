@@ -92,6 +92,7 @@ namespace avMovieManager.UI
         {
             previewControl.Show(MovieDataBLL.FindActorNameToMovies(name));
             currentText = "";
+            panelShowTag.Visible = false;
         }
 
         private void SeachMovieSn() 
@@ -100,6 +101,7 @@ namespace avMovieManager.UI
             if (movieDatas.Count != 0)
             {
                 previewControl.Show(movieDatas);
+                panelShowTag.Visible = false;
             } 
         }
         private bool IsTextBoxModificationOrIsNull()

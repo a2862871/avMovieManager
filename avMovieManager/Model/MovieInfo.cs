@@ -14,6 +14,13 @@ namespace avMovieManager.DAL
         private List<int> _relatedActorId;
         private string _thumbPicPath;
         private string _posterPicPath;
+        private DateTime _creatTime;
+
+        public DateTime CreatTime
+        {
+            set { _creatTime = value; }
+            get { return _creatTime; }
+        }
         public string MovieSn
         {
             set { _movieSn = value; }
@@ -48,6 +55,7 @@ namespace avMovieManager.DAL
         {
             _relatedActorId.Add(id);
         }
+
 
         public List<int> GetRelatedActorId() 
         {

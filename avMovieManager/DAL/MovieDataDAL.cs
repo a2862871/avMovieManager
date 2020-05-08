@@ -53,7 +53,7 @@ namespace avMovieManager.DAL
             }
         }
         public void AddMovieInfo(string moviesn,List<string> names,string path, 
-            string thumbPicPath,string posterPicPath,List<string> tags)
+            string thumbPicPath,string posterPicPath, DateTime creatTime, List<string> tags)
         {
             MovieInfo m = new MovieInfo();
             m.MovieSn = moviesn;
@@ -61,6 +61,7 @@ namespace avMovieManager.DAL
             m.Path = path;
             m.ThumbPicPath = thumbPicPath;
             m.PosterPicPath = posterPicPath;
+            m.CreatTime = creatTime;
             foreach(string name in names) 
             { 
                 if(actorHasMap.ContainsKey(name))
@@ -152,8 +153,23 @@ namespace avMovieManager.DAL
             }
             return lm;
         }
-
-
+        public void MovieInfosSort() 
+        {
+            movieInfos = movieInfos.OrderByDescending(u => u.CreatTime).ToList();
+        }
+        public List<MovieInfo> GetLastMovieInfos()
+        {
+            List<MovieInfo> lm = new List<MovieInfo>();
+            for(int i = 0; i < 40; i++) 
+            {
+                lm.Add(movieInfos[i]);
+            }
+            return lm;
+        }
+        public List<MovieInfo> GetAllMovieInfos() 
+        {
+            return movieInfos;
+        }
         public List<string> GetAllTags() 
         {
             return movieTagHasMap.Keys.ToList<string>();

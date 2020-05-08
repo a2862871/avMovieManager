@@ -12,6 +12,7 @@ using FontAwesome.Sharp;
 using avMovieManager.UI;
 using avMovieManager.DAL;
 using avMovieManager.BLL;
+using avMovieManager.Model;
 
 namespace avMovieManager.UI
 {
@@ -20,6 +21,7 @@ namespace avMovieManager.UI
         private IconButton currentBtn;
         private Panel leftBorderBtn;
         private Form currentChildForm;
+        private PreviewControl previewControl = new PreviewControl();
         public Form_Main()
         {
             InitializeComponent();
@@ -111,13 +113,22 @@ namespace avMovieManager.UI
             ActivateButton(sender, RGBColors.color6);
         }
 
-        private void btnHome_Click(object sender, EventArgs e)
+        private void BackHome() 
         {
             DisableButton();
             leftBorderBtn.Visible = false;
             iconCurrentChildFrom.IconChar = IconChar.Home;
             iconCurrentChildFrom.IconColor = Color.MediumPurple;
             labelCurrentChildFrom.Text = "主页";
+            if (currentChildForm != null)
+            {
+                currentChildForm.Close();
+                panelDesktop.Controls.Clear();
+            }
+        }
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+            BackHome();
         }
         //窗口移动
         [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]
@@ -154,6 +165,12 @@ namespace avMovieManager.UI
             this.WindowState = FormWindowState.Minimized;
         }
 
-
+        private void iconButtonLastVideo_Click(object sender, EventArgs e)
+        {
+            BackHome();
+            previewControl.Dock = DockStyle.Fill;
+            panelDesktop.Controls.Add(previewControl);
+            previewControl.Show(MovieDataBLL.GetLastMovieInfos());
+        }
     }
 }

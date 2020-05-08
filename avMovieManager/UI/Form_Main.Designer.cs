@@ -44,6 +44,7 @@
             this.iconCurrentChildFrom = new FontAwesome.Sharp.IconButton();
             this.panelShashow = new System.Windows.Forms.Panel();
             this.panelDesktop = new System.Windows.Forms.Panel();
+            this.iconButtonLastVideo = new FontAwesome.Sharp.IconButton();
             this.panelMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnHome)).BeginInit();
@@ -187,6 +188,7 @@
             // panelTitleBar
             // 
             this.panelTitleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(25)))), ((int)(((byte)(62)))));
+            this.panelTitleBar.Controls.Add(this.iconButtonLastVideo);
             this.panelTitleBar.Controls.Add(this.buttonMinimize);
             this.panelTitleBar.Controls.Add(this.buttonMaximize);
             this.panelTitleBar.Controls.Add(this.buttonExit);
@@ -292,6 +294,21 @@
             this.panelDesktop.Size = new System.Drawing.Size(1504, 784);
             this.panelDesktop.TabIndex = 3;
             // 
+            // iconButtonLastVideo
+            // 
+            this.iconButtonLastVideo.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.iconButtonLastVideo.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.iconButtonLastVideo.IconColor = System.Drawing.Color.Black;
+            this.iconButtonLastVideo.IconSize = 16;
+            this.iconButtonLastVideo.Location = new System.Drawing.Point(1305, 32);
+            this.iconButtonLastVideo.Name = "iconButtonLastVideo";
+            this.iconButtonLastVideo.Rotation = 0D;
+            this.iconButtonLastVideo.Size = new System.Drawing.Size(155, 23);
+            this.iconButtonLastVideo.TabIndex = 3;
+            this.iconButtonLastVideo.Text = "最近更新";
+            this.iconButtonLastVideo.UseVisualStyleBackColor = true;
+            this.iconButtonLastVideo.Click += new System.EventHandler(this.iconButtonLastVideo_Click);
+            // 
             // Form_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -331,6 +348,7 @@
         private System.Windows.Forms.Button buttonExit;
         private System.Windows.Forms.Panel panelShashow;
         private System.Windows.Forms.Panel panelDesktop;
+        private FontAwesome.Sharp.IconButton iconButtonLastVideo;
     }
 }
 

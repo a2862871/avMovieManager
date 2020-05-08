@@ -15,7 +15,6 @@ namespace avMovieManager.UI
 {
     public partial class Form_MoviePreview : Form
     {
-        private List<PreviewPicControl> listPicBox = new List<PreviewPicControl>();
         private ButtonPanelControl buttonPanelControl;
         private PreviewControl previewControl = new PreviewControl();
         public Form_MoviePreview()
