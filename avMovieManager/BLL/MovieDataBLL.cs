@@ -75,6 +75,17 @@ namespace avMovieManager.BLL
             }
             return FileList;
         }
+        public static void AddActorInfo(string path,string sn) 
+        {
+            XmlHelper.LoadXmlFile(path+"\\"+sn+".nfo");
+            List<string> actorNames = XmlHelper.GetXmlNodeInfos("/movie/actor/name");
+            List<string> movieTags = XmlHelper.GetXmlNodeInfos("/movie/tag");
+            string moviesn = XmlHelper.GetXmlNodeInfo("/movie/num");
+            string thumbPicPath = path + "\\" + XmlHelper.GetXmlNodeInfo("/movie/thumb");
+            string posterPicPath = path + "\\" + XmlHelper.GetXmlNodeInfo("/movie/poster");
+            movieDatas.AddActorInfo(actorNames);
+            movieDatas.AddMovieInfo(moviesn, actorNames, path, thumbPicPath, posterPicPath, movieTags);
+        }
 
         public static List<ActorInfo> GetActorInfos() 
         {
