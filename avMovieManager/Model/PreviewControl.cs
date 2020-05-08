@@ -44,7 +44,12 @@ namespace avMovieManager.Model
         private void LoadPicImage(int i)
         {
             this.SuspendLayout();
-            for (; i < listPicBox.Count; i++)
+            int count = listPicBox.Count;
+            if (count > 100) 
+            {
+                count = 100;  //防止数量太多，后期优化
+            }
+            for (; i < count; i++)
             {
                 listPicBox[i].ShowImage();
             }
