@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.29905.134
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AVMovieManager", "avMovieManager\AVMovieManager.csproj", "{DDE105EB-1044-4343-9F55-606B932609D0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestDemo", "mongDbDemo\TestDemo.csproj", "{4E59800D-8EAD-42B1-92E0-7C99BBC72E26}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -17,10 +15,6 @@ Global
 		{DDE105EB-1044-4343-9F55-606B932609D0}.Debug|x64.Build.0 = Debug|x64
 		{DDE105EB-1044-4343-9F55-606B932609D0}.Release|x64.ActiveCfg = Release|x64
 		{DDE105EB-1044-4343-9F55-606B932609D0}.Release|x64.Build.0 = Release|x64
-		{4E59800D-8EAD-42B1-92E0-7C99BBC72E26}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{4E59800D-8EAD-42B1-92E0-7C99BBC72E26}.Debug|x64.Build.0 = Debug|Any CPU
-		{4E59800D-8EAD-42B1-92E0-7C99BBC72E26}.Release|x64.ActiveCfg = Release|Any CPU
-		{4E59800D-8EAD-42B1-92E0-7C99BBC72E26}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

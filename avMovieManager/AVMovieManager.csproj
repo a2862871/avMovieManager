@@ -144,6 +144,12 @@
     <Compile Include="UI\Form_SearchMovie.Designer.cs">
       <DependentUpon>Form_SearchMovie.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Form_Setting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Form_Setting.Designer.cs">
+      <DependentUpon>Form_Setting.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Form_SplashScreen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -183,6 +189,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Form_SearchMovie.resx">
       <DependentUpon>Form_SearchMovie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Form_Setting.resx">
+      <DependentUpon>Form_Setting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Form_SplashScreen.resx">
       <DependentUpon>Form_SplashScreen.cs</DependentUpon>

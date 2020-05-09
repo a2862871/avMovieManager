@@ -12,9 +12,9 @@ namespace avMovieManager.DAL
 
         private List<ActorInfo> actorInfos;
         private List<MovieInfo> movieInfos;
-        private Dictionary<string, List<int>> movieTagHasMap;
-        private Dictionary<string, int> actorHasMap;
-        private Dictionary<int, MovieInfo> movieIDHasMap;
+        private Dictionary<string, List<int>> movieTagHasMap;//tag关联 影片
+        private Dictionary<string, int> actorHasMap;     //演员ID
+        private Dictionary<int, MovieInfo> movieIDHasMap; //影片ID关联
         private Dictionary<string, List<string>> actorNameInitia;//演员名称按照字母排序
 
         public MovieDataDAL() 
@@ -160,7 +160,9 @@ namespace avMovieManager.DAL
         public List<MovieInfo> GetLastMovieInfos()
         {
             List<MovieInfo> lm = new List<MovieInfo>();
-            for(int i = 0; i < 40; i++) 
+            int count = movieInfos.Count;
+            if (count > 40) count = 40;
+            for (int i = 0; i < count; i++) 
             {
                 lm.Add(movieInfos[i]);
             }

@@ -80,7 +80,6 @@ namespace avMovieManager.BLL
         public Dictionary<string, string> actorPic; //获取演员照片
         public string number; //获取番号
         public string website; //获取番号
-
     }
     
     public class GetMovieInfo
@@ -193,7 +192,7 @@ namespace avMovieManager.BLL
             key = key.Replace("HHB", string.Empty);
             ext = key.Split('.')[1];
             VideoNumber = key.Split('.')[0];
-            OutLog?.Invoke("规范文件名，key="+ key+", videoNumber ="+ VideoNumber+", ext="+ext);
+            OutLog?.Invoke("规范文件名，key ="+ key+", videoNumber ="+ VideoNumber+", ext ="+ext);
         }
 
         private int Downloadimg(string url, string path)
