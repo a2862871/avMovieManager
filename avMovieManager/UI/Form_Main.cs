@@ -167,6 +167,19 @@ namespace avMovieManager.UI
 
         private void iconButtonLastVideo_Click(object sender, EventArgs e)
         {
+            //List<int> testlist = new List<int>();
+            //for(int i = 0; i < 10000000; i++) 
+            //{
+            //    Random rd = new Random();
+            //    testlist.Add(rd.Next(90523, 10000000));
+            //}
+            //System.Diagnostics.Stopwatch watch = new System.Diagnostics.Stopwatch();
+            //watch.Start();  //开始监视代码运行时间
+            //var ccc = testlist.OrderBy(u => u).ToList();
+            //watch.Stop();  //停止监视
+            //TimeSpan timespan = watch.Elapsed;  //获取当前实例测量得出的总时间
+            //System.Diagnostics.Debug.WriteLine("打开窗口代码执行时间：{0}(毫秒)", timespan.TotalMilliseconds);  //总毫秒数
+            //return;
             BackHome();
             previewControl.Dock = DockStyle.Fill;
             panelDesktop.Controls.Add(previewControl);
