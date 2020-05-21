@@ -109,6 +109,7 @@ namespace avMovieManager.BLL
 
         public int StartGetInfo(string fullName,string name) 
         {
+            isChinese = false;
             FilePath = fullName;
             CollationFilePath(name);
             int ret = javbus.GetMovieInfo(VideoNumber);

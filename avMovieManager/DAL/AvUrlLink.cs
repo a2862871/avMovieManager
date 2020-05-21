@@ -12,6 +12,6 @@ namespace avMovieManager.DAL
         public static string JavLibraryUrl { get; set; } = "http://www.n43a.com/cn/";
         public static string AvMooUrl { get; set; } = "https://avmask.com/cn/";
         public static string AvSoxUrl { get; set; } = "https://avsox.host/cn/";
-        public static string JavBusUrl { get; set; } = "https://www.buscdn.cloud/";
+        public static string JavBusUrl { get; set; } = "https://www.seedmm.zone/";
     }
 }

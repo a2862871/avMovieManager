@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using avMovieManager.DAL;
 using HtmlAgilityPack;
 namespace AVDBDAL
 {
     class JavBusGetMovieDAL:GetHtmlInterface
     {
-        private string javBusUrl = "https://www.buscdn.cloud/";
+        private string javBusUrl = AvUrlLink.JavBusUrl;
         private HtmlWeb web = new HtmlWeb();
         private HtmlNode htmlNode;
         private string url;
@@ -191,6 +192,7 @@ namespace AVDBDAL
             }
             catch
             {
+                listname.Add("未知");
                 return listname;
             }
         }
