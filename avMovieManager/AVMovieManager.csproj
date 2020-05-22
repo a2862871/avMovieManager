@@ -50,6 +50,9 @@
     <Reference Include="HtmlAgilityPack, Version=1.11.23.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
       <HintPath>..\packages\HtmlAgilityPack.1.11.23\lib\Net45\HtmlAgilityPack.dll</HintPath>
     </Reference>
+    <Reference Include="HZH_Controls, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\HZH_Controls.1.0.11\lib\net40\HZH_Controls.dll</HintPath>
+    </Reference>
     <Reference Include="NPinyin.Core, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\NPinyin.Core.3.0.0\lib\net45\NPinyin.Core.dll</HintPath>
     </Reference>
@@ -156,6 +159,12 @@
     <Compile Include="UI\Form_SplashScreen.Designer.cs">
       <DependentUpon>Form_SplashScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI_SeachModel\SetUrlControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI_SeachModel\SetUrlControl.Designer.cs">
+      <DependentUpon>SetUrlControl.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Model\ButtonPanelControl.resx">
       <DependentUpon>ButtonPanelControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -195,6 +204,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Form_SplashScreen.resx">
       <DependentUpon>Form_SplashScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI_SeachModel\SetUrlControl.resx">
+      <DependentUpon>SetUrlControl.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

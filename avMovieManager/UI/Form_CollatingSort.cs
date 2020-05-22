@@ -22,12 +22,16 @@ namespace avMovieManager.UI
             InitializeComponent();
             textBox_log.AutoSize = false;
             textSaveVideoPath.Text = LocalPathParam.WatiMovieSortPath;
-            textSaveVideoPath.Text = @"I:\待分类";
+            //textSaveVideoPath.Text = @"I:\待分类";
             getMovieInfo.OutLog += GetMovieInfo_OutLog;
             //panel_rename.Visible = false;
             if (textSaveVideoPath.Text.Length > 0)
             {
-                GetAllVideoFile(textSaveVideoPath.Text);
+                if (Directory.Exists(LocalPathParam.WatiMovieSortPath)) 
+                {
+                    GetAllVideoFile(textSaveVideoPath.Text);
+                }
+                
             }
         }
 

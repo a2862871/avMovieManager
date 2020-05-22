@@ -36,8 +36,9 @@
             // 
             this.panelChildBtnMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelChildBtnMenu.Location = new System.Drawing.Point(0, 0);
+            this.panelChildBtnMenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelChildBtnMenu.Name = "panelChildBtnMenu";
-            this.panelChildBtnMenu.Size = new System.Drawing.Size(160, 614);
+            this.panelChildBtnMenu.Size = new System.Drawing.Size(213, 768);
             this.panelChildBtnMenu.TabIndex = 0;
             // 
             // panelPicSubMenu
@@ -45,20 +46,21 @@
             this.panelPicSubMenu.AutoScroll = true;
             this.panelPicSubMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(41)))), ((int)(((byte)(82)))));
             this.panelPicSubMenu.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelPicSubMenu.Location = new System.Drawing.Point(160, 0);
+            this.panelPicSubMenu.Location = new System.Drawing.Point(213, 0);
+            this.panelPicSubMenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelPicSubMenu.Name = "panelPicSubMenu";
-            this.panelPicSubMenu.Size = new System.Drawing.Size(901, 614);
+            this.panelPicSubMenu.Size = new System.Drawing.Size(1202, 768);
             this.panelPicSubMenu.TabIndex = 1;
             // 
             // Form_MoviePreview
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
-            this.ClientSize = new System.Drawing.Size(1061, 614);
+            this.ClientSize = new System.Drawing.Size(1415, 768);
             this.Controls.Add(this.panelPicSubMenu);
             this.Controls.Add(this.panelChildBtnMenu);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form_MoviePreview";
             this.Text = "Form_MoviePreview";
             this.ResumeLayout(false);
