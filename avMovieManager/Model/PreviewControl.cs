@@ -51,7 +51,7 @@ namespace avMovieManager.Model
             }
             for (; i < count; i++)
             {
-                listPicBox[i].ShowImage();
+                listPicBox[i].AsyncShowImage();
             }
             this.ResumeLayout();
         }

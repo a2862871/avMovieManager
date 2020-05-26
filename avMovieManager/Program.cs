@@ -22,21 +22,22 @@ namespace avMovieManager
             AvUrlLink.JavLibraryUrl = IniHelper.Read("URL", "javlibrary", "http://www.n43a.com/cn/");
             AvUrlLink.AvMooUrl = IniHelper.Read("URL", "avmoo", "https://avmask.com/cn/");
             AvUrlLink.AvSoxUrl = IniHelper.Read("URL", "avsox", "https://avsox.host/cn/");
+            AvUrlLink.JavBusUrl = IniHelper.Read("URL", "javbus", "https://www.seedmm.zone/");
             LocalPathParam.VideoPreviewPath = IniHelper.Read("MoviePath", "Path", @"E:\movie\整理内容");
             LocalPathParam.VideoPlayerPath = IniHelper.Read("PlayerPath", "Path", @"E:\Program Files\DAUM\PotPlayer\PotPlayerMini64.exe");
             LocalPathParam.SortFinalOutPath = IniHelper.Read("SortOutPath", "OutPath", @"I:\out");
-            var result = Task.Run(() => InitDB());
             LocalPathParam.PicIsLoadALL = "0";
-            if ("0".Equals(LocalPathParam.PicIsLoadALL)) 
-            { 
+            Task.Run(() => InitDb());
+            if ("0".Equals(LocalPathParam.PicIsLoadALL))
+            {
                 UI.Form_SplashScreen fsc = new UI.Form_SplashScreen();
                 fsc.ShowDialog();
             }
             Application.Run(new avMovieManager.UI.Form_Main());
         }
-        private static void InitDB()
+        private static void InitDb() 
         {
-            MovieDataBLL m = MovieDataBLL.Instance;
+            MovieDataBLL movieData = MovieDataBLL.Instance;
         }
     }
 }

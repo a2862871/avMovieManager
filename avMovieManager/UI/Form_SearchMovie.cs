@@ -84,8 +84,7 @@ namespace avMovieManager.UI
                 buttonPanelControl.Dock = DockStyle.Top;
                 buttonPanelControl.Button_MouseDownEvent += ButtonPanelControl_Button_MouseDownEvent;
                 panelButton.Controls.Add(buttonPanelControl);
-            }
-           
+            }          
         }
 
         private void ButtonPanelControl_Button_MouseDownEvent(string name)

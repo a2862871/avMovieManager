@@ -66,6 +66,7 @@ namespace avMovieManager.UI
                 currentBtn.ImageAlign = ContentAlignment.MiddleRight;
 
                 //设置右边小标签
+                leftBorderBtn.Size = new Size(7, currentBtn.Height);
                 leftBorderBtn.BackColor = color;
                 leftBorderBtn.Location = new Point(0,currentBtn.Location.Y);
                 leftBorderBtn.Visible = true;

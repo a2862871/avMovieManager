@@ -12,7 +12,6 @@ namespace avMovieManager.UI
 {
     public partial class Form_Setting : Form
     {
-        SetUrlControl urlControl = new SetUrlControl();
         public Form_Setting()
         {
             InitializeComponent();
@@ -21,8 +20,13 @@ namespace avMovieManager.UI
         private void buttonSearchTags_Click(object sender, EventArgs e)
         {
             panelSubMenu.Controls.Clear();
-            urlControl.Dock = DockStyle.Fill;
-            panelSubMenu.Controls.Add(urlControl);
+            panelSubMenu.Controls.Add(new SetUrlControl());
+        }
+
+        private void buttonSetLoacl_Click(object sender, EventArgs e)
+        {
+            panelSubMenu.Controls.Clear();
+            panelSubMenu.Controls.Add(new SetLocalControl());
         }
     }
 }

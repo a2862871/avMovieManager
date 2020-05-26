@@ -19,8 +19,6 @@ namespace avMovieManager.Model
         public PreviewPicControl(MovieInfo md)
         {
             InitializeComponent();
-            //SetStyle(ControlStyles.AllPaintingInWmPaint, true); // 禁止擦除背景.
-            //SetStyle(ControlStyles.DoubleBuffer, true); // 双缓冲
             this.movieDate = md;
             this.ContextMenuStrip = contextMenuStrip1;
             buttonPlayer.MouseClick += ButtonPlayer_MouseClick;
@@ -38,16 +36,13 @@ namespace avMovieManager.Model
                 process.Close();
             }
         }
-
-        private Image ReturnPhoto(byte[] streamByte)
+        public void AsyncShowImage() 
         {
-            MemoryStream ms = new MemoryStream(streamByte);
-            Image img = Image.FromStream(ms);
-            return img;
+            pictureBoxCover.LoadAsync(movieDate.ThumbPicPath);
         }
         public void ShowImage() 
         {
-            pictureBoxCover.LoadAsync(movieDate.ThumbPicPath);
+            pictureBoxCover.Load(movieDate.ThumbPicPath);
         }
 
         private void OpenFolderToolStripMenuItem_Click(object sender, EventArgs e)

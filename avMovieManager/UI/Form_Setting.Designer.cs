@@ -93,6 +93,7 @@
             this.buttonSetLoacl.TabIndex = 3;
             this.buttonSetLoacl.Text = "本地设置";
             this.buttonSetLoacl.UseVisualStyleBackColor = false;
+            this.buttonSetLoacl.Click += new System.EventHandler(this.buttonSetLoacl_Click);
             // 
             // buttonSearchTags
             // 

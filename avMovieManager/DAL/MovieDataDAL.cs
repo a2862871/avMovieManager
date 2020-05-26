@@ -101,8 +101,7 @@ namespace avMovieManager.DAL
             return lm;
         }
         public List<string> FindFuzzyActorNames(string name)
-        {
-           
+        {          
             List<string> lm = new List<string>();
             foreach (string key in actorHasMap.Keys)
             {
@@ -111,7 +110,6 @@ namespace avMovieManager.DAL
                     lm.Add(key);
                 }
             }
-
             return lm;
         }
         public List<MovieInfo> FindActorNameToMovies(string name) 
@@ -159,14 +157,14 @@ namespace avMovieManager.DAL
         }
         public List<MovieInfo> GetLastMovieInfos()
         {
-            List<MovieInfo> lm = new List<MovieInfo>();
-            int count = movieInfos.Count;
-            if (count > 40) count = 40;
-            for (int i = 0; i < count; i++) 
+            if (movieInfos.Count > 40) 
             {
-                lm.Add(movieInfos[i]);
+                return movieInfos.Take(40).ToList();
             }
-            return lm;
+            else 
+            {
+                return movieInfos;
+            }
         }
         public List<MovieInfo> GetAllMovieInfos() 
         {
