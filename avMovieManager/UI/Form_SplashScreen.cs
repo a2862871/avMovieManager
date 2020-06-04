@@ -20,6 +20,7 @@ namespace avMovieManager.UI
             MovieDataBLL m = MovieDataBLL.Instance;
             MovieDataBLL.progress += MovieDataBLL_progressEventHandler;
             MovieDataBLL movieData = MovieDataBLL.Instance;
+            Task<int> t = MovieDataBLL.InitMovieDataAsync();
         }
 
         private void MovieDataBLL_progressEventHandler(int index, int count, string name)

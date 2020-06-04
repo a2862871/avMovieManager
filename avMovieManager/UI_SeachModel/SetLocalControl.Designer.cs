@@ -1,4 +1,6 @@
-﻿namespace avMovieManager.UI_SeachModel
+﻿using avMovieManager.DAL;
+
+namespace avMovieManager.UI_SeachModel
 {
     partial class SetLocalControl
     {
@@ -32,16 +34,16 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
+            this.labelPlayer = new System.Windows.Forms.Label();
+            this.labelVideoPath = new System.Windows.Forms.Label();
+            this.labelWaitClassify = new System.Windows.Forms.Label();
+            this.labelClassifyOut = new System.Windows.Forms.Label();
             this.ucSwitch1 = new HZH_Controls.Controls.UCSwitch();
             this.label9 = new System.Windows.Forms.Label();
             this.ucBtnPlayer = new HZH_Controls.Controls.UCBtnExt();
-            this.ucBtnExt1 = new HZH_Controls.Controls.UCBtnExt();
-            this.ucBtnExt2 = new HZH_Controls.Controls.UCBtnExt();
-            this.ucBtnExt3 = new HZH_Controls.Controls.UCBtnExt();
+            this.ucBtnVideoPath = new HZH_Controls.Controls.UCBtnExt();
+            this.ucBtnWaitClassify = new HZH_Controls.Controls.UCBtnExt();
+            this.ucBtnExtv = new HZH_Controls.Controls.UCBtnExt();
             this.SuspendLayout();
             // 
             // label1
@@ -88,57 +90,57 @@
             this.label4.TabIndex = 3;
             this.label4.Text = "待分类路径";
             // 
-            // label5
+            // labelPlayer
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label5.ForeColor = System.Drawing.Color.Gray;
-            this.label5.Location = new System.Drawing.Point(58, 72);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(161, 27);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "C:\\poptplay.exe";
+            this.labelPlayer.AutoSize = true;
+            this.labelPlayer.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelPlayer.ForeColor = System.Drawing.Color.Gray;
+            this.labelPlayer.Location = new System.Drawing.Point(58, 72);
+            this.labelPlayer.Name = "labelPlayer";
+            this.labelPlayer.Size = new System.Drawing.Size(161, 27);
+            this.labelPlayer.TabIndex = 4;
+            this.labelPlayer.Text = "C:\\poptplay.exe";
             // 
-            // label6
+            // labelVideoPath
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label6.ForeColor = System.Drawing.Color.Gray;
-            this.label6.Location = new System.Drawing.Point(58, 143);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(161, 27);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "C:\\poptplay.exe";
+            this.labelVideoPath.AutoSize = true;
+            this.labelVideoPath.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelVideoPath.ForeColor = System.Drawing.Color.Gray;
+            this.labelVideoPath.Location = new System.Drawing.Point(58, 143);
+            this.labelVideoPath.Name = "labelVideoPath";
+            this.labelVideoPath.Size = new System.Drawing.Size(161, 27);
+            this.labelVideoPath.TabIndex = 5;
+            this.labelVideoPath.Text = "C:\\poptplay.exe";
             // 
-            // label7
+            // labelWaitClassify
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label7.ForeColor = System.Drawing.Color.Gray;
-            this.label7.Location = new System.Drawing.Point(58, 212);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(161, 27);
-            this.label7.TabIndex = 6;
-            this.label7.Text = "C:\\poptplay.exe";
+            this.labelWaitClassify.AutoSize = true;
+            this.labelWaitClassify.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelWaitClassify.ForeColor = System.Drawing.Color.Gray;
+            this.labelWaitClassify.Location = new System.Drawing.Point(58, 212);
+            this.labelWaitClassify.Name = "labelWaitClassify";
+            this.labelWaitClassify.Size = new System.Drawing.Size(161, 27);
+            this.labelWaitClassify.TabIndex = 6;
+            this.labelWaitClassify.Text = "C:\\poptplay.exe";
             // 
-            // label8
+            // labelClassifyOut
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label8.ForeColor = System.Drawing.Color.Gray;
-            this.label8.Location = new System.Drawing.Point(58, 280);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(161, 27);
-            this.label8.TabIndex = 7;
-            this.label8.Text = "C:\\poptplay.exe";
+            this.labelClassifyOut.AutoSize = true;
+            this.labelClassifyOut.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelClassifyOut.ForeColor = System.Drawing.Color.Gray;
+            this.labelClassifyOut.Location = new System.Drawing.Point(58, 280);
+            this.labelClassifyOut.Name = "labelClassifyOut";
+            this.labelClassifyOut.Size = new System.Drawing.Size(161, 27);
+            this.labelClassifyOut.TabIndex = 7;
+            this.labelClassifyOut.Text = "C:\\poptplay.exe";
             // 
             // ucSwitch1
             // 
             this.ucSwitch1.BackColor = System.Drawing.Color.Transparent;
-            this.ucSwitch1.Checked = true;
+            this.ucSwitch1.Checked = LocalPathParam.PicIsLoadALL;
             this.ucSwitch1.FalseColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(189)))), ((int)(((byte)(189)))));
             this.ucSwitch1.FalseTextColr = System.Drawing.Color.White;
-            this.ucSwitch1.Location = new System.Drawing.Point(743, 351);
+            this.ucSwitch1.Location = new System.Drawing.Point(692, 351);
             this.ucSwitch1.Name = "ucSwitch1";
             this.ucSwitch1.Size = new System.Drawing.Size(83, 31);
             this.ucSwitch1.SwitchType = HZH_Controls.Controls.SwitchType.Ellipse;
@@ -153,11 +155,11 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label9.ForeColor = System.Drawing.Color.DimGray;
-            this.label9.Location = new System.Drawing.Point(58, 351);
+            this.label9.Location = new System.Drawing.Point(58, 355);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(428, 27);
+            this.label9.Size = new System.Drawing.Size(588, 27);
             this.label9.TabIndex = 9;
-            this.label9.Text = "启动时是否加载全部图片(会导致内存占用巨大)";
+            this.label9.Text = "启动时是否加载全部图片(提高加载速度，但会导致内存占用巨大)";
             // 
             // ucBtnPlayer
             // 
@@ -184,99 +186,103 @@
             this.ucBtnPlayer.TabStop = false;
             this.ucBtnPlayer.TipsColor = System.Drawing.Color.FromArgb(((int)(((byte)(147)))), ((int)(((byte)(7)))), ((int)(((byte)(132)))));
             this.ucBtnPlayer.TipsText = "";
+            this.ucBtnPlayer.BtnClick += new System.EventHandler(this.ucBtnPlayer_BtnClick);
             // 
-            // ucBtnExt1
+            // ucBtnVideoPath
             // 
-            this.ucBtnExt1.BackColor = System.Drawing.Color.Transparent;
-            this.ucBtnExt1.BtnBackColor = System.Drawing.Color.Transparent;
-            this.ucBtnExt1.BtnFont = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ucBtnExt1.BtnForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(41)))), ((int)(((byte)(82)))));
-            this.ucBtnExt1.BtnText = "更改";
-            this.ucBtnExt1.ConerRadius = 25;
-            this.ucBtnExt1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ucBtnExt1.EnabledMouseEffect = true;
-            this.ucBtnExt1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(111)))), ((int)(((byte)(148)))));
-            this.ucBtnExt1.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.ucBtnExt1.IsRadius = true;
-            this.ucBtnExt1.IsShowRect = true;
-            this.ucBtnExt1.IsShowTips = false;
-            this.ucBtnExt1.Location = new System.Drawing.Point(692, 111);
-            this.ucBtnExt1.Margin = new System.Windows.Forms.Padding(0);
-            this.ucBtnExt1.Name = "ucBtnExt1";
-            this.ucBtnExt1.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(111)))), ((int)(((byte)(148)))));
-            this.ucBtnExt1.RectWidth = 1;
-            this.ucBtnExt1.Size = new System.Drawing.Size(76, 38);
-            this.ucBtnExt1.TabIndex = 11;
-            this.ucBtnExt1.TabStop = false;
-            this.ucBtnExt1.TipsColor = System.Drawing.Color.FromArgb(((int)(((byte)(147)))), ((int)(((byte)(7)))), ((int)(((byte)(132)))));
-            this.ucBtnExt1.TipsText = "";
+            this.ucBtnVideoPath.BackColor = System.Drawing.Color.Transparent;
+            this.ucBtnVideoPath.BtnBackColor = System.Drawing.Color.Transparent;
+            this.ucBtnVideoPath.BtnFont = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ucBtnVideoPath.BtnForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(41)))), ((int)(((byte)(82)))));
+            this.ucBtnVideoPath.BtnText = "更改";
+            this.ucBtnVideoPath.ConerRadius = 25;
+            this.ucBtnVideoPath.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ucBtnVideoPath.EnabledMouseEffect = true;
+            this.ucBtnVideoPath.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(111)))), ((int)(((byte)(148)))));
+            this.ucBtnVideoPath.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.ucBtnVideoPath.IsRadius = true;
+            this.ucBtnVideoPath.IsShowRect = true;
+            this.ucBtnVideoPath.IsShowTips = false;
+            this.ucBtnVideoPath.Location = new System.Drawing.Point(692, 111);
+            this.ucBtnVideoPath.Margin = new System.Windows.Forms.Padding(0);
+            this.ucBtnVideoPath.Name = "ucBtnVideoPath";
+            this.ucBtnVideoPath.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(111)))), ((int)(((byte)(148)))));
+            this.ucBtnVideoPath.RectWidth = 1;
+            this.ucBtnVideoPath.Size = new System.Drawing.Size(76, 38);
+            this.ucBtnVideoPath.TabIndex = 11;
+            this.ucBtnVideoPath.TabStop = false;
+            this.ucBtnVideoPath.TipsColor = System.Drawing.Color.FromArgb(((int)(((byte)(147)))), ((int)(((byte)(7)))), ((int)(((byte)(132)))));
+            this.ucBtnVideoPath.TipsText = "";
+            this.ucBtnVideoPath.BtnClick += new System.EventHandler(this.ucBtnVideoPath_BtnClick);
             // 
-            // ucBtnExt2
+            // ucBtnWaitClassify
             // 
-            this.ucBtnExt2.BackColor = System.Drawing.Color.Transparent;
-            this.ucBtnExt2.BtnBackColor = System.Drawing.Color.Transparent;
-            this.ucBtnExt2.BtnFont = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ucBtnExt2.BtnForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(41)))), ((int)(((byte)(82)))));
-            this.ucBtnExt2.BtnText = "更改";
-            this.ucBtnExt2.ConerRadius = 25;
-            this.ucBtnExt2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ucBtnExt2.EnabledMouseEffect = true;
-            this.ucBtnExt2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(111)))), ((int)(((byte)(148)))));
-            this.ucBtnExt2.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.ucBtnExt2.IsRadius = true;
-            this.ucBtnExt2.IsShowRect = true;
-            this.ucBtnExt2.IsShowTips = false;
-            this.ucBtnExt2.Location = new System.Drawing.Point(692, 179);
-            this.ucBtnExt2.Margin = new System.Windows.Forms.Padding(0);
-            this.ucBtnExt2.Name = "ucBtnExt2";
-            this.ucBtnExt2.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(111)))), ((int)(((byte)(148)))));
-            this.ucBtnExt2.RectWidth = 1;
-            this.ucBtnExt2.Size = new System.Drawing.Size(76, 38);
-            this.ucBtnExt2.TabIndex = 12;
-            this.ucBtnExt2.TabStop = false;
-            this.ucBtnExt2.TipsColor = System.Drawing.Color.FromArgb(((int)(((byte)(147)))), ((int)(((byte)(7)))), ((int)(((byte)(132)))));
-            this.ucBtnExt2.TipsText = "";
+            this.ucBtnWaitClassify.BackColor = System.Drawing.Color.Transparent;
+            this.ucBtnWaitClassify.BtnBackColor = System.Drawing.Color.Transparent;
+            this.ucBtnWaitClassify.BtnFont = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ucBtnWaitClassify.BtnForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(41)))), ((int)(((byte)(82)))));
+            this.ucBtnWaitClassify.BtnText = "更改";
+            this.ucBtnWaitClassify.ConerRadius = 25;
+            this.ucBtnWaitClassify.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ucBtnWaitClassify.EnabledMouseEffect = true;
+            this.ucBtnWaitClassify.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(111)))), ((int)(((byte)(148)))));
+            this.ucBtnWaitClassify.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.ucBtnWaitClassify.IsRadius = true;
+            this.ucBtnWaitClassify.IsShowRect = true;
+            this.ucBtnWaitClassify.IsShowTips = false;
+            this.ucBtnWaitClassify.Location = new System.Drawing.Point(692, 179);
+            this.ucBtnWaitClassify.Margin = new System.Windows.Forms.Padding(0);
+            this.ucBtnWaitClassify.Name = "ucBtnWaitClassify";
+            this.ucBtnWaitClassify.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(111)))), ((int)(((byte)(148)))));
+            this.ucBtnWaitClassify.RectWidth = 1;
+            this.ucBtnWaitClassify.Size = new System.Drawing.Size(76, 38);
+            this.ucBtnWaitClassify.TabIndex = 12;
+            this.ucBtnWaitClassify.TabStop = false;
+            this.ucBtnWaitClassify.TipsColor = System.Drawing.Color.FromArgb(((int)(((byte)(147)))), ((int)(((byte)(7)))), ((int)(((byte)(132)))));
+            this.ucBtnWaitClassify.TipsText = "";
+            this.ucBtnWaitClassify.BtnClick += new System.EventHandler(this.ucBtnWaitClassify_BtnClick);
             // 
-            // ucBtnExt3
+            // ucBtnExtv
             // 
-            this.ucBtnExt3.BackColor = System.Drawing.Color.Transparent;
-            this.ucBtnExt3.BtnBackColor = System.Drawing.Color.Transparent;
-            this.ucBtnExt3.BtnFont = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ucBtnExt3.BtnForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(41)))), ((int)(((byte)(82)))));
-            this.ucBtnExt3.BtnText = "更改";
-            this.ucBtnExt3.ConerRadius = 25;
-            this.ucBtnExt3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ucBtnExt3.EnabledMouseEffect = true;
-            this.ucBtnExt3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(111)))), ((int)(((byte)(148)))));
-            this.ucBtnExt3.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.ucBtnExt3.IsRadius = true;
-            this.ucBtnExt3.IsShowRect = true;
-            this.ucBtnExt3.IsShowTips = false;
-            this.ucBtnExt3.Location = new System.Drawing.Point(692, 252);
-            this.ucBtnExt3.Margin = new System.Windows.Forms.Padding(0);
-            this.ucBtnExt3.Name = "ucBtnExt3";
-            this.ucBtnExt3.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(111)))), ((int)(((byte)(148)))));
-            this.ucBtnExt3.RectWidth = 1;
-            this.ucBtnExt3.Size = new System.Drawing.Size(76, 38);
-            this.ucBtnExt3.TabIndex = 12;
-            this.ucBtnExt3.TabStop = false;
-            this.ucBtnExt3.TipsColor = System.Drawing.Color.FromArgb(((int)(((byte)(147)))), ((int)(((byte)(7)))), ((int)(((byte)(132)))));
-            this.ucBtnExt3.TipsText = "";
+            this.ucBtnExtv.BackColor = System.Drawing.Color.Transparent;
+            this.ucBtnExtv.BtnBackColor = System.Drawing.Color.Transparent;
+            this.ucBtnExtv.BtnFont = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ucBtnExtv.BtnForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(41)))), ((int)(((byte)(82)))));
+            this.ucBtnExtv.BtnText = "更改";
+            this.ucBtnExtv.ConerRadius = 25;
+            this.ucBtnExtv.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ucBtnExtv.EnabledMouseEffect = true;
+            this.ucBtnExtv.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(111)))), ((int)(((byte)(148)))));
+            this.ucBtnExtv.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.ucBtnExtv.IsRadius = true;
+            this.ucBtnExtv.IsShowRect = true;
+            this.ucBtnExtv.IsShowTips = false;
+            this.ucBtnExtv.Location = new System.Drawing.Point(692, 252);
+            this.ucBtnExtv.Margin = new System.Windows.Forms.Padding(0);
+            this.ucBtnExtv.Name = "ucBtnExtv";
+            this.ucBtnExtv.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(111)))), ((int)(((byte)(148)))));
+            this.ucBtnExtv.RectWidth = 1;
+            this.ucBtnExtv.Size = new System.Drawing.Size(76, 38);
+            this.ucBtnExtv.TabIndex = 12;
+            this.ucBtnExtv.TabStop = false;
+            this.ucBtnExtv.TipsColor = System.Drawing.Color.FromArgb(((int)(((byte)(147)))), ((int)(((byte)(7)))), ((int)(((byte)(132)))));
+            this.ucBtnExtv.TipsText = "";
+            this.ucBtnExtv.BtnClick += new System.EventHandler(this.ucBtnExtClassifyOut_BtnClick);
             // 
             // SetLocalControl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(41)))), ((int)(((byte)(82)))));
-            this.Controls.Add(this.ucBtnExt3);
-            this.Controls.Add(this.ucBtnExt2);
-            this.Controls.Add(this.ucBtnExt1);
+            this.Controls.Add(this.ucBtnExtv);
+            this.Controls.Add(this.ucBtnWaitClassify);
+            this.Controls.Add(this.ucBtnVideoPath);
             this.Controls.Add(this.ucBtnPlayer);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.ucSwitch1);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.labelClassifyOut);
+            this.Controls.Add(this.labelWaitClassify);
+            this.Controls.Add(this.labelVideoPath);
+            this.Controls.Add(this.labelPlayer);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -294,15 +300,15 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label labelPlayer;
+        private System.Windows.Forms.Label labelVideoPath;
+        private System.Windows.Forms.Label labelWaitClassify;
+        private System.Windows.Forms.Label labelClassifyOut;
         private HZH_Controls.Controls.UCSwitch ucSwitch1;
         private System.Windows.Forms.Label label9;
         private HZH_Controls.Controls.UCBtnExt ucBtnPlayer;
-        private HZH_Controls.Controls.UCBtnExt ucBtnExt1;
-        private HZH_Controls.Controls.UCBtnExt ucBtnExt2;
-        private HZH_Controls.Controls.UCBtnExt ucBtnExt3;
+        private HZH_Controls.Controls.UCBtnExt ucBtnVideoPath;
+        private HZH_Controls.Controls.UCBtnExt ucBtnWaitClassify;
+        private HZH_Controls.Controls.UCBtnExt ucBtnExtv;
     }
 }

@@ -38,10 +38,20 @@ namespace avMovieManager.Model
         }
         public void AsyncShowImage() 
         {
+            if (LocalPathParam.PicIsLoadALL) 
+            {
+                pictureBoxCover.Image = movieDate.GetCoverImg();
+                return;
+            }
             pictureBoxCover.LoadAsync(movieDate.ThumbPicPath);
         }
         public void ShowImage() 
         {
+            if (LocalPathParam.PicIsLoadALL)
+            {
+                pictureBoxCover.Image = movieDate.GetCoverImg();
+                return;
+            }
             pictureBoxCover.Load(movieDate.ThumbPicPath);
         }
 

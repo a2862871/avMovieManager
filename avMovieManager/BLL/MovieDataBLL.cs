@@ -15,30 +15,36 @@ namespace avMovieManager.BLL
         public static MovieDataBLL Instance { get { return lazy.Value; } }
 
         private static MovieDataDAL movieDatas;
-
+        private static List<FileInfo> fileInfos;
         public delegate void ProgressEventHandler(int index, int count, string name);
         public static event ProgressEventHandler progress;
         private MovieDataBLL() 
         {
             movieDatas = new MovieDataDAL();
-            Task<int> t = InitMovieDataAsync();
+            fileInfos = new List<FileInfo>();
+            InitReadXmlFile();
             //InitMovieData();
         }
-        public async Task<int> InitMovieDataAsync()
+        private void InitReadXmlFile() 
+        {
+            if (Directory.Exists(LocalPathParam.VideoPreviewPath) == false)
+            {
+                return;
+            }
+            DirectoryInfo d = new DirectoryInfo(LocalPathParam.VideoPreviewPath);
+            fileInfos = GetAll(d, fileInfos);
+        }
+        public int GetXmlFileCount() 
+        {
+            return fileInfos.Count;
+        }
+        public static async Task<int> InitMovieDataAsync()
         {
             int t = await Task.Run(() => InitMovieData());
             return t;
         }
-        private int InitMovieData() 
+        private static int InitMovieData() 
         {
-
-            if (Directory.Exists(LocalPathParam.VideoPreviewPath) == false)
-            {
-                return -1;
-            }
-            DirectoryInfo d = new DirectoryInfo(LocalPathParam.VideoPreviewPath);
-            List<FileInfo> fileInfos = new List<FileInfo>();
-            fileInfos = GetAll(d, fileInfos);
             int i = 1;
             foreach(FileInfo info in fileInfos) 
             {

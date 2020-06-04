@@ -67,6 +67,10 @@ namespace avMovieManager.DAL
                 if(actorHasMap.ContainsKey(name))
                     m.AddRelatedActorId(actorHasMap[name]);
             }
+            if (LocalPathParam.PicIsLoadALL) 
+            {
+                m.LoadImg();
+            }
             movieInfos.Add(m);
             movieIDHasMap.Add(m.Id, m);
             AddMovieTag(tags, m.Id);

@@ -47,8 +47,8 @@ namespace avMovieManager.DAL
             get { return sortFinalPutPath; }
         }
 
-        private static string picIsLoadAll = "";
-        public static string PicIsLoadALL 
+        private static bool picIsLoadAll = false;
+        public static bool PicIsLoadALL 
         { 
             set { picIsLoadAll = value; } 
             get { return picIsLoadAll; } 

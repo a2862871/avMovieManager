@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,7 +17,7 @@ namespace avMovieManager.DAL
         private string _thumbPicPath;
         private string _posterPicPath;
         private DateTime _creatTime;
-
+        private Image _coverImg;
         public DateTime CreatTime
         {
             set { _creatTime = value; }
@@ -61,6 +63,16 @@ namespace avMovieManager.DAL
         {
             return _relatedActorId;
         }
-
+        public void LoadImg() 
+        {
+            if (_thumbPicPath.Length > 0) 
+            {
+                _coverImg = Image.FromStream(new MemoryStream(File.ReadAllBytes(_thumbPicPath)));
+            }
+        }
+        public Image GetCoverImg() 
+        {
+            return _coverImg;
+        }
     }
 }
