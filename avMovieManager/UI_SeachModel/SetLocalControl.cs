@@ -59,12 +59,19 @@ namespace avMovieManager.UI_SeachModel
         {
             System.Windows.Forms.FolderBrowserDialog dialog = new System.Windows.Forms.FolderBrowserDialog();
             dialog.Description = "请选择存放影片的文件夹";
+            string currpath = labelVideoPath.Text;
             if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 labelVideoPath.Text = dialog.SelectedPath; 
             }
             LocalPathParam.VideoPreviewPath = labelVideoPath.Text;
-            IniHelper.Read("MoviePath", "Path", LocalPathParam.VideoPreviewPath);
+            IniHelper.Write("MoviePath", "Path", LocalPathParam.VideoPreviewPath);
+            if (!currpath.Equals(labelVideoPath.Text)) 
+            {
+                MessageBox.Show("修改目录需要重启客户端，客户端即将重启");
+                Application.ExitThread();
+                Restart();
+            }
         }
 
         private void ucBtnWaitClassify_BtnClick(object sender, EventArgs e)
