@@ -57,9 +57,15 @@ namespace avMovieManager.Model
         }
         private void ShowPreviewPic(MovieInfo md, int i)
         {
+            int w = SystemInformation.WorkingArea.Width;
+            int index = 2;
+            if (w > 1920) 
+            {
+                index = 3;
+            }
             PreviewPicControl p = new PreviewPicControl(md);
-            int x = 50 + i % 2 * 40 + (((i + 2) % 2) * 600);
-            int y = i / 2 * (100 + 404);
+            int x = 50 + i % index * 40 + (((i + index) % index) * 600);
+            int y = i / index * (100 + 404);
             p.Tag = i;
             p.Location = new Point(x, y);
             listPicBox.Add(p);

@@ -29,6 +29,7 @@ namespace avMovieManager.Model
         }
         private void InitButton(List<string> filedict)
         {
+            this.Controls.Clear();
             Font font = new System.Drawing.Font("微软雅黑", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             for (int i = 0; i < filedict.Count; i++)
             {

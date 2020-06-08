@@ -81,7 +81,7 @@ namespace avMovieManager.UI
             if (actorNames.Count != 0)
             {
                 buttonPanelControl = new ButtonPanelControl(actorNames);
-                buttonPanelControl.Dock = DockStyle.Top;
+                buttonPanelControl.Dock = DockStyle.Left;
                 buttonPanelControl.Button_MouseDownEvent += ButtonPanelControl_Button_MouseDownEvent;
                 panelButton.Controls.Add(buttonPanelControl);
             }          
